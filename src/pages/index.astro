@@ -1,31 +1,122 @@
 ---
+// index.astro - Homepage for Ohana Studios
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import GameSpotlight from '../components/GameSpotlight.astro';
+import ContactSection from '../components/ContactSection.astro';
 ---
 
-<BaseLayout title="Ohana Studios | Play Together, Win Together">
-  <section class="py-24 sm:py-32 px-4 max-w-5xl mx-auto text-center">
-    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold tracking-wide uppercase mb-6">
-      <span>Welcome to Ohana Studios</span>
-    </div>
-    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6 font-heading">
-      Play Together, <span class="text-gradient-sky-indigo">Win Together</span>
-    </h1>
-    <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-      Crafting calm, thoughtful, and accessible games designed with care for players of all ages.
-    </p>
-    <div class="flex flex-wrap items-center justify-center gap-4">
-      <a
-        href="/#game"
-        class="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-full text-slate-950 bg-gradient-to-r from-sky-400 via-sky-300 to-indigo-400 hover:from-sky-300 hover:to-indigo-300 shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 transition-all duration-200 transform hover:-translate-y-0.5"
-      >
-        Explore Shelly Jigsaw
-      </a>
-      <a
-        href="/blog"
-        class="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-full text-gray-200 bg-gray-800/80 hover:bg-gray-700/80 border border-gray-700 hover:border-gray-600 transition-all duration-200"
-      >
-        Read Our Devlog
-      </a>
+<BaseLayout
+  title="Ohana Studios | Play Together, Win Together"
+  description="Ohana Studios creates calm, thoughtful, and accessible games for players of all ages. Creators of Shelly Jigsaw: Calm Puzzles."
+>
+  <!-- Studio Hero Section -->
+  <Hero />
+
+  <!-- Flagship Game Spotlight: Shelly Jigsaw -->
+  <GameSpotlight />
+
+  <!-- About the Studio Section -->
+  <section
+    id="about"
+    class="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-mesh-dark border-b border-gray-800/60 overflow-hidden"
+    aria-labelledby="about-heading"
+  >
+    <!-- Ambient glow -->
+    <div class="pointer-events-none absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 blur-[130px] rounded-full" aria-hidden="true"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-4">
+          <span>Our Story & Philosophy</span>
+        </div>
+
+        <h2
+          id="about-heading"
+          class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-heading mb-6"
+        >
+          Crafted for Calm, <span class="text-gradient-sky-indigo">Built for Everyone</span>
+        </h2>
+
+        <p class="text-lg sm:text-xl text-gray-300 leading-relaxed font-light">
+          At Ohana Studios, we believe games should feel like a sanctuary.
+          In a world full of frantic timers, sensory overload, and intrusive ads, we design soothing digital experiences that respect your time and peace of mind.
+        </p>
+      </div>
+
+      <!-- Studio Pillars Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <!-- Pillar 1 -->
+        <div class="glass-panel p-8 rounded-3xl border border-gray-800/90 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 mb-6">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white font-heading mb-3">Accessibility First</h3>
+            <p class="text-sm text-gray-300 leading-relaxed">
+              Designed and playtested with older adults and multi-generational families in mind. Large touch targets, high-contrast layouts, and forgiving piece snapping mean anyone can pick up and enjoy immediately.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-800/80 text-xs font-semibold text-sky-400">
+            Comfortable &bull; Tested for 50+
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="glass-panel p-8 rounded-3xl border border-gray-800/90 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 mb-6">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white font-heading mb-3">Player Peace of Mind</h3>
+            <p class="text-sm text-gray-300 leading-relaxed">
+              No manipulative dark patterns, no anxiety-inducing countdown timers, and zero mid-game interstitial ads. We believe the true joy of gaming comes from unhurried immersion and gentle satisfaction.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-800/80 text-xs font-semibold text-teal-400">
+            Zero Pressure &bull; 100% Offline
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="glass-panel p-8 rounded-3xl border border-gray-800/90 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-6">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white font-heading mb-3">Indie Craftsmanship</h3>
+            <p class="text-sm text-gray-300 leading-relaxed">
+              Built with love using Godot Engine 4.7. We care about buttery 60 FPS performance, lightweight downloads, battery efficiency, and thoughtful acoustic soundscapes that soothe rather than startle.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-800/80 text-xs font-semibold text-indigo-400">
+            Godot 4.7 &bull; Lightweight & Fast
+          </div>
+        </div>
+      </div>
+
+      <!-- Studio Quote / Banner -->
+      <div class="p-8 sm:p-10 rounded-3xl bg-mesh-card border border-gray-800 text-center max-w-4xl mx-auto">
+        <blockquote class="text-lg sm:text-2xl font-medium text-gray-200 italic mb-6 leading-relaxed font-heading">
+          &ldquo;Our motto is <span class="text-sky-300 font-bold not-italic">Play Together, Win Together</span>. We believe the best games are the ones you can share with your parents, your children, or enjoy quietly with a warm cup of tea after a long day.&rdquo;
+        </blockquote>
+        <div class="text-sm font-bold text-white uppercase tracking-wider font-heading">
+          Nir Ohana
+        </div>
+        <div class="text-xs text-sky-400">
+          Founder & Lead Developer, Ohana Studios
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Contact & Community Section -->
+  <ContactSection />
 </BaseLayout>
