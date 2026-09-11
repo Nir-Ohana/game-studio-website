@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="favBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B" />
+      <stop offset="50%" stop-color="#0E2238" />
+      <stop offset="100%" stop-color="#041E28" />
+    </linearGradient>
+
+    <!-- Outer Rim Gradient -->
+    <linearGradient id="favRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.7" />
+      <stop offset="50%" stop-color="#0D9488" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#818CF8" stop-opacity="0.6" />
+    </linearGradient>
+
+    <!-- Turtle Flipper/Body Gradient -->
+    <linearGradient id="turtleBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5EEAD4" />
+      <stop offset="45%" stop-color="#14B8A6" />
+      <stop offset="100%" stop-color="#0D9488" />
+    </linearGradient>
+
+    <!-- Quadrant 1: Top-Left Puzzle Piece (Cyan / Sky) -->
+    <linearGradient id="puzzlePiece1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+
+    <!-- Quadrant 2: Top-Right Puzzle Piece (Teal / Mint) -->
+    <linearGradient id="puzzlePiece2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2DD4BF" />
+      <stop offset="100%" stop-color="#0D9488" />
+    </linearGradient>
+
+    <!-- Quadrant 3: Bottom-Left Puzzle Piece (Ocean Blue) -->
+    <linearGradient id="puzzlePiece3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0EA5E9" />
+      <stop offset="100%" stop-color="#0369A1" />
+    </linearGradient>
+
+    <!-- Quadrant 4: Bottom-Right Puzzle Piece (Deep Sea Teal) -->
+    <linearGradient id="puzzlePiece4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+
+    <!-- Golden Star Sparkle Gradient -->
+    <linearGradient id="starGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFBEB" />
+      <stop offset="40%" stop-color="#FDE047" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+
+    <!-- Soft Drop Shadow -->
+    <filter id="softShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2.5" stdDeviation="3" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- 1. Squircle Badge Base -->
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#favBg)" stroke="url(#favRim)" stroke-width="2" filter="url(#softShadow)" />
+
+  <!-- 2. Subtle Water Ripple Rings -->
+  <circle cx="64" cy="65" r="53" fill="none" stroke="#38BDF8" stroke-width="1" stroke-opacity="0.12" />
+  <circle cx="64" cy="65" r="43" fill="none" stroke="#38BDF8" stroke-width="1" stroke-opacity="0.08" />
+
+  <!-- 3. Shelly Sea Turtle Assembly -->
+  <g id="shelly-turtle">
+    <!-- Rear Flippers -->
+    <!-- Left Rear Flipper -->
+    <path d="M 48 80 C 38 88 30 96 33 101 C 36 104 42 103 48 97 C 52 93 55 86 55 84 Z"
+          fill="url(#turtleBodyGrad)" stroke="#064E3B" stroke-width="2" stroke-linejoin="round" />
+    <!-- Right Rear Flipper -->
+    <path d="M 80 80 C 90 88 98 96 95 101 C 92 104 86 103 80 97 C 76 93 73 86 73 84 Z"
+          fill="url(#turtleBodyGrad)" stroke="#064E3B" stroke-width="2" stroke-linejoin="round" />
+
+    <!-- Cute Little Tail -->
+    <path d="M 61 89 Q 64 100 64 101 Q 64 100 67 89 Z"
+          fill="url(#turtleBodyGrad)" stroke="#064E3B" stroke-width="1.8" stroke-linejoin="round" />
+
+    <!-- Front Flippers (Sweeping forward gracefully) -->
+    <!-- Left Front Flipper -->
+    <path d="M 48 54 C 36 42 22 34 13 38 C 10 40 10 46 14 52 C 21 61 35 67 47 69 Z"
+          fill="url(#turtleBodyGrad)" stroke="#064E3B" stroke-width="2.2" stroke-linejoin="round" />
+    <!-- Left Flipper Highlight -->
+    <path d="M 16 41 C 24 38 36 44 45 52"
+          fill="none" stroke="#A7F3D0" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+
+    <!-- Right Front Flipper -->
+    <path d="M 80 54 C 92 42 106 34 115 38 C 118 40 118 46 114 52 C 107 61 93 67 81 69 Z"
+          fill="url(#turtleBodyGrad)" stroke="#064E3B" stroke-width="2.2" stroke-linejoin="round" />
+    <!-- Right Flipper Highlight -->
+    <path d="M 112 41 C 104 38 92 44 83 52"
+          fill="none" stroke="#A7F3D0" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+
+    <!-- Turtle Head & Neck -->
+    <path d="M 57 44 C 55 34 54 24 59 18 C 61.5 14.5 66.5 14.5 69 18 C 74 24 73 34 71 44 Z"
+          fill="url(#turtleBodyGrad)" stroke="#064E3B" stroke-width="2.2" stroke-linejoin="round" />
+    <!-- Head Highlight -->
+    <path d="M 60 18 C 62 16.5 66 16.5 68 18"
+          fill="none" stroke="#A7F3D0" stroke-width="1.5" stroke-linecap="round" opacity="0.7" />
+
+    <!-- Adorable Shiny Eyes -->
+    <ellipse cx="60.5" cy="23.5" rx="2" ry="2.6" fill="#042F2E" />
+    <circle cx="59.8" cy="22.7" r="0.8" fill="#FFFFFF" />
+    <ellipse cx="67.5" cy="23.5" rx="2" ry="2.6" fill="#042F2E" />
+    <circle cx="66.8" cy="22.7" r="0.8" fill="#FFFFFF" />
+
+    <!-- Sweet Calm Smile -->
+    <path d="M 62 29 Q 64 30.8 66 29"
+          fill="none" stroke="#042F2E" stroke-width="1.2" stroke-linecap="round" />
+
+    <!-- 4. The Jigsaw Puzzle Carapace (Shell) -->
+    <!-- Shell Base Drop Shadow Group -->
+    <g id="puzzle-shell">
+      <!-- Clip path for shell boundary -->
+      <clipPath id="shellClip">
+        <path d="M 64 38 C 81 38 91 49 91 66 C 91 82 81 93 64 93 C 47 93 37 82 37 66 C 37 49 47 38 64 38 Z" />
+      </clipPath>
+
+      <!-- Shell Base Layer Inside Clip -->
+      <g clip-path="url(#shellClip)">
+        <!-- Piece 1: Top-Left (Sky/Cyan) -->
+        <path d="M 37 38 L 64 38 
+                 L 64 48 C 68 48 70 50 70 53 C 70 56 68 58 64 58
+                 L 64 66
+                 L 57 66 C 57 62 55 60 52 60 C 49 60 47 62 47 66
+                 L 37 66 Z"
+              fill="url(#puzzlePiece1)" />
+
+        <!-- Piece 2: Top-Right (Teal/Mint) -->
+        <path d="M 64 38 L 91 38 L 91 66
+                 L 79 66 C 79 70 77 72 74 72 C 71 72 69 70 69 66
+                 L 64 66
+                 L 64 58 C 68 58 70 56 70 53 C 70 50 68 48 64 48
+                 L 64 38 Z"
+              fill="url(#puzzlePiece2)" />
+
+        <!-- Piece 3: Bottom-Left (Ocean Blue) -->
+        <path d="M 37 66
+                 L 47 66 C 47 62 49 60 52 60 C 55 60 57 62 57 66
+                 L 64 66
+                 L 64 74 C 60 74 58 76 58 79 C 58 82 60 84 64 84
+                 L 64 93 L 37 93 Z"
+              fill="url(#puzzlePiece3)" />
+
+        <!-- Piece 4: Bottom-Right (Emerald Sea) -->
+        <path d="M 64 66
+                 L 69 66 C 69 70 71 72 74 72 C 77 72 79 70 79 66
+                 L 91 66 L 91 93 L 64 93
+                 L 64 84 C 60 84 58 82 58 79 C 58 76 60 74 64 74
+                 L 64 66 Z"
+              fill="url(#puzzlePiece4)" />
+
+        <!-- Jigsaw Seam Inks (Smooth, glowing clean lines) -->
+        <!-- Vertical Seam -->
+        <path d="M 64 38 L 64 48 C 68 48 70 50 70 53 C 70 56 68 58 64 58 L 64 74 C 60 74 58 76 58 79 C 58 82 60 84 64 84 L 64 93"
+              fill="none" stroke="#042F2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M 64 38 L 64 48 C 68 48 70 50 70 53 C 70 56 68 58 64 58 L 64 74 C 60 74 58 76 58 79 C 58 82 60 84 64 84 L 64 93"
+              fill="none" stroke="#E0F2FE" stroke-width="0.8" stroke-linecap="round" opacity="0.6" />
+
+        <!-- Horizontal Seam -->
+        <path d="M 37 66 L 47 66 C 47 62 49 60 52 60 C 55 60 57 62 57 66 L 69 66 C 69 70 71 72 74 72 C 77 72 79 70 79 66 L 91 66"
+              fill="none" stroke="#042F2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M 37 66 L 47 66 C 47 62 49 60 52 60 C 55 60 57 62 57 66 L 69 66 C 69 70 71 72 74 72 C 77 72 79 70 79 66 L 91 66"
+              fill="none" stroke="#E0F2FE" stroke-width="0.8" stroke-linecap="round" opacity="0.6" />
+
+        <!-- Top Carapace Specular Shine -->
+        <path d="M 45 47 C 53 41 75 41 83 47"
+              fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.45" />
+      </g>
+
+      <!-- Outer Carapace Rim & Stroke -->
+      <path d="M 64 38 C 81 38 91 49 91 66 C 91 82 81 93 64 93 C 47 93 37 82 37 66 C 37 49 47 38 64 38 Z"
+            fill="none" stroke="#042F2E" stroke-width="2.8" stroke-linejoin="round" />
+      <path d="M 64 39 C 80 39 90 50 90 66 C 90 81 80 92 64 92 C 48 92 38 81 38 66 C 38 50 48 39 64 39 Z"
+            fill="none" stroke="#38BDF8" stroke-width="1" stroke-opacity="0.35" />
+
+      <!-- Center Jigsaw Core: 4-Point Golden Star Sparkle -->
+      <path d="M 64 61 Q 64 66 59 66 Q 64 66 64 71 Q 64 66 69 66 Q 64 66 64 61 Z"
+            fill="url(#starGold)" stroke="#B45309" stroke-width="0.8" stroke-linejoin="round" />
+      <circle cx="64" cy="66" r="1.3" fill="#FFFFFF" />
+    </g>
+  </g>
+
+  <!-- 5. Magical Ambient Sparkles & Bubbles -->
+  <!-- Top Right Star -->
+  <path d="M 99 21 Q 99 26 94 26 Q 99 26 99 31 Q 99 26 104 26 Q 99 26 99 21 Z"
+        fill="url(#starGold)" stroke="#D97706" stroke-width="0.6" />
+  <!-- Small Ambient Dots -->
+  <circle cx="106" cy="38" r="1.6" fill="#38BDF8" opacity="0.85" />
+  <circle cx="21" cy="30" r="1.6" fill="#38BDF8" opacity="0.85" />
+  <circle cx="18" cy="78" r="1.3" fill="#5EEAD4" opacity="0.75" />
+  <circle cx="110" cy="74" r="1.3" fill="#5EEAD4" opacity="0.75" />
+</svg>
