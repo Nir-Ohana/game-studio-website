@@ -12,136 +12,131 @@ const websiteUrl = 'https://ohana-studios.me';
   title="Privacy Policy | Ohana Studios"
   description="Official Privacy Policy for Ohana Studios and Shelly Jigsaw: Calm Puzzles. Transparent, zero-collection, 100% ad-free, and COPPA compliant."
 >
-  <div class="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-mesh-dark">
-    <!-- Ambient Glow Effect -->
-    <div
-      class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-sky-500/5 blur-[140px] rounded-full"
-      aria-hidden="true"
-    ></div>
-
+  <div class="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto relative z-10">
       <!-- Breadcrumb Navigation -->
-      <nav aria-label="Breadcrumb" class="mb-8">
-        <ol class="flex items-center gap-2 text-xs sm:text-sm text-gray-400">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-xs sm:text-sm text-sky-200 font-semibold font-heading">
           <li>
             <a
               href="/"
-              class="hover:text-sky-400 transition-colors focus:outline-none focus:underline"
+              class="hover:text-amber-300 transition-colors focus:outline-none focus:underline"
             >
               Home
             </a>
           </li>
-          <li class="text-gray-600" aria-hidden="true">/</li>
-          <li class="text-gray-200 font-medium" aria-current="page">
+          <li class="text-amber-400/60" aria-hidden="true">/</li>
+          <li class="text-amber-300 font-bold" aria-current="page">
             Privacy Policy
           </li>
         </ol>
       </nav>
 
       <!-- Document Header -->
-      <header class="mb-12 sm:mb-16">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-300 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-6">
-          <svg class="w-4 h-4 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <header class="mb-10 sm:mb-14 text-center sm:text-left">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400/20 border border-amber-400/50 text-amber-300 text-xs sm:text-sm font-extrabold tracking-wider uppercase mb-5 shadow-sm">
+          <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
           </svg>
           <span>Privacy Commitment &amp; Transparency</span>
         </div>
 
-        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-6 font-heading">
+        <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight leading-[1.12] mb-6 font-heading drop-shadow-md">
           Privacy Policy
         </h1>
 
-        <p class="text-lg sm:text-xl text-gray-300 leading-relaxed font-light mb-8 max-w-3xl">
+        <p class="text-lg sm:text-xl text-sky-100 leading-relaxed font-medium mb-8 max-w-3xl drop-shadow-sm">
           At Ohana Studios, we believe games should feel like a sanctuary. We respect your peace of mind and your privacy.
           We do not collect, track, monetize, or share your personal data.
         </p>
 
         <!-- Metadata Pill Bar -->
-        <div class="flex flex-wrap items-center gap-4 sm:gap-6 py-4 px-5 rounded-2xl bg-gray-900/60 border border-gray-800 text-xs sm:text-sm text-gray-400">
+        <div class="sand-card flex flex-wrap items-center gap-4 sm:gap-6 py-4 px-6 bg-white border-2 border-amber-400/40 text-xs sm:text-sm text-slate-600 shadow-md">
           <div class="flex items-center gap-2">
-            <span class="text-gray-500">Effective Date:</span>
-            <span class="text-gray-200 font-medium">{effectiveDate}</span>
+            <span class="text-slate-400 font-medium">Effective Date:</span>
+            <span class="text-sky-950 font-bold">{effectiveDate}</span>
           </div>
-          <span class="text-gray-700 hidden sm:inline">&bull;</span>
+          <span class="text-amber-400/60 hidden sm:inline">&bull;</span>
           <div class="flex items-center gap-2">
-            <span class="text-gray-500">Last Updated:</span>
-            <span class="text-gray-200 font-medium">{lastUpdated}</span>
+            <span class="text-slate-400 font-medium">Last Updated:</span>
+            <span class="text-sky-950 font-bold">{lastUpdated}</span>
           </div>
-          <span class="text-gray-700 hidden sm:inline">&bull;</span>
+          <span class="text-amber-400/60 hidden sm:inline">&bull;</span>
           <div class="flex items-center gap-2">
-            <span class="text-gray-500">Applies to:</span>
-            <span class="text-sky-400 font-medium">Shelly Jigsaw &amp; Ohana Studios</span>
+            <span class="text-slate-400 font-medium">Applies to:</span>
+            <span class="text-amber-700 font-bold font-heading">Shelly Jigsaw &amp; Ohana Studios</span>
           </div>
         </div>
       </header>
 
       <!-- Privacy At A Glance Cards -->
-      <section aria-labelledby="glance-heading" class="mb-16">
+      <section aria-labelledby="glance-heading" class="mb-14">
         <h2 id="glance-heading" class="sr-only">Privacy at a Glance</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <!-- Card 1 -->
-          <div class="glass-panel p-6 rounded-2xl border border-gray-800/80 hover:border-sky-500/30 transition-colors">
-            <div class="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 mb-4">
+          <div class="sand-card p-6 bg-white rounded-2xl border-2 border-amber-400/35 shadow-md">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-600 mb-4">
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
               </svg>
             </div>
-            <h3 class="text-base font-bold text-white font-heading mb-2">Zero Data Collection</h3>
-            <p class="text-sm text-gray-300 leading-relaxed font-light">
+            <h3 class="text-lg font-black text-sky-950 font-heading mb-2">Zero Data Collection</h3>
+            <p class="text-sm text-slate-600 leading-relaxed font-normal">
               No accounts, no email addresses, no tracking IDs, and no telemetry. We do not gather or store any personal information.
             </p>
           </div>
 
           <!-- Card 2 -->
-          <div class="glass-panel p-6 rounded-2xl border border-gray-800/80 hover:border-teal-500/30 transition-colors">
-            <div class="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 mb-4">
+          <div class="sand-card p-6 bg-white rounded-2xl border-2 border-amber-400/35 shadow-md">
+            <div class="w-10 h-10 rounded-xl bg-sky-100 border border-sky-300 flex items-center justify-center text-sky-600 mb-4">
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
               </svg>
             </div>
-            <h3 class="text-base font-bold text-white font-heading mb-2">100% On-Device Storage</h3>
-            <p class="text-sm text-gray-300 leading-relaxed font-light">
+            <h3 class="text-lg font-black text-sky-950 font-heading mb-2">100% On-Device Storage</h3>
+            <p class="text-sm text-slate-600 leading-relaxed font-normal">
               Your puzzle progress, daily streaks, and settings remain solely in sandboxed storage on your device. Never uploaded to the cloud.
             </p>
           </div>
 
           <!-- Card 3 -->
-          <div class="glass-panel p-6 rounded-2xl border border-gray-800/80 hover:border-indigo-500/30 transition-colors">
-            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4">
+          <div class="sand-card p-6 bg-white rounded-2xl border-2 border-amber-400/35 shadow-md">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-600 mb-4">
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <h3 class="text-base font-bold text-white font-heading mb-2">Zero Ads &amp; Zero Trackers</h3>
-            <p class="text-sm text-gray-300 leading-relaxed font-light">
+            <h3 class="text-lg font-black text-sky-950 font-heading mb-2">Zero Ads &amp; Zero Trackers</h3>
+            <p class="text-sm text-slate-600 leading-relaxed font-normal">
               Version 1.0 contains no third-party ad networks, no analytics SDKs, and no tracking scripts. Completely distraction-free.
             </p>
           </div>
 
           <!-- Card 4 -->
-          <div class="glass-panel p-6 rounded-2xl border border-gray-800/80 hover:border-amber-500/30 transition-colors">
-            <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-4">
+          <div class="sand-card p-6 bg-white rounded-2xl border-2 border-amber-400/35 shadow-md">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-600 mb-4">
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 class="text-base font-bold text-white font-heading mb-2">Safe for All Ages &amp; COPPA</h3>
-            <p class="text-sm text-gray-300 leading-relaxed font-light">
+            <h3 class="text-lg font-black text-sky-950 font-heading mb-2">Safe for All Ages &amp; COPPA</h3>
+            <p class="text-sm text-slate-600 leading-relaxed font-normal">
               Family-friendly and fully COPPA-compliant. We do not solicit or gather data from children under 13 or players of any age.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- Main Legal Prose -->
-      <div class="prose prose-invert prose-sky prose-lg max-w-none font-sans
-                  prose-headings:font-heading prose-headings:font-bold prose-headings:text-white prose-headings:tracking-tight
-                  prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:pt-8 prose-h2:border-t prose-h2:border-gray-800/80
-                  prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-gray-100
-                  prose-p:text-gray-300 prose-p:leading-relaxed prose-p:font-normal
-                  prose-ul:text-gray-300 prose-li:my-1.5
-                  prose-a:text-sky-400 hover:prose-a:text-sky-300 prose-a:underline-offset-4
-                  prose-strong:text-white prose-strong:font-semibold">
+      <!-- Main Legal Prose in White Sand Card -->
+      <div class="sand-card p-6 sm:p-10 md:p-14 bg-white rounded-3xl border-2 border-amber-400/40 shadow-2xl text-slate-800">
+        <div class="prose prose-sky prose-lg max-w-none font-sans
+                    prose-headings:font-heading prose-headings:font-black prose-headings:text-sky-950 prose-headings:tracking-tight
+                    prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:pt-8 prose-h2:border-t prose-h2:border-slate-200
+                    prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-sky-900
+                    prose-p:text-slate-700 prose-p:leading-relaxed prose-p:font-normal
+                    prose-ul:text-slate-700 prose-li:my-1.5
+                    prose-a:text-sky-700 hover:prose-a:text-amber-600 prose-a:underline-offset-4
+                    prose-strong:text-sky-950 prose-strong:font-bold">
 
         <!-- 1. Overview / Introduction -->
         <h2>1. Overview &amp; Introduction</h2>
@@ -172,7 +167,7 @@ const websiteUrl = 'https://ohana-studios.me';
         <!-- 3. On-Device Data Storage -->
         <h2>3. On-Device Data Storage</h2>
         <p>
-          Shelly Jigsaw is an offline-first game. Everything necessary for gameplay, customization, and progression is stored exclusively on your physical device within the application's private, sandboxed operating system storage (managed through Godot's isolated <code>user://</code> storage partition).
+          Shelly Jigsaw is an offline-first game. Everything necessary for gameplay, customization, and progression is stored exclusively on your physical device within the application's private, sandboxed operating system storage (managed through the application's isolated local storage partition).
         </p>
         <p>
           The data stored locally includes:
@@ -299,7 +294,7 @@ const websiteUrl = 'https://ohana-studios.me';
 
         <a
           href={`mailto:${contactEmail}?subject=Privacy%20Policy%20Inquiry`}
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold text-slate-950 bg-gradient-to-r from-sky-400 to-teal-400 hover:from-sky-300 hover:to-teal-300 shadow-lg shadow-sky-500/20 transition-all focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-gray-950 flex-shrink-0"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-black font-heading text-slate-950 bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-lg shadow-amber-500/25 transition-all focus:outline-none focus:ring-2 focus:ring-amber-400 flex-shrink-0"
         >
           <span>Email Privacy Team</span>
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
@@ -307,12 +302,13 @@ const websiteUrl = 'https://ohana-studios.me';
           </svg>
         </a>
       </div>
+      </div>
 
       <!-- Back to Top / Home Navigation -->
-      <div class="mt-12 pt-8 border-t border-gray-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+      <div class="mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-sky-200">
         <a
           href="/"
-          class="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 transition-colors focus:outline-none focus:underline"
+          class="inline-flex items-center gap-2 font-bold font-heading text-sky-100 hover:text-amber-300 transition-colors focus:outline-none focus:underline"
         >
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
@@ -322,7 +318,7 @@ const websiteUrl = 'https://ohana-studios.me';
 
         <a
           href="#main-content"
-          class="inline-flex items-center gap-1.5 hover:text-gray-200 transition-colors focus:outline-none focus:underline"
+          class="inline-flex items-center gap-1.5 font-bold font-heading text-sky-100 hover:text-amber-300 transition-colors focus:outline-none focus:underline"
         >
           <span>Back to top</span>
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">

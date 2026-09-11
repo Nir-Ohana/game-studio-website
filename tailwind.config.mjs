@@ -6,10 +6,22 @@ export default {
   theme: {
     extend: {
       colors: {
+        ocean: {
+          abyss: '#060F17',
+          deep: '#0A1624',
+          surface: '#0E2135',
+          card: '#122B45',
+          border: 'rgba(94, 234, 212, 0.15)',
+        },
         studio: {
-          dark: '#0B0F19',
-          charcoal: '#111827',
-          border: '#1F2937',
+          dark: '#060F17',
+          charcoal: '#0A1624',
+          border: '#162C45',
+        },
+        seafoam: {
+          300: '#5EEAD4',
+          400: '#2DD4BF',
+          500: '#14B8A6',
         },
       },
       fontFamily: {

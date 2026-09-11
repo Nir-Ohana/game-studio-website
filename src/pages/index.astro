@@ -1,183 +1,1078 @@
 ---
-// index.astro - Homepage for Ohana Studios
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
-import GameSpotlight from '../components/GameSpotlight.astro';
-import BlogCard from '../components/BlogCard.astro';
-import ContactSection from '../components/ContactSection.astro';
-import { getCollection } from 'astro:content';
-
-// Query latest non-draft blog posts sorted descending by date (top 3)
-const allPosts = await getCollection('blog', ({ data }) => !data.draft);
-const latestPosts = allPosts
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, 3);
+// index.astro - Official website for Shelly Jigsaw / Ohana Studios
+// Peaceful mobile photo-jigsaw with nautical ocean theme and sun-gold accents
 ---
 
-<BaseLayout
-  title="Ohana Studios | Play Together, Win Together"
-  description="Ohana Studios creates calm, thoughtful, and accessible games for players of all ages. Creators of Shelly Jigsaw: Calm Puzzles."
->
-  <!-- Studio Hero Section -->
-  <Hero />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shelly Jigsaw: Calm Puzzles — Official Website</title>
+  <meta name="description" content="Cozy, accessible jigsaw puzzles for mobile. Curated storybook art, forgiving magnetic snapping, 3 free hints, and 100% offline play." />
+  <meta name="author" content="Ohana Studios" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="Shelly Jigsaw: Calm Puzzles" />
+  <meta property="og:description" content="Peaceful jigsaw puzzles with easy-to-see pieces, gentle magnetic snapping, and zero time pressure." />
+  <meta property="og:image" content="/images/games/shelly-jigsaw/feature-graphic.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Flagship Game Spotlight: Shelly Jigsaw -->
-  <GameSpotlight />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- About the Studio Section -->
-  <section
-    id="about"
-    class="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-mesh-dark border-b border-gray-800/60 overflow-hidden"
-    aria-labelledby="about-heading"
-  >
-    <!-- Ambient glow -->
-    <div class="pointer-events-none absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 blur-[130px] rounded-full" aria-hidden="true"></div>
+  <style>
+    :root {
+      /* Oceanic depths & tropical waters */
+      --ocean-deep: #051c2c;
+      --ocean-abyss: #020f1a;
+      --ocean-navy: #0a324e;
+      --ocean-azure: #0284c7;
+      --ocean-sky: #38bdf8;
+      --ocean-cyan: #06b6d4;
+      --ocean-teal: #0d9488;
+      --ocean-foam: #e0f2fe;
+      --ocean-sand: #fef9ed;
 
-    <div class="max-w-7xl mx-auto relative z-10">
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-4">
-          <span>Our Story & Philosophy</span>
+      /* Radiant Sun Gold Accents */
+      --gold-light: #fef08a;
+      --gold-bright: #fde047;
+      --gold-primary: #f59e0b;
+      --gold-amber: #d97706;
+      --gold-border: rgba(245, 158, 11, 0.45);
+      --gold-glow: 0 0 35px rgba(245, 158, 11, 0.45);
+
+      /* Living Coral Accents */
+      --coral: #f43f5e;
+      --coral-deep: #e11d48;
+
+      /* UI Card and Ink Tokens */
+      --card-bg: #ffffff;
+      --card-border: rgba(245, 158, 11, 0.35);
+      --ink: #061c2d;
+      --ink-soft: #244768;
+      --ink-muted: #527599;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    html, body {
+      background: var(--ocean-deep);
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: var(--ocean-deep);
+      position: relative;
+    }
+
+    /* Fixed underwater reef coral & ocean background */
+    .site-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: url('/images/backgrounds/reef-ocean-desktop.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+
+    @media (max-width: 640px) {
+      .site-bg {
+        background-image: url('/images/backgrounds/reef-ocean-mobile.jpg');
+        background-position: center top;
+      }
+    }
+
+    /* Soft ambient vignette & sunlit surface illumination */
+    .site-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 85% 50% at 50% 0%, rgba(255, 255, 255, 0.12) 0%, transparent 65%),
+        linear-gradient(180deg, rgba(2, 132, 199, 0.12) 0%, rgba(3, 19, 31, 0.22) 50%, rgba(3, 20, 34, 0.65) 100%);
+    }
+
+    /* Subtle water caustics / seafoam particles */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1.5px, transparent 1.5px);
+      background-size: 16px 16px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ambient living coral dusk glow when bottom mascot enters view */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent 35%, rgba(244, 63, 94, 0.2) 75%, rgba(5, 28, 44, 0.85) 100%);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      z-index: 0;
+    }
+
+    body.boss-visible::after {
+      opacity: 1;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 28px 24px;
+    }
+
+    /* Top Bar */
+    .studio-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .studio-logo {
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      transition: color 0.15s ease;
+    }
+
+    .studio-logo:hover {
+      color: var(--gold-bright);
+    }
+
+    .studio-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: rgba(245, 158, 11, 0.18);
+      border: 1.5px solid var(--gold-primary);
+      padding: 3px 9px;
+      border-radius: 999px;
+      color: var(--gold-bright);
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+    }
+
+    .studio-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .studio-nav a {
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ocean-foam);
+      text-decoration: none;
+      transition: color 0.15s ease, text-shadow 0.15s ease;
+    }
+
+    .studio-nav a:hover {
+      color: var(--gold-bright);
+      text-shadow: 0 0 12px rgba(253, 224, 71, 0.6);
+    }
+
+    @media (max-width: 520px) {
+      .studio-bar {
+        margin-bottom: 18px;
+      }
+      .studio-badge {
+        display: none;
+      }
+      .studio-nav {
+        gap: 14px;
+      }
+      .studio-nav a {
+        font-size: 0.92rem;
+      }
+      .wrap {
+        padding: 18px 16px 20px;
+      }
+    }
+
+    /* --- Hero Stage --- */
+    .hero {
+      text-align: center;
+      padding: 12px 0 8px;
+      position: relative;
+    }
+
+    .hero-stage {
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 10px 0;
+    }
+
+    /* Floating Keyart */
+    .keyart {
+      position: absolute;
+      pointer-events: none;
+      filter: drop-shadow(0 12px 20px rgba(3, 19, 31, 0.4));
+      will-change: transform;
+    }
+
+    .keyart-shelly-left {
+      top: -4%;
+      left: 3%;
+      width: 22%;
+      max-width: 200px;
+      animation: floatA 6s ease-in-out infinite;
+    }
+
+    .keyart-piece-right {
+      top: 6%;
+      right: 5%;
+      width: 14%;
+      max-width: 120px;
+      animation: floatC 6.5s ease-in-out infinite;
+    }
+
+    .keyart-star-token {
+      bottom: 18%;
+      left: 10%;
+      width: 9%;
+      max-width: 72px;
+      animation: floatB 5.5s ease-in-out infinite;
+    }
+
+    @media (max-width: 640px) {
+      .keyart-shelly-left {
+        width: 20%;
+        max-width: 80px;
+        top: -6px;
+        left: 2px;
+      }
+      .keyart-piece-right {
+        width: 14%;
+        max-width: 54px;
+        top: 8px;
+        right: 4px;
+      }
+      .keyart-star-token {
+        display: none;
+      }
+    }
+
+    @keyframes floatA {
+      0%, 100% { transform: translateY(0) rotate(-6deg); }
+      50%      { transform: translateY(-14px) rotate(-1deg); }
+    }
+    @keyframes floatB {
+      0%, 100% { transform: translateY(0) rotate(-4deg); }
+      50%      { transform: translateY(-10px) rotate(6deg); }
+    }
+    @keyframes floatC {
+      0%, 100% { transform: translateY(0) rotate(8deg); }
+      50%      { transform: translateY(-12px) rotate(3deg); }
+    }
+
+    .logo-tilt {
+      display: block;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 16px;
+      width: 68%;
+      max-width: 560px;
+      height: auto;
+      filter: drop-shadow(0 12px 0 rgba(3, 19, 31, 0.35)) drop-shadow(0 0 45px rgba(56, 189, 248, 0.7)) drop-shadow(0 0 75px rgba(245, 158, 11, 0.3));
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .tagline {
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+      color: #ffffff;
+      letter-spacing: 0.6px;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 2px 14px rgba(3, 19, 31, 0.7), 0 0 24px rgba(56, 189, 248, 0.6);
+    }
+
+    .tagline .calm-gold {
+      color: var(--gold-bright);
+      text-shadow: 0 0 18px rgba(253, 224, 71, 0.85);
+    }
+
+    /* --- CTA Buttons --- */
+    .ctas {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: flex-end;
+      justify-content: center;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Big sticker-style button - Radiant 24K Sun Gold */
+    .btn-wishlist {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: min(540px, 92%);
+      height: 104px;
+      padding: 0 130px 0 36px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #fffbeb 0%, #fde047 30%, #f59e0b 80%, #d97706 100%);
+      color: #061c2d;
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.45rem, 3.8vw, 2.25rem);
+      letter-spacing: 1px;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 0 0 3.5px #fffbeb, 0 14px 40px rgba(245, 158, 11, 0.6), 0 4px 12px rgba(3, 19, 31, 0.4);
+      transition: transform 0.15s ease, filter 0.2s ease, box-shadow 0.2s ease;
+      overflow: visible;
+    }
+
+    .btn-wishlist:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.06);
+      box-shadow: 0 0 0 4px #ffffff, 0 18px 52px rgba(245, 158, 11, 0.8), 0 6px 18px rgba(3, 19, 31, 0.5);
+    }
+
+    .btn-wishlist:active {
+      transform: translateY(2px);
+      box-shadow: 0 0 0 3px #fffbeb, 0 8px 24px rgba(245, 158, 11, 0.45);
+    }
+
+    .btn-wishlist .label {
+      display: inline-flex;
+      gap: 0.02em;
+      white-space: nowrap;
+      align-items: center;
+    }
+
+    .btn-wishlist .label span {
+      display: inline-block;
+      animation: letterWave 1.6s ease-in-out infinite;
+    }
+
+    .btn-wishlist .label span.space {
+      display: inline-block;
+      min-width: 0.36em;
+    }
+
+    @keyframes letterWave {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+
+    .shelly-sticker {
+      position: absolute;
+      bottom: 8px;
+      right: -14px;
+      width: 142px;
+      height: 120px;
+      background-image: url('/images/games/shelly-jigsaw/shelly-mascot.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      filter: drop-shadow(0 6px 12px rgba(3, 19, 31, 0.4));
+      pointer-events: none;
+      transform: rotate(6deg);
+    }
+
+    @media (max-width: 520px) {
+      .btn-wishlist {
+        height: 82px;
+        padding: 0 78px 0 20px;
+        font-size: clamp(1.05rem, 4.4vw, 1.35rem);
+      }
+      .shelly-sticker {
+        width: 88px;
+        height: 76px;
+        right: -6px;
+        bottom: 3px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .btn-wishlist {
+        height: 74px;
+        padding: 0 66px 0 16px;
+        font-size: 0.96rem;
+      }
+      .shelly-sticker {
+        width: 74px;
+        height: 64px;
+        right: -4px;
+        bottom: 3px;
+      }
+    }
+
+    .btn-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-discord {
+      background: #5865F2;
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(88, 101, 242, 0.45), 0 0 0 1.5px rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-discord:hover {
+      background: #4752c4;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(71, 82, 196, 0.55);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.12);
+      border: 2px solid rgba(56, 189, 248, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #ffffff;
+      box-shadow: 0 8px 22px rgba(3, 19, 31, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(56, 189, 248, 0.28);
+      border-color: var(--gold-bright);
+      color: var(--gold-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(56, 189, 248, 0.45);
+    }
+
+    .btn svg { width: 18px; height: 18px; }
+
+    /* --- Featured Board / Trailer Frame --- */
+    .trailer {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      margin: 12px auto 36px;
+      padding: 0 4px;
+    }
+
+    .trailer-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 20px 48px rgba(3, 19, 31, 0.6), 0 0 0 3.5px var(--gold-primary), 0 0 32px rgba(56, 189, 248, 0.35);
+      background: #03131f;
+      cursor: pointer;
+    }
+
+    .trailer-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .trailer-frame:hover img {
+      transform: scale(1.02);
+    }
+
+    .trailer-play {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 82px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--gold-primary) 0%, var(--coral) 100%);
+      border: 3px solid #ffffff;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(3, 19, 31, 0.5), 0 0 22px rgba(245, 158, 11, 0.6);
+      transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+      z-index: 2;
+    }
+
+    .trailer-play svg {
+      width: 28px;
+      height: 28px;
+      margin-left: 3px;
+      fill: currentColor;
+    }
+
+    .trailer-play:hover,
+    .trailer-frame:hover .trailer-play {
+      transform: scale(1.12);
+      filter: brightness(1.12);
+      box-shadow: 0 14px 36px rgba(244, 63, 94, 0.65), 0 0 30px rgba(253, 224, 71, 0.85);
+    }
+
+    /* --- Features Strip (Warm Sand Cards with Gold Accents) --- */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 20px 0 24px;
+    }
+
+    .feature {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 26px 22px;
+      text-align: center;
+      border: 2px solid rgba(245, 158, 11, 0.35);
+      box-shadow: 0 12px 30px rgba(3, 19, 31, 0.28), 0 0 16px rgba(245, 158, 11, 0.12);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-primary);
+      box-shadow: 0 18px 36px rgba(3, 19, 31, 0.36), 0 0 24px rgba(245, 158, 11, 0.35);
+    }
+
+    .feature .icon {
+      font-size: 2.3rem;
+      line-height: 1;
+      margin-bottom: 12px;
+      display: block;
+      filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.25));
+    }
+
+    .feature h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 800;
+      color: #0369a1;
+      font-size: 1.15rem;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .feature p {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 720px) {
+      .features { grid-template-columns: 1fr; }
+    }
+
+    /* --- 2x2 Screenshot Gallery with Gold & Pearl Rims --- */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin: 30px 0 20px;
+    }
+
+    .shot {
+      position: relative;
+      border-radius: 20px;
+      background: #03131f;
+      aspect-ratio: 16 / 9;
+      cursor: zoom-in;
+      overflow: hidden;
+      box-shadow: 0 14px 34px rgba(3, 19, 31, 0.45), 0 0 0 3px rgba(255, 255, 255, 0.85), 0 0 0 5px rgba(245, 158, 11, 0.4);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .shot > img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+    }
+
+    .shot:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 44px rgba(3, 19, 31, 0.6), 0 0 0 3.5px #ffffff, 0 0 0 5.5px var(--gold-primary), 0 0 25px rgba(245, 158, 11, 0.5);
+    }
+
+    @media (max-width: 600px) {
+      .gallery { grid-template-columns: 1fr; }
+    }
+
+    /* --- Mascot + Bottom Callout --- */
+    .boss-cta {
+      position: relative;
+      margin: 60px auto 10px;
+      max-width: 900px;
+      text-align: center;
+    }
+
+    .boss-bg {
+      display: block;
+      width: min(460px, 85%);
+      margin: 0 auto;
+      filter: drop-shadow(0 20px 35px rgba(3, 19, 31, 0.5));
+      animation: bossLoom 4s ease-in-out infinite;
+      transform-origin: 50% 100%;
+    }
+
+    @keyframes bossLoom {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50%      { transform: translateY(-8px) scale(1.02); }
+    }
+
+    .ctas-bottom {
+      margin-top: -36px;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* --- Lightbox --- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 19, 31, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 5vh 5vw;
+      z-index: 100;
+      cursor: zoom-out;
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+      border: 3.5px solid var(--gold-primary);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--gold-primary);
+      background: #ffffff;
+      color: #061c2d;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      background: var(--coral);
+      border-color: #ffffff;
+      color: #fff;
+      transform: rotate(90deg);
+    }
+
+    /* --- Footer --- */
+    footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 2px dashed rgba(245, 158, 11, 0.35);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--ocean-foam);
+      font-size: 0.9rem;
+    }
+
+    .footer-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+
+    .studio {
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      font-size: 1.05rem;
+    }
+
+    .studio span {
+      color: var(--gold-bright);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: var(--ocean-foam);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+      transition: color 0.15s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-bright);
+      text-decoration: underline;
+    }
+
+    .socials { display: flex; gap: 10px; }
+
+    .social {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #0284c7;
+      border: 1.5px solid var(--gold-primary);
+      box-shadow: 0 4px 14px rgba(3, 19, 31, 0.4), 0 0 10px rgba(245, 158, 11, 0.25);
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .social:hover {
+      color: #061c2d;
+      background: var(--gold-bright);
+      border-color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.5);
+    }
+
+    .social svg { width: 18px; height: 18px; fill: currentColor; }
+  </style>
+</head>
+<body>
+  <!-- Fixed underwater reef coral & ocean background -->
+  <div class="site-bg" aria-hidden="true"></div>
+
+  <div class="wrap">
+    
+    <!-- Top Studio Bar -->
+    <header class="studio-bar">
+      <a href="/" class="studio-logo">
+        <span>OHANA STUDIOS</span>
+        <span class="studio-badge">Mindful Puzzles</span>
+      </a>
+      <nav class="studio-nav">
+        <a href="#game">Game</a>
+        <a href="/blog">Devlog</a>
+        <a href="mailto:contact@ohanastudios.com">Contact</a>
+      </nav>
+    </header>
+
+    <!-- 1. Hero Stage: Logo + Floating Keyart -->
+    <section class="hero" id="game">
+      <div class="hero-stage">
+        <!-- Floating Shelly Mascot on Left -->
+        <img class="keyart keyart-shelly-left" src="/images/games/shelly-jigsaw/shelly-mascot.png" alt="Shelly Sea Turtle" />
+
+        <!-- Floating Golden Puzzle Piece on Right -->
+        <img class="keyart keyart-piece-right" src="/images/games/shelly-jigsaw/puzzle-piece-gold.svg" alt="Gold Puzzle Piece" />
+
+        <!-- Floating Gold Star Token -->
+        <img class="keyart keyart-star-token" src="/images/games/shelly-jigsaw/star-token.svg" alt="Gold Star Token" />
+
+        <h1 class="sr-only">Shelly Jigsaw: Calm Puzzles</h1>
+        <div class="logo-tilt">
+          <img class="logo" src="/images/games/shelly-jigsaw/shelly-logo.svg" alt="Shelly Jigsaw" />
         </div>
-
-        <h2
-          id="about-heading"
-          class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-heading mb-6"
-        >
-          Crafted for Calm, <span class="text-gradient-sky-indigo">Built for Everyone</span>
-        </h2>
-
-        <p class="text-lg sm:text-xl text-gray-300 leading-relaxed font-light">
-          At Ohana Studios, we believe games should feel like a sanctuary.
-          In a world full of frantic timers, sensory overload, and intrusive ads, we design soothing digital experiences that respect your time and peace of mind.
-        </p>
+        <p class="tagline">Peaceful Jigsaws. Zero Time Pressure. <span class="calm-gold">Pure Calm!</span></p>
       </div>
 
-      <!-- Studio Pillars Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        <!-- Pillar 1 -->
-        <div class="glass-panel p-8 rounded-3xl border border-gray-800/90 flex flex-col justify-between">
-          <div>
-            <div class="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 mb-6">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-white font-heading mb-3">Accessibility First</h3>
-            <p class="text-sm text-gray-300 leading-relaxed">
-              Designed and playtested with older adults and multi-generational families in mind. Large touch targets, high-contrast layouts, and forgiving piece snapping mean anyone can pick up and enjoy immediately.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-gray-800/80 text-xs font-semibold text-sky-400">
-            Comfortable &bull; Tested for 50+
-          </div>
-        </div>
-
-        <!-- Pillar 2 -->
-        <div class="glass-panel p-8 rounded-3xl border border-gray-800/90 flex flex-col justify-between">
-          <div>
-            <div class="w-12 h-12 rounded-2xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 mb-6">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-white font-heading mb-3">Player Peace of Mind</h3>
-            <p class="text-sm text-gray-300 leading-relaxed">
-              No manipulative dark patterns, no anxiety-inducing countdown timers, and zero mid-game interstitial ads. We believe the true joy of gaming comes from unhurried immersion and gentle satisfaction.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-gray-800/80 text-xs font-semibold text-teal-400">
-            Zero Pressure &bull; 100% Offline
-          </div>
-        </div>
-
-        <!-- Pillar 3 -->
-        <div class="glass-panel p-8 rounded-3xl border border-gray-800/90 flex flex-col justify-between">
-          <div>
-            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-6">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-white font-heading mb-3">Indie Craftsmanship</h3>
-            <p class="text-sm text-gray-300 leading-relaxed">
-              Built with love using Godot Engine 4.7. We care about buttery 60 FPS performance, lightweight downloads, battery efficiency, and thoughtful acoustic soundscapes that soothe rather than startle.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-gray-800/80 text-xs font-semibold text-indigo-400">
-            Godot 4.7 &bull; Lightweight & Fast
-          </div>
-        </div>
-      </div>
-
-      <!-- Studio Quote / Banner -->
-      <div class="p-8 sm:p-10 rounded-3xl bg-mesh-card border border-gray-800 text-center max-w-4xl mx-auto">
-        <blockquote class="text-lg sm:text-2xl font-medium text-gray-200 italic mb-6 leading-relaxed font-heading">
-          &ldquo;Our motto is <span class="text-sky-300 font-bold not-italic">Play Together, Win Together</span>. We believe the best games are the ones you can share with your parents, your children, or enjoy quietly with a warm cup of tea after a long day.&rdquo;
-        </blockquote>
-        <div class="text-sm font-bold text-white uppercase tracking-wider font-heading">
-          Nir Ohana
-        </div>
-        <div class="text-xs text-sky-400">
-          Founder & Lead Developer, Ohana Studios
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Latest Studio Dispatches Section -->
-  {latestPosts.length > 0 && (
-    <section
-      id="blog-preview"
-      class="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-mesh-hero border-b border-gray-800/60 overflow-hidden"
-      aria-labelledby="blog-preview-heading"
-    >
-      <!-- Ambient glow -->
-      <div class="pointer-events-none absolute top-1/3 right-1/4 w-96 h-96 bg-sky-500/10 blur-[130px] rounded-full" aria-hidden="true"></div>
-
-      <div class="max-w-7xl mx-auto relative z-10">
-        <!-- Section Header -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div class="max-w-2xl">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-300 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-4">
-              <span>Devlogs & Articles</span>
-            </div>
-
-            <h2
-              id="blog-preview-heading"
-              class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-heading mb-4"
-            >
-              Latest <span class="text-gradient-sky-indigo">Dispatches</span>
-            </h2>
-
-            <p class="text-base sm:text-lg text-gray-300 leading-relaxed font-light">
-              Behind-the-scenes insights into our game design philosophy, Godot 4 architecture, and player accessibility.
-            </p>
-          </div>
-
-          <div class="flex-shrink-0">
-            <a
-              href="/blog"
-              class="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-full text-gray-200 bg-gray-900/80 hover:bg-gray-800 border border-gray-700 hover:border-gray-600 transition-all shadow-md group"
-            >
-              <span>View all dispatches</span>
-              <svg class="w-4 h-4 text-sky-400 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Blog Posts Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {latestPosts.map((post) => (
-            <BlogCard post={post} />
-          ))}
+      <!-- 2. Primary CTAs -->
+      <div class="ctas">
+        <a class="btn-wishlist" href="#board" aria-label="Play Shelly Jigsaw">
+          <span class="label">PLAY SHELLY JIGSAW!</span>
+          <span class="shelly-sticker" aria-hidden="true"></span>
+        </a>
+        <div class="btn-stack">
+          <a class="btn btn-discord" href="https://discord.gg" target="_blank" rel="noopener">
+            <svg viewBox="-1 -1 26 26" fill="currentColor" aria-hidden="true"><path d="M20.317 4.369A19.79 19.79 0 0 0 16.558 3.2a.075.075 0 0 0-.079.037c-.34.604-.719 1.392-.984 2.013a18.27 18.27 0 0 0-5.487 0 12.51 12.51 0 0 0-.997-2.013.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 5.174 4.369a.07.07 0 0 0-.032.027C1.533 9.78.523 15.026 1.019 20.21a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.105 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.106c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.994-.838-11.197-3.549-15.815a.061.061 0 0 0-.031-.028zM8.02 17.044c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.974 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            Discord
+          </a>
+          <a class="btn btn-secondary" href="/blog">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+            Devlog
+          </a>
         </div>
       </div>
     </section>
-  )}
 
-  <!-- Contact & Community Section -->
-  <ContactSection />
-</BaseLayout>
+    <!-- 3. Featured Gameplay Showcase Frame -->
+    <section class="trailer" id="board">
+      <div class="trailer-frame" id="trailerFrame" role="button" tabindex="0" aria-label="Open full gameplay preview">
+        <img src="/images/games/shelly-jigsaw/feature-graphic.png" alt="Shelly Jigsaw Official Gameplay Showcase" loading="eager" />
+        <button class="trailer-play" id="trailerPlayBtn" aria-label="Watch Gameplay Preview">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. Three Playful Feature Cards (Reference 3) -->
+    <section class="features">
+      <div class="feature">
+        <span class="icon">🧩</span>
+        <h3>Forgiving Magnetic Snapping</h3>
+        <p>Pieces gently snap into place within a generous radius. Group connecting pieces inside the tray before moving them to the board!</p>
+      </div>
+
+      <div class="feature">
+        <span class="icon">✨</span>
+        <h3>3 Free Hints Every Puzzle</h3>
+        <p>Stuck on subtle shades? Use 3 free hints on every single board. No paywalls, zero subscriptions, and no forced video ads.</p>
+      </div>
+
+      <div class="feature">
+        <span class="icon">🌊</span>
+        <h3>100% Offline & Zero Timers</h3>
+        <p>No countdown clocks or pressure. Take 2 minutes or 2 days. Complete offline saving keeps your puzzle waiting right where you left off.</p>
+      </div>
+    </section>
+
+    <!-- 5. 2x2 Screenshot Gallery (Reference 3) -->
+    <section class="gallery">
+      <div class="shot" data-src="/images/games/shelly-jigsaw/02-gameplay.png">
+        <img src="/images/games/shelly-jigsaw/02-gameplay.png" alt="Active gameplay puzzle board" loading="lazy" />
+      </div>
+      <div class="shot" data-src="/images/games/shelly-jigsaw/01-home.png">
+        <img src="/images/games/shelly-jigsaw/01-home.png" alt="Shelly Jigsaw home screen" loading="lazy" />
+      </div>
+      <div class="shot" data-src="/images/games/shelly-jigsaw/03-completion.png">
+        <img src="/images/games/shelly-jigsaw/03-completion.png" alt="Puzzle completion rewards" loading="lazy" />
+      </div>
+      <div class="shot" data-src="/images/games/shelly-jigsaw/04-daily.png">
+        <img src="/images/games/shelly-jigsaw/04-daily.png" alt="Daily challenge calendar" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- 6. Bottom Looming Mascot + Callout (Reference 2) -->
+    <div class="boss-cta">
+      <img class="boss-bg" src="/images/games/shelly-jigsaw/shelly-mascot.png" alt="Shelly the Sea Turtle" loading="lazy" />
+      <section class="ctas ctas-bottom">
+        <a class="btn-wishlist" href="#board" aria-label="Play Shelly Jigsaw">
+          <span class="label">PLAY SHELLY JIGSAW!</span>
+          <span class="shelly-sticker" aria-hidden="true"></span>
+        </a>
+        <a class="btn btn-discord" href="https://discord.gg" target="_blank" rel="noopener" style="padding: 14px 32px; font-size: 1.15rem;">
+          <svg viewBox="-1 -1 26 26" fill="currentColor" aria-hidden="true"><path d="M20.317 4.369A19.79 19.79 0 0 0 16.558 3.2a.075.075 0 0 0-.079.037c-.34.604-.719 1.392-.984 2.013a18.27 18.27 0 0 0-5.487 0 12.51 12.51 0 0 0-.997-2.013.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 5.174 4.369a.07.07 0 0 0-.032.027C1.533 9.78.523 15.026 1.019 20.21a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.105 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.106c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.994-.838-11.197-3.549-15.815a.061.061 0 0 0-.031-.028zM8.02 17.044c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.974 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          Join our Discord
+        </a>
+      </section>
+    </div>
+
+    <!-- 7. Footer (Reference 2) -->
+    <footer>
+      <div class="footer-meta">
+        <div class="studio">A game by <span>Ohana Studios</span> © 2026</div>
+        <div class="footer-links">
+          <a href="/blog">Devlog</a>
+          <a href="mailto:contact@ohanastudios.com">Contact</a>
+          <a href="https://github.com/Nir-Ohana" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="socials">
+        <a class="social" href="https://x.com" aria-label="X / Twitter" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a class="social" href="https://discord.gg" aria-label="Discord" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M20.317 4.369A19.79 19.79 0 0 0 16.558 3.2a.074.074 0 0 0-.079.037 13.76 13.76 0 0 0-.607 1.249 18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.249.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 5.93 4.369a.07.07 0 0 0-.032.027C2.534 9.046 1.655 13.58 2.095 18.057a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.23 14.23 0 0 0 1.226-1.994.076.076 0 0 0-.041-.105 13.1 13.1 0 0 1-1.872-.893.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.1.246.198.372.292a.077.077 0 0 1-.006.128 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.106c.36.698.772 1.363 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.548-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        </a>
+        <a class="social" href="https://github.com/Nir-Ohana" aria-label="GitHub" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Lightbox for screenshot zoom -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close preview">&times;</button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
+  <script>
+    // ----- 1. Logo cursor parallax (desktop only) -----
+    (function () {
+      const tilt = document.querySelector('.logo-tilt') as HTMLElement | null;
+      if (!tilt || window.matchMedia('(hover: none)').matches) return;
+      tilt.addEventListener('mousemove', (e: MouseEvent) => {
+        const r = tilt.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        tilt.style.transform = `rotateX(${(-y * 12).toFixed(2)}deg) rotateY(${(x * 16).toFixed(2)}deg)`;
+      });
+      tilt.addEventListener('mouseleave', () => {
+        tilt.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      });
+    })();
+
+    // ----- 2. Ambient dusk transition when bottom mascot enters view -----
+    (function () {
+      const boss = document.querySelector('.boss-cta');
+      if (!boss || !('IntersectionObserver' in window)) return;
+      new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          document.body.classList.toggle('boss-visible', e.isIntersecting);
+        });
+      }, { threshold: 0.35, rootMargin: '0px 0px -10% 0px' }).observe(boss);
+    })();
+
+    // ----- 3. Letter Wave animation: split label into letters with staggered delay -----
+    (function () {
+      document.querySelectorAll('.btn-wishlist .label').forEach((label) => {
+        const text = label.textContent?.trim() || '';
+        label.textContent = '';
+        [...text].forEach((ch, i) => {
+          const s = document.createElement('span');
+          if (ch === ' ') {
+            s.className = 'space';
+            s.textContent = '\u00A0';
+          } else {
+            s.textContent = ch;
+          }
+          s.style.animationDelay = `${i * 0.06}s`;
+          label.appendChild(s);
+        });
+      });
+    })();
+
+    // ----- 4. Lightbox functionality for gallery and trailer -----
+    (function () {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg') as HTMLImageElement | null;
+      const lightboxClose = document.getElementById('lightboxClose');
+      const trailerFrame = document.getElementById('trailerFrame');
+
+      function openLightbox(src: string, alt: string) {
+        if (!lightbox || !lightboxImg) return;
+        lightboxImg.setAttribute('src', src);
+        lightboxImg.setAttribute('alt', alt);
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.shot').forEach((shot) => {
+        shot.addEventListener('click', () => {
+          const img = shot.querySelector('img');
+          const src = shot.getAttribute('data-src') || img?.src;
+          if (src) openLightbox(src, img?.alt || 'Shelly Jigsaw Screenshot');
+        });
+      });
+
+      if (trailerFrame) {
+        trailerFrame.addEventListener('click', () => {
+          openLightbox('/images/games/shelly-jigsaw/02-gameplay.png', 'Shelly Jigsaw Active Gameplay Board');
+        });
+      }
+
+      if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+      if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    })();
+  </script>
+</body>
+</html>

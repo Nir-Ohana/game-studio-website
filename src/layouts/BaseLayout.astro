@@ -31,7 +31,7 @@ const resolvedImageURL = Astro.site && !image.startsWith('http')
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#0B0F19" />
+    <meta name="theme-color" content="#060F17" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
@@ -56,28 +56,32 @@ const resolvedImageURL = Astro.site && !image.startsWith('http')
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={resolvedImageURL} />
 
-    <!-- Google Fonts Preconnect & Stylesheets (Outfit & Inter) -->
+    <!-- Google Fonts: Fredoka & Plus Jakarta Sans matching main page -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body class="min-h-screen flex flex-col bg-[#0B0F19] text-[#F9FAFB] font-sans antialiased">
+  <body class="min-h-screen flex flex-col text-white font-sans antialiased selection:bg-amber-400/30 selection:text-white relative">
+    <!-- Fixed underwater reef coral & ocean background -->
+    <div class="site-bg" aria-hidden="true"></div>
+    <div class="site-water-caustics" aria-hidden="true"></div>
+
     <!-- Accessible Skip to Content Link -->
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-sky-400 focus:text-slate-950 focus:font-bold focus:rounded-md focus:shadow-xl"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-5 focus:py-3 focus:bg-amber-400 focus:text-slate-950 focus:font-bold focus:rounded-full focus:shadow-xl focus:ring-2 focus:ring-amber-300"
     >
       Skip to main content
     </a>
 
-    <!-- Sticky Navigation Header -->
+    <!-- Navigation Header -->
     <Header />
 
     <!-- Main Content Slot -->
-    <main id="main-content" class="flex-grow">
+    <main id="main-content" class="flex-grow relative z-10">
       <slot />
     </main>
 

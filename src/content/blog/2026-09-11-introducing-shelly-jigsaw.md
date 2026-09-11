@@ -1,112 +1,72 @@
 ---
-title: "Introducing Shelly Jigsaw: Crafting a Calmer, Senior-Friendly Puzzle Experience"
-description: "Discover why and how we built Shelly Jigsaw with Godot 4: custom jigsaw piece generation, forgiving snapping algorithms, zero ad pressure, and accessible design."
+title: "Building Shelly Jigsaw: Crafting A Calm Mobile Puzzle Experience"
+description: "How we built a cozy jigsaw game: Bezier interlocking tabs, magnetic piece snapping, and deterministic offline session state."
 pubDate: 2026-09-11
 author: "Nir Ohana"
 image: "/images/games/shelly-jigsaw/feature-graphic.png"
-tags: ["Shelly Jigsaw", "Devlog", "Godot Engine", "Game Design", "Accessibility"]
+tags: ["Game Design", "Shelly Jigsaw", "Devlog", "Architecture"]
 draft: false
 ---
 
-For decades, jigsaw puzzles have been one of the world's most beloved pastimes. Gathering around a kitchen table, sipping a warm cup of tea, sorting edge pieces, and listening to the gentle *clack* of interlocking cardboard—it is a tactile ritual centered on patience, presence, and calm.
+Most digital jigsaw games on mobile app stores are crowded with flashing countdown clocks, casino chimes, and full-screen video ads. For older players, tiny buttons and rigid touch targets make placing pieces frustrating.
 
-Yet when you open the mobile app stores today searching for digital jigsaw puzzles, the experience is almost unrecognizable. Flashing countdown timers tick down in neon red. Loud casino-style jackpot chimes blare after every minor move. Full-screen video ads interrupt mid-session, jarring you out of your flow. And worst of all for older players, the pieces and buttons are often tiny, finicky, and unforgiving.
-
-At **Ohana Studios**, we asked ourselves: *What happened to the peace?*
-
-Today, we are thrilled to unveil **Shelly Jigsaw: Calm Puzzles**, our debut game designed from the ground up to restore tranquility, thoughtful pacing, and multi-generational accessibility to digital puzzling.
+We built **Shelly Jigsaw: Calm Puzzles** with a simple mandate: restore quiet concentration, multi-generational accessibility, and tactile satisfaction to digital puzzling.
 
 ![Shelly Jigsaw Showcase](/images/games/shelly-jigsaw/feature-graphic.png)
 
 ---
 
-## Why We Built Shelly Jigsaw: Designed for Calm and 50+ Accessibility
+## Core Technical Decisions
 
-Our studio motto is **Play Together, Win Together**. We believe that digital games should unite families rather than frustrate them, and that games targeting adults and seniors deserve world-class engineering and respectful design rather than exploitative monetization.
+Shelly Jigsaw is built from the ground up for mobile with custom rendering and tactile physics. Here are the three technical pillars behind the feel of the game:
 
-When conducting our earliest playtests with players aged 50 and older—including parents, grandparents, and casual puzzle enthusiasts—three major pain points consistently surfaced:
+### 1. Procedural Bezier Interlocking Tabs
 
-1. **Tiny, Frustrating Touch Targets**: Small buttons and rigid collision masks make picking up and maneuvering pieces a chore on phone screens, especially for players with reduced fine motor dexterity or arthritis.
-2. **Artificial Urgency**: Timers and speed ratings induce unnecessary stress, penalizing thoughtful, deliberate problem-solving.
-3. **Aggressive Interruptions**: Frequent video pop-ups shatter immersion and cognitive momentum.
+Rather than pre-baking rigid geometric masks, our jigsaw generator builds organic cubic Bezier curves for interlocking tabs and blanks from a seedable configuration. Each cut features subtle irregularities that mirror physical cardboard and wooden dies, providing subtle visual hints for matching neighbors.
 
-We designed Shelly Jigsaw to solve every single one of these problems.
+### 2. Generous Magnetic Snapping
 
-We enlarged every touch target beyond standard mobile guidelines (exceeding 48×48 dp), applied high-contrast color palettes, and paired every visual state with gentle, warm audio cues. Most importantly, we instituted a zero-pressure design mandate: **no countdown timers, no rush, and zero ad pop-ups during puzzle play**.
+Imprecise touch screens can make mobile jigsaws frustrating when a piece is rejected for being a couple of pixels off.
 
-![Shelly Jigsaw Gameplay HUD & Board](/images/games/shelly-jigsaw/02-gameplay.png)
-
----
-
-## Under the Hood: Godot 4 Architecture & Technical Highlights
-
-Shelly Jigsaw is built using **Godot Engine 4.7**. We chose Godot for its lightweight footprint, instantaneous cold-boot performance, and flexible 2D rendering pipeline. Here is a peek behind the curtain at the core systems that make the game feel so natural.
-
-### 1. Procedural Jigsaw Generation & Bezier Interlocking Tabs
-Traditional digital jigsaw puzzles often cut images using rigid geometric grids with repetitive pre-baked masks. In Shelly Jigsaw, our piece generator calculates dynamic cubic Bezier curves for interlocking tabs and blanks based on seedable parameters. 
-
-Each piece feels organic, featuring subtle irregularities that give visual hints about where its neighbors lie, mirroring the craftsmanship of physical wooden dies.
-
-### 2. Forgiving Multi-Tier Snapping Algorithm
-One of the most frustrating aspects of mobile puzzling is placing a piece in virtually the right spot, only for the game to reject it because it was two pixels off.
-
-We engineered a **two-phase magnetic snapping algorithm**:
-- **Proximity Snapping**: When a dragged piece enters a generous radius around its target board coordinate, the engine applies a gentle ease-in tween, locking it securely into place with an acoustic haptic snap.
-- **Cluster Merging**: When two neighboring pieces that connect to each other are brought close together—even off the target board in the staging tray—they link permanently into a single cohesive group. Players can assemble distinct clusters (like the sky or a bright red barn) before placing the entire group onto the board.
+We implemented a two-phase snapping model:
+- **Proximity Snap**: When a dragged piece enters the target anchor radius, it eases into place with a subtle audio snap.
+- **Cluster Merging**: Neighboring pieces that belong together link permanently even when connected inside the staging tray, letting players assemble skies or borders before moving the cluster onto the board.
 
 ```gdscript
-# Excerpt from our piece connection validation logic
 func test_snap_candidate(piece: PuzzlePiece, target_pos: Vector2) -> bool:
     var distance: float = piece.global_position.distance_to(target_pos)
     if distance <= SNAP_TOLERANCE_PX:
         snap_to_anchor(piece, target_pos)
-        AudioManager.play_sfx("piece_snap_soft")
+        SfxPlayer.play(&"piece_snap_soft")
         return true
     return false
 ```
 
-### 3. Authoritative Session State & 100% Offline Scoring
-Many modern mobile games require a continuous cellular or Wi-Fi connection just to verify game states or ping ad servers.
+![Shelly Jigsaw Gameplay Board](/images/games/shelly-jigsaw/02-gameplay.png)
 
-Shelly Jigsaw's core logic is managed by a standalone, deterministic `PuzzleSession` state machine. Everything from board layout, piece coordinates, tray sorting, and completed clusters serializes cleanly to local device storage. 
+### 3. Deterministic Local State & 100% Offline Play
 
-Whether you are on an airplane, in a remote mountain cabin, or relaxing on a subway commute, your game saves every single piece placement instantly and runs entirely offline.
-
----
-
-## Our Core Design Principles
-
-When we sit down to design any feature at Ohana Studios, we test it against three fundamental pillars:
-
-### 1. No Timers Forcing Panic
-Life has enough deadlines. You will never see a countdown clock ticking down to zero in Shelly Jigsaw. Take two minutes or two hours—the puzzle awaits your return exactly as you left it.
-
-### 2. Three Free Hints Every Single Board
-Everyone gets stuck sometimes, especially when working through complex color gradients. Rather than gating assistance behind paywalls or forcing players to watch a 30-second commercial, every puzzle board comes equipped with **3 free hints**. Tapping a hint gently highlights a candidate piece and illuminates its destination on the board.
-
-### 3. Pure Aesthetic Comfort
-From the luminous sunlit reef backgrounds to our pearl status panels, turquoise tactile buttons, and relaxing ambient audio cues, every sensory detail has been tuned to lower heart rates and provide a soothing sanctuary from the noisy web.
-
-![Shelly Jigsaw Puzzle Complete Screen](/images/games/shelly-jigsaw/03-completion.png)
+Puzzle state is owned by a standalone `PuzzleSession` resource. Board layout, tray order, connected piece clusters, and elapsed time serialize directly to local device storage. The game requires zero network connection and has zero tracking servers.
 
 ---
 
-## What's Next: The Shelly Jigsaw Roadmap
+## Accessibility & Player Ergonomics
 
-We are just getting started on this journey. Here is a preview of what our team is actively building:
+We tested early builds with players aged 50 and older. Key findings shaped our design system:
 
-- **Daily Puzzle Streak Tracker**: A brand-new, hand-curated puzzle delivered each calendar morning. Complete each day's challenge to maintain your monthly streak calendar and collect special seasonal stamps.
-- **Storybook Adventure Mode**: A whimsical journey following Shelly the wise sea turtle across coastal harbors, sunlit forests, and alpine peaks. Each chapter tells a gentle illustrated story as you complete themed jigsaw sets.
-- **Custom Image Import (Tablet & Desktop)**: Allowing players to safely turn their family vacation photos and pet memories into custom playable jigsaws.
+- **Touch Targets**: All primary buttons exceed 56×56 dp with high-contrast borders.
+- **Zero Timers**: No countdowns or speed penalties. Players can pause for ten seconds or ten days without losing state.
+- **Always-Free Assistance**: Every puzzle includes 3 free hints to highlight matching pieces without paywalls or ads.
+
+![Shelly Jigsaw Completion Screen](/images/games/shelly-jigsaw/03-completion.png)
 
 ---
 
-## Join Our Community
+## What's Next
 
-Shelly Jigsaw is being crafted with love, care, and continuous player feedback. If you or someone in your family loves puzzles, we would love to have you try our latest builds and share your thoughts.
+We are actively polishing our release build for Android and iOS:
+- Daily date-seeded challenges with a local streak calendar
+- Multi-chapter Adventure mode following Shelly across coastal harbors and reef ecosystems
+- Additional piece-count tiers (16, 36, 64, and 100 pieces)
 
-- [Explore Shelly Jigsaw Features](/#game)
-- [Send feedback or say hello](/#contact)
-- Follow along on this blog for monthly technical deep-dives and design retrospectives!
-
-*Thank you for supporting independent game craft.*
+If you'd like to test early builds or share feedback, visit our [home page](/) or reach out via [contact](/contact).
