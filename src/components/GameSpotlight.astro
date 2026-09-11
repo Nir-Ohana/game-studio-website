@@ -1,50 +1,66 @@
 ---
-// GameSpotlight.astro - Flagship showcase for Shelly Jigsaw: Calm Puzzles
+// GameSpotlight.astro - Flagship showcase for Shelly Jigsaw: Calm Puzzles (Ocean UI)
 const screenshots = [
   {
-    id: "adventure",
-    title: "Adventure Journey",
-    subtitle: "Storybook chapter progression with Shelly the sea turtle across tropical islands",
-    src: "/images/games/shelly-jigsaw/03-adventure.png",
-    alt: "Shelly Jigsaw Adventure Journey screen showing chapter progress and island map",
-    tag: "Adventure",
+    id: "home",
+    title: "Ocean Home Screen",
+    subtitle: "Luminous sunlit reef with Shelly the mascot, Star & Shell counters, active puzzle card, and bottom navigation",
+    src: "/images/games/shelly-jigsaw/01-home.png",
+    alt: "Shelly Jigsaw Ocean Home Screen showing Shelly mascot, level progress, and pearl navigation",
+    tag: "Home Screen",
   },
   {
-    id: "puzzle-play",
-    title: "Piece Snapping & Board",
-    subtitle: "Forgiving snap tolerances, large tactile pieces, and calm zooming controls",
-    src: "/images/games/shelly-jigsaw/04-puzzle-play.png",
-    alt: "Shelly Jigsaw gameplay showing jigsaw piece placement with generous snap distances",
+    id: "gameplay",
+    title: "Gameplay HUD & Board",
+    subtitle: "Gentle interlocking puzzle pieces, magnetic snapping, pearl piece carousel tray, and calm timer HUD",
+    src: "/images/games/shelly-jigsaw/02-gameplay.png",
+    alt: "Shelly Jigsaw Gameplay HUD showing jigsaw board with snap tolerances and bottom piece tray",
     tag: "Gameplay",
   },
   {
-    id: "daily",
-    title: "Daily Puzzle",
-    subtitle: "A peaceful date-seeded puzzle every morning with streak tracking and zero pressure",
-    src: "/images/games/shelly-jigsaw/02-daily.png",
-    alt: "Shelly Jigsaw Daily Puzzle mode displaying calendar view and gentle streak progress",
-    tag: "Daily Mode",
-  },
-  {
     id: "completion",
-    title: "Victory Stars & Journal",
-    subtitle: "Warm celebrations, earned star ratings, and relaxing ambient chimes",
-    src: "/images/games/shelly-jigsaw/05-completion.png",
-    alt: "Shelly Jigsaw puzzle completion celebration screen showing victory stars and completion time",
+    title: "Puzzle Complete! Celebrations",
+    subtitle: "Earn 3 golden stars, shell rewards, and personal best times with joyful, peaceful animations",
+    src: "/images/games/shelly-jigsaw/03-completion.png",
+    alt: "Shelly Jigsaw Completion screen with 3 golden stars, shell reward, and Next Adventure button",
     tag: "Celebration",
   },
   {
-    id: "home",
-    title: "Home & Levels",
-    subtitle: "Clean senior-friendly menu, piece-count selector, and high-contrast UI",
-    src: "/images/games/shelly-jigsaw/01-home.png",
-    alt: "Shelly Jigsaw main home menu screen with accessible large buttons and level packs",
-    tag: "Overview",
+    id: "daily",
+    title: "Daily Challenge & 5-Day Streak",
+    subtitle: "A fresh date-seeded puzzle every morning with 5-day shell streak rewards and cheerful marine quotes",
+    src: "/images/games/shelly-jigsaw/04-daily.png",
+    alt: "Shelly Jigsaw Daily Challenge showing Moonlit Lagoon puzzle, countdown timer, and 5-day shell streak bar",
+    tag: "Daily Challenge",
+  },
+  {
+    id: "adventure",
+    title: "Adventure Map",
+    subtitle: "Follow the tide along a glowing ocean pearl trail with star milestones and unlockable undersea levels",
+    src: "/images/games/shelly-jigsaw/05-adventure.png",
+    alt: "Shelly Jigsaw Adventure map with winding ocean trail, completed 3-star levels, and active level 3 halo",
+    tag: "Adventure",
+  },
+  {
+    id: "collection",
+    title: "Puzzle Collection & Journal",
+    subtitle: "Browse your finished puzzles in a pearl-framed gallery with piece counts, stars, and replay options",
+    src: "/images/games/shelly-jigsaw/06-collection.png",
+    alt: "Shelly Jigsaw Puzzle Collection showing discovered puzzles, categories, and star ratings",
+    tag: "Collection",
+  },
+  {
+    id: "settings",
+    title: "Pause & Accessibility Settings",
+    subtitle: "Comfort-first options: sound effects, music & ambience, haptic feedback, placement guide, and large text",
+    src: "/images/games/shelly-jigsaw/07-settings.png",
+    alt: "Shelly Jigsaw Pause & Settings modal with switches for sound, vibration, and accessibility",
+    tag: "Settings",
   },
   {
     id: "feature",
-    title: "Key Art & World",
-    subtitle: "Handcrafted tropical aesthetics designed for pure relaxation and mental calm",
+    title: "Key Art & Feature Graphic",
+    subtitle: "Handcrafted storybook ocean aesthetics designed for pure relaxation and mental calm",
     src: "/images/games/shelly-jigsaw/feature-graphic.png",
     alt: "Shelly Jigsaw feature graphic illustration depicting Shelly the turtle by the ocean",
     tag: "Key Art",
@@ -89,11 +105,25 @@ const highlights = [
   <div class="pointer-events-none absolute bottom-10 right-10 w-96 h-96 bg-sky-500/10 blur-[120px] rounded-full" aria-hidden="true"></div>
 
   <div class="max-w-7xl mx-auto relative z-10">
-    <!-- Header Badge & Titles -->
-    <div class="text-center max-w-3xl mx-auto mb-16">
+    <!-- Header Badge, Mascot & Titles -->
+    <div class="text-center max-w-3xl mx-auto mb-16 relative">
+      <div class="flex items-center justify-center mb-5">
+        <div class="relative inline-block group">
+          <div class="absolute -inset-2 bg-gradient-to-r from-teal-500 to-sky-500 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition duration-500"></div>
+          <img
+            src="/images/games/shelly-jigsaw/shelly-mascot.png"
+            alt="Shelly the sea turtle mascot swimming"
+            class="relative w-28 sm:w-36 h-auto object-contain animate-float drop-shadow-[0_15px_25px_rgba(20,184,166,0.4)]"
+            width="144"
+            height="144"
+            loading="eager"
+          />
+        </div>
+      </div>
+
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-4 shadow-sm">
         <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
-        <span>Flagship Release</span>
+        <span>Ocean UI Redesign • Flagship Release</span>
       </div>
 
       <h2
@@ -104,8 +134,8 @@ const highlights = [
       </h2>
 
       <p class="text-lg sm:text-xl text-gray-300 leading-relaxed font-light">
-        Relaxing, cozy jigsaw puzzles designed for peaceful focus and comfort.
-        Journey with Shelly the sea turtle through handcrafted tropical horizons, with zero stress or time limits.
+        Relaxing, cozy jigsaw puzzles set in a sunlit undersea reef.
+        Experience the new Ocean UI with pearl panels, magnetic snapping, daily challenges, and storybook adventure levels alongside Shelly the sea turtle.
       </p>
     </div>
 

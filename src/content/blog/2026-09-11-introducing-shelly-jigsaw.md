@@ -34,7 +34,7 @@ We designed Shelly Jigsaw to solve every single one of these problems.
 
 We enlarged every touch target beyond standard mobile guidelines (exceeding 48×48 dp), applied high-contrast color palettes, and paired every visual state with gentle, warm audio cues. Most importantly, we instituted a zero-pressure design mandate: **no countdown timers, no rush, and zero ad pop-ups during puzzle play**.
 
-![Shelly Jigsaw Main Board Play](/images/games/shelly-jigsaw/04-puzzle-play.png)
+![Shelly Jigsaw Gameplay HUD & Board](/images/games/shelly-jigsaw/02-gameplay.png)
 
 ---
 
@@ -85,9 +85,9 @@ Life has enough deadlines. You will never see a countdown clock ticking down to 
 Everyone gets stuck sometimes, especially when working through complex color gradients. Rather than gating assistance behind paywalls or forcing players to watch a 30-second commercial, every puzzle board comes equipped with **3 free hints**. Tapping a hint gently highlights a candidate piece and illuminates its destination on the board.
 
 ### 3. Pure Aesthetic Comfort
-From the soft wooden textures of the assembly board to our relaxing acoustic guitar and ambient piano soundtrack, every sensory detail has been tuned to lower heart rates and provide a soothing sanctuary from the noisy web.
+From the luminous sunlit reef backgrounds to our pearl status panels, turquoise tactile buttons, and relaxing ambient audio cues, every sensory detail has been tuned to lower heart rates and provide a soothing sanctuary from the noisy web.
 
-![Shelly Jigsaw Completion Screen](/images/games/shelly-jigsaw/05-completion.png)
+![Shelly Jigsaw Puzzle Complete Screen](/images/games/shelly-jigsaw/03-completion.png)
 
 ---
 
