@@ -1,0 +1,87 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title,
+  description = "Ohana Studios crafts calm, thoughtful, and accessible games for players of all ages. Creators of Shelly Jigsaw: Calm Puzzles.",
+  image = "/images/games/shelly-jigsaw/feature-graphic.png",
+  canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href,
+} = Astro.props;
+
+const siteName = "Ohana Studios";
+const formattedTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+const resolvedImageURL = Astro.site && !image.startsWith('http')
+  ? new URL(image, Astro.site).href
+  : image;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0B0F19" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Primary Meta Tags -->
+    <title>{formattedTitle}</title>
+    <meta name="title" content={formattedTitle} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={formattedTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={resolvedImageURL} />
+    <meta property="og:site_name" content={siteName} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={formattedTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={resolvedImageURL} />
+
+    <!-- Google Fonts Preconnect & Stylesheets (Outfit & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen flex flex-col bg-[#0B0F19] text-[#F9FAFB] font-sans antialiased">
+    <!-- Accessible Skip to Content Link -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-sky-400 focus:text-slate-950 focus:font-bold focus:rounded-md focus:shadow-xl"
+    >
+      Skip to main content
+    </a>
+
+    <!-- Sticky Navigation Header -->
+    <Header />
+
+    <!-- Main Content Slot -->
+    <main id="main-content" class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Global Footer -->
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,145 @@
+---
+// Header.astro - Responsive sticky navigation bar for Ohana Studios
+---
+
+<header class="sticky top-0 z-50 w-full backdrop-blur-md bg-[#0B0F19]/80 border-b border-gray-800/60 transition-colors">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+    <!-- Studio Logo Link -->
+    <a
+      href="/"
+      class="flex items-center gap-2 group transition-transform focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-[#0B0F19] rounded-lg"
+      aria-label="Ohana Studios Homepage"
+    >
+      <img
+        src="/images/studio/logo.svg"
+        alt="Ohana Studios"
+        class="h-8 sm:h-9 w-auto object-contain transition-opacity group-hover:opacity-95"
+        width="320"
+        height="72"
+        loading="eager"
+      />
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="hidden md:flex items-center gap-8" aria-label="Main Navigation">
+      <a href="/#game" class="text-sm font-medium text-gray-300 hover:text-sky-400 transition-colors">
+        Games
+      </a>
+      <a href="/blog" class="text-sm font-medium text-gray-300 hover:text-sky-400 transition-colors">
+        Blog
+      </a>
+      <a href="/#about" class="text-sm font-medium text-gray-300 hover:text-sky-400 transition-colors">
+        About
+      </a>
+      <a href="/#contact" class="text-sm font-medium text-gray-300 hover:text-sky-400 transition-colors">
+        Contact
+      </a>
+    </nav>
+
+    <!-- Desktop CTA Button -->
+    <div class="hidden md:flex items-center">
+      <a
+        href="/#game"
+        class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full text-slate-950 bg-gradient-to-r from-sky-400 via-sky-300 to-indigo-400 hover:from-sky-300 hover:to-indigo-300 shadow-lg shadow-sky-500/20 hover:shadow-sky-500/35 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-[#0B0F19]"
+      >
+        Play Shelly Jigsaw
+      </a>
+    </div>
+
+    <!-- Mobile Hamburger Toggle Button -->
+    <div class="flex items-center md:hidden">
+      <button
+        type="button"
+        id="mobile-menu-button"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800/60 focus:outline-none focus:ring-2 focus:ring-sky-400 transition-colors"
+      >
+        <!-- Hamburger Icon -->
+        <svg id="hamburger-icon" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <!-- Close Icon -->
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Flyout Navigation Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-b border-gray-800/80 bg-[#0B0F19]/95 backdrop-blur-xl px-4 pt-3 pb-6 transition-all duration-200"
+    aria-label="Mobile Navigation"
+  >
+    <div class="flex flex-col space-y-3">
+      <a href="/#game" class="mobile-nav-link px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:text-white hover:bg-gray-800/60 transition-colors">
+        Games
+      </a>
+      <a href="/blog" class="mobile-nav-link px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:text-white hover:bg-gray-800/60 transition-colors">
+        Blog
+      </a>
+      <a href="/#about" class="mobile-nav-link px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:text-white hover:bg-gray-800/60 transition-colors">
+        About
+      </a>
+      <a href="/#contact" class="mobile-nav-link px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:text-white hover:bg-gray-800/60 transition-colors">
+        Contact
+      </a>
+      <div class="pt-2">
+        <a
+          href="/#game"
+          class="mobile-nav-link flex items-center justify-center w-full px-5 py-3 text-sm font-semibold rounded-full text-slate-950 bg-gradient-to-r from-sky-400 via-sky-300 to-indigo-400 shadow-md shadow-sky-500/20 active:translate-y-0"
+        >
+          Play Shelly Jigsaw
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  function initMobileMenu() {
+    const button = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (!button || !menu || !hamburgerIcon || !closeIcon) return;
+
+    function toggleMenu(open?: boolean) {
+      if (!menu || !button || !hamburgerIcon || !closeIcon) return;
+      const shouldOpen = typeof open === 'boolean' ? open : menu.classList.contains('hidden');
+      if (shouldOpen) {
+        menu.classList.remove('hidden');
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+        button.setAttribute('aria-expanded', 'true');
+      } else {
+        menu.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        button.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    button.addEventListener('click', () => toggleMenu());
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => toggleMenu(false));
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+        toggleMenu(false);
+        button.focus();
+      }
+    });
+  }
+
+  // Support both direct load and client-side page swaps
+  initMobileMenu();
+  document.addEventListener('astro:page-load', initMobileMenu);
+</script>

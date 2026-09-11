@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --font-heading: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: #0B0F19;
+    color: #F9FAFB;
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background-color: #0B0F19;
+    color: #F9FAFB;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: #F9FAFB;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Dark Theme Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F19;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1F2937;
+  border-radius: 9999px;
+  border: 2px solid #0B0F19;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #374151;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1F2937 #0B0F19;
+}
+
+/* Selection Styling */
+::selection {
+  background-color: rgba(56, 189, 248, 0.3);
+  color: #F9FAFB;
+}
+
+::-moz-selection {
+  background-color: rgba(56, 189, 248, 0.3);
+  color: #F9FAFB;
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  /* Mesh Gradient Background Utilities */
+  .bg-mesh-dark {
+    background-color: #0B0F19;
+    background-image:
+      radial-gradient(at 15% 15%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+      radial-gradient(at 85% 25%, rgba(129, 140, 248, 0.08) 0px, transparent 50%),
+      radial-gradient(at 50% 80%, rgba(13, 148, 136, 0.06) 0px, transparent 50%);
+  }
+
+  .bg-mesh-hero {
+    background-color: #0B0F19;
+    background-image:
+      radial-gradient(circle at 50% -10%, rgba(56, 189, 248, 0.18) 0%, transparent 60%),
+      radial-gradient(circle at 85% 25%, rgba(129, 140, 248, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 15% 45%, rgba(13, 148, 136, 0.1) 0%, transparent 50%);
+  }
+
+  .bg-mesh-spotlight {
+    background-image:
+      radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+  }
+
+  .bg-mesh-card {
+    background: linear-gradient(180deg, rgba(17, 24, 39, 0.75) 0%, rgba(11, 15, 25, 0.85) 100%);
+  }
+
+  /* Grid overlay utility */
+  .bg-grid-subtle {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+
+  /* Glassmorphism Panel */
+  .glass-panel {
+    background: rgba(17, 24, 39, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Text Gradients */
+  .text-gradient-sky-indigo {
+    background: linear-gradient(135deg, #38BDF8 0%, #818CF8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-amber-teal {
+    background: linear-gradient(135deg, #F59E0B 0%, #2DD4BF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

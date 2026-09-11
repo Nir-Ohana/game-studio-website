@@ -1,6 +1,31 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<html>
-  <head><title>Ohana Studios</title></head>
-  <body><h1>Ohana Studios</h1></body>
-</html>
+
+<BaseLayout title="Ohana Studios | Play Together, Win Together">
+  <section class="py-24 sm:py-32 px-4 max-w-5xl mx-auto text-center">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold tracking-wide uppercase mb-6">
+      <span>Welcome to Ohana Studios</span>
+    </div>
+    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6 font-heading">
+      Play Together, <span class="text-gradient-sky-indigo">Win Together</span>
+    </h1>
+    <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+      Crafting calm, thoughtful, and accessible games designed with care for players of all ages.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="/#game"
+        class="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-full text-slate-950 bg-gradient-to-r from-sky-400 via-sky-300 to-indigo-400 hover:from-sky-300 hover:to-indigo-300 shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 transition-all duration-200 transform hover:-translate-y-0.5"
+      >
+        Explore Shelly Jigsaw
+      </a>
+      <a
+        href="/blog"
+        class="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-full text-gray-200 bg-gray-800/80 hover:bg-gray-700/80 border border-gray-700 hover:border-gray-600 transition-all duration-200"
+      >
+        Read Our Devlog
+      </a>
+    </div>
+  </section>
+</BaseLayout>
