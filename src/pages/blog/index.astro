@@ -1,0 +1,209 @@
+---
+// blog/index.astro - Blog archive and dispatch center for Ohana Studios
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch published blog posts sorted by date descending
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const sortedPosts = posts.sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+// Collect all unique tags
+const allTags = Array.from(
+  new Set(sortedPosts.flatMap((post) => post.data.tags || []))
+).sort();
+---
+
+<BaseLayout
+  title="Studio Devlog & Dispatches | Ohana Studios"
+  description="Explore behind-the-scenes technical devlogs, game design retrospectives, and accessibility insights from the creators of Shelly Jigsaw."
+>
+  <div class="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-mesh-dark min-h-[80vh]">
+    <!-- Ambient Lighting Effect -->
+    <div class="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 w-full max-w-6xl h-80 bg-sky-500/10 blur-[140px] rounded-full" aria-hidden="true"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      <!-- Archive Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-300 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-5">
+          <span>Studio Journal</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight font-heading mb-6">
+          Dispatches & <span class="text-gradient-sky-indigo">Devlogs</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-gray-300 leading-relaxed font-light">
+          Behind-the-scenes engineering deep-dives, design retrospectives, and our journey crafting calm, accessible games for all generations.
+        </p>
+      </div>
+
+      <!-- Tag Filter Bar -->
+      {allTags.length > 0 && (
+        <div class="flex items-center justify-center gap-2 flex-wrap mb-12" id="tag-filter-container">
+          <button
+            type="button"
+            class="tag-filter-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 bg-sky-400 text-slate-950 shadow-md shadow-sky-500/20 active"
+            data-filter="all"
+          >
+            All Dispatches ({sortedPosts.length})
+          </button>
+          {allTags.map((tag) => (
+            <button
+              type="button"
+              class="tag-filter-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 bg-gray-900/80 text-gray-300 hover:text-white hover:bg-gray-800 border border-gray-800 hover:border-gray-700"
+              data-filter={tag.toLowerCase()}
+            >
+              #{tag}
+            </button>
+          ))}
+        </div>
+      )}
+
+      <!-- Articles Grid -->
+      {sortedPosts.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-20" id="blog-grid">
+          {sortedPosts.map((post) => (
+            <div
+              class="blog-card-wrapper"
+              data-tags={JSON.stringify((post.data.tags || []).map((t) => t.toLowerCase()))}
+            >
+              <BlogCard post={post} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-16 glass-panel rounded-3xl border border-gray-800 max-w-xl mx-auto mb-20">
+          <p class="text-gray-400 mb-2">No dispatches published yet.</p>
+          <p class="text-xs text-gray-500">Check back soon for upcoming devlogs!</p>
+        </div>
+      )}
+
+      <!-- No Results State for Filter (hidden by default) -->
+      <div id="no-filter-results" class="hidden text-center py-12 glass-panel rounded-3xl border border-gray-800 max-w-md mx-auto mb-20">
+        <p class="text-gray-300 font-medium mb-1">No articles found for this topic</p>
+        <button
+          type="button"
+          id="reset-filter-btn"
+          class="text-xs text-sky-400 hover:underline mt-2 font-semibold"
+        >
+          View all dispatches &rarr;
+        </button>
+      </div>
+
+      <!-- Newsletter & Community Dispatch Box -->
+      <div class="p-8 sm:p-12 rounded-3xl bg-mesh-card border border-gray-800 relative overflow-hidden max-w-4xl mx-auto shadow-2xl">
+        <div class="pointer-events-none absolute -bottom-10 -right-10 w-72 h-72 bg-sky-500/10 blur-[100px] rounded-full" aria-hidden="true"></div>
+
+        <div class="relative z-10 text-center max-w-2xl mx-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 mx-auto mb-5">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+            </svg>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading mb-3">
+            Stay Connected with Our Journey
+          </h2>
+
+          <p class="text-sm sm:text-base text-gray-300 leading-relaxed font-light mb-8">
+            We write thoughtful reflections whenever we reach major milestones, solve gnarly technical challenges in Godot, or release updates. No spam, ever.
+          </p>
+
+          <form
+            id="newsletter-form"
+            class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+          >
+            <input
+              type="email"
+              required
+              placeholder="Enter your email address..."
+              class="w-full px-4 py-3 text-sm rounded-full bg-gray-900/90 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent transition-all"
+            />
+            <button
+              type="submit"
+              class="flex-shrink-0 px-6 py-3 min-h-[44px] text-sm font-bold rounded-full text-slate-950 bg-gradient-to-r from-sky-400 to-indigo-400 hover:from-sky-300 hover:to-indigo-300 shadow-lg shadow-sky-500/25 transition-all transform hover:-translate-y-0.5"
+            >
+              Subscribe
+            </button>
+          </form>
+
+          <p id="newsletter-status" class="hidden mt-4 text-xs font-semibold text-teal-400">
+            &check; Thank you! We have added you to our dispatch list.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  function initTagFiltering() {
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.tag-filter-btn');
+    const cardWrappers = document.querySelectorAll<HTMLElement>('.blog-card-wrapper');
+    const noResults = document.getElementById('no-filter-results');
+    const resetBtn = document.getElementById('reset-filter-btn');
+
+    if (!filterButtons.length || !cardWrappers.length) return;
+
+    function applyFilter(selectedTag: string) {
+      let visibleCount = 0;
+
+      cardWrappers.forEach((card) => {
+        const tagsData = card.getAttribute('data-tags');
+        const tags: string[] = tagsData ? JSON.parse(tagsData) : [];
+
+        if (selectedTag === 'all' || tags.includes(selectedTag)) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (noResults) {
+        if (visibleCount === 0) {
+          noResults.classList.remove('hidden');
+        } else {
+          noResults.classList.add('hidden');
+        }
+      }
+
+      // Update button styles
+      filterButtons.forEach((btn) => {
+        const filterVal = btn.getAttribute('data-filter');
+        if (filterVal === selectedTag) {
+          btn.className = 'tag-filter-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 bg-sky-400 text-slate-950 shadow-md shadow-sky-500/20 active';
+        } else {
+          btn.className = 'tag-filter-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 bg-gray-900/80 text-gray-300 hover:text-white hover:bg-gray-800 border border-gray-800 hover:border-gray-700';
+        }
+      });
+    }
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filterVal = btn.getAttribute('data-filter') || 'all';
+        applyFilter(filterVal);
+      });
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => applyFilter('all'));
+    }
+
+    const newsletterForm = document.getElementById('newsletter-form') as HTMLFormElement | null;
+    const newsletterStatus = document.getElementById('newsletter-status');
+    if (newsletterForm && newsletterStatus) {
+      newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        newsletterStatus.classList.remove('hidden');
+        newsletterForm.reset();
+      });
+    }
+  }
+
+  initTagFiltering();
+  document.addEventListener('astro:page-load', initTagFiltering);
+</script>
