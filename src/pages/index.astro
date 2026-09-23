@@ -1,7 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BlogCard from '../components/BlogCard.astro';
 import { CONTACT_EMAIL } from '../site';
 
 const shots = '/images/games/shelly-jigsaw/screens';
@@ -45,10 +43,6 @@ const features = [
     icon: '<path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H8a2.5 2.5 0 1 1 0-5c3 0 4 5 4 5zM12 7h4a2.5 2.5 0 1 0 0-5c-3 0-4 5-4 5z"/>',
   },
 ];
-
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
 ---
 
 <BaseLayout title="Ohana Studios — Calm games for grown-ups">
@@ -114,20 +108,6 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
     </div>
   </section>
-
-  {posts.length > 0 && (
-    <section class="section" aria-labelledby="devlog-title">
-      <div class="wrap">
-        <div class="section-head">
-          <h2 id="devlog-title">From our devlog</h2>
-          <p>Notes on how and why we build our games.</p>
-        </div>
-        <div class="posts">
-          {posts.map((post) => <BlogCard post={post} />)}
-        </div>
-      </div>
-    </section>
-  )}
 
   <section class="section" id="contact" aria-labelledby="studio-title">
     <div class="wrap split">

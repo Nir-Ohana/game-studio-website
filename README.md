@@ -1,6 +1,6 @@
 # Ohana Studios website
 
-The studio site at [ohana-studios.me](https://ohana-studios.me): the Shelly Jigsaw showcase, the devlog, and the app's privacy policy.
+The studio site at [ohana-studios.me](https://ohana-studios.me): the Shelly Jigsaw showcase and the app's privacy policy.
 
 It follows the Shelly Jigsaw in-game style (flat aqua background, pearl cards, dark readable text, Nunito only). Tokens are at the top of `src/styles/global.css`.
 
@@ -9,7 +9,6 @@ It follows the Shelly Jigsaw in-game style (flat aqua background, pearl cards, d
 | URL | Source |
 | --- | --- |
 | `/` | `src/pages/index.astro` |
-| `/blog`, `/blog/<post>` | `src/pages/blog/`, posts in `src/content/blog/*.md` |
 | `/shelly-jigsaw/privacy` | `src/pages/shelly-jigsaw/privacy.astro` (Google Play and AdMob privacy policy URL) |
 | `/privacy` | Redirects to the Shelly Jigsaw policy (`astro.config.mjs`) |
 | `/app-ads.txt` | `public/app-ads.txt` (AdMob authorized sellers) |

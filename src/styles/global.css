@@ -536,53 +536,6 @@ main {
   word-break: break-all;
 }
 
-/* Blog cards */
-
-.posts {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.post-card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 12px 12px 22px;
-  color: var(--ink);
-  text-decoration: none;
-  transition: transform 0.15s ease;
-}
-
-.post-card:hover {
-  color: var(--ink);
-  transform: translateY(-3px);
-}
-
-.post-card img {
-  border-radius: var(--radius-inner);
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-
-.post-card > *:not(img) {
-  padding: 0 8px;
-}
-
-.post-card .meta {
-  font-size: 16px;
-  color: var(--tide);
-}
-
-.post-card p {
-  color: var(--tide);
-}
-
-.post-card .read {
-  color: var(--lagoon);
-  font-weight: 800;
-}
-
 /* ---------- Article / legal text ---------- */
 
 .page-head {
@@ -677,14 +630,6 @@ main {
   overflow-x: auto;
 }
 
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 52px;
-  font-weight: 800;
-  text-decoration: none;
-}
 
 /* ---------- Footer ---------- */
 

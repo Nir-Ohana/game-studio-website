@@ -4,7 +4,6 @@ import { STUDIO } from '../site';
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const links = [
   { href: '/#shelly-jigsaw', label: 'Our game', match: (p: string) => p === '/' },
-  { href: '/blog', label: 'Devlog', match: (p: string) => p.startsWith('/blog') },
   { href: '/#contact', label: 'Contact', match: () => false },
 ];
 ---

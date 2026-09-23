@@ -13,7 +13,7 @@ export interface Props {
 const {
   title,
   description = 'Ohana Studios makes calm, easy-to-read games for grown-ups. Our first game is Shelly Jigsaw.',
-  image = '/images/games/shelly-jigsaw/feature-graphic.png',
+  image = '/images/games/shelly-jigsaw/app-icon.png',
 } = Astro.props;
 
 const fullTitle = title.includes(STUDIO) ? title : `${title} | ${STUDIO}`;
@@ -39,7 +39,7 @@ const imageURL = Astro.site && !image.startsWith('http') ? new URL(image, Astro.
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={imageURL} />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
