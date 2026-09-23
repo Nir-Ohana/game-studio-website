@@ -1,200 +1,31 @@
 ---
-// BlogPostLayout.astro - Reader-focused layout for blog post articles
 import BaseLayout from './BaseLayout.astro';
 import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
-  post?: CollectionEntry<'blog'>;
-  title?: string;
-  description?: string;
-  pubDate?: Date | string;
-  author?: string;
-  image?: string;
-  tags?: string[];
+  post: CollectionEntry<'blog'>;
 }
 
-const {
-  post,
-  title = post?.data.title ?? 'Studio Dispatch',
-  description = post?.data.description ?? '',
-  pubDate = post?.data.pubDate ?? new Date(),
-  author = post?.data.author ?? 'Ohana Studios',
-  image = post?.data.image ?? '/images/games/shelly-jigsaw/feature-graphic.png',
-  tags = post?.data.tags ?? [],
-} = Astro.props;
-
-// Date formatting
-const formattedDate = new Intl.DateTimeFormat('en-US', {
-  month: 'long',
-  day: 'numeric',
-  year: 'numeric',
-}).format(new Date(pubDate));
-
-// Reading time
-const words = post?.body ? post.body.trim().split(/\s+/).length : 600;
-const readingTimeMinutes = Math.max(1, Math.ceil(words / 200));
+const { post } = Astro.props;
+const { title, description, pubDate, author, image } = post.data;
+const date = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(pubDate);
+const minutes = Math.max(1, Math.ceil((post.body ?? '').trim().split(/\s+/).length / 200));
 ---
 
 <BaseLayout title={title} description={description} image={image}>
-  <article class="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl mx-auto relative z-10">
-      <!-- Breadcrumb Navigation -->
-      <nav aria-label="Breadcrumb" class="mb-6">
-        <ol class="flex items-center gap-2 text-xs sm:text-sm text-sky-200 font-semibold font-heading">
-          <li>
-            <a href="/" class="hover:text-amber-300 transition-colors focus:outline-none focus:underline">
-              Home
-            </a>
-          </li>
-          <li class="text-amber-400/60" aria-hidden="true">/</li>
-          <li>
-            <a href="/blog" class="hover:text-amber-300 transition-colors focus:outline-none focus:underline">
-              Devlog
-            </a>
-          </li>
-          <li class="text-amber-400/60" aria-hidden="true">/</li>
-          <li class="text-amber-300 truncate max-w-[200px] sm:max-w-md font-bold" aria-current="page">
-            {title}
-          </li>
-        </ol>
-      </nav>
-
-      <!-- Main Sand Card Container for the Article -->
-      <div class="sand-card p-6 sm:p-10 md:p-14 bg-white rounded-3xl border-2 border-amber-400/40 shadow-2xl text-slate-800">
-        <!-- Post Header -->
-        <header class="mb-10 sm:mb-12">
-          <!-- Tags -->
-          {tags.length > 0 && (
-            <div class="flex flex-wrap items-center gap-2 mb-6">
-              {tags.map((tag) => (
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold font-heading bg-amber-50 text-sky-900 border border-amber-400/60 shadow-sm">
-                  #{tag}
-                </span>
-              ))}
-            </div>
-          )}
-
-          <!-- Main Heading -->
-          <h1 class="text-3xl sm:text-5xl lg:text-5xl font-black text-sky-950 tracking-tight leading-[1.18] mb-6 font-heading">
-            {title}
-          </h1>
-
-          <!-- Subtitle / Description -->
-          {description && (
-            <p class="text-lg sm:text-xl text-slate-600 leading-relaxed font-normal mb-8">
-              {description}
-            </p>
-          )}
-
-          <!-- Author & Date Metadata Bar -->
-          <div class="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-slate-200 text-sm text-slate-500">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-300 to-amber-500 flex items-center justify-center text-slate-950 font-black text-sm font-heading shadow-md shadow-amber-500/20">
-                {author.charAt(0)}
-              </div>
-              <div>
-                <div class="font-bold text-sky-950 font-heading">{author}</div>
-                <div class="text-xs text-amber-600 font-semibold">Ohana Studios Team</div>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4 text-xs sm:text-sm font-medium">
-              <time datetime={new Date(pubDate).toISOString()} class="flex items-center gap-1.5">
-                <svg class="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <span>{formattedDate}</span>
-              </time>
-              <span class="text-slate-300">&bull;</span>
-              <span class="flex items-center gap-1.5">
-                <svg class="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>{readingTimeMinutes} min read</span>
-              </span>
-            </div>
-          </div>
-        </header>
-
-        <!-- Featured Hero Image -->
-        {image && (
-          <div class="mb-12 rounded-2xl overflow-hidden border-2 border-amber-400/30 shadow-xl bg-slate-950">
-            <img
-              src={image}
-              alt={title}
-              class="w-full h-auto max-h-[500px] object-cover"
-              loading="eager"
-            />
-          </div>
-        )}
-
-        <!-- Markdown Article Content -->
-        <div class="prose prose-sky prose-lg max-w-none font-sans
-                    prose-headings:font-heading prose-headings:font-black prose-headings:text-sky-950 prose-headings:tracking-tight
-                    prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4
-                    prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-3
-                    prose-p:text-slate-700 prose-p:leading-relaxed prose-p:font-normal
-                    prose-a:text-sky-700 hover:prose-a:text-amber-600 prose-a:underline-offset-4
-                    prose-strong:text-sky-950 prose-strong:font-bold
-                    prose-code:text-amber-700 prose-code:bg-amber-50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:border prose-code:border-amber-200
-                    prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-pre:rounded-2xl
-                    prose-img:rounded-2xl prose-img:border prose-img:border-slate-200 prose-img:shadow-xl
-                    prose-blockquote:border-l-amber-400 prose-blockquote:bg-amber-50/60 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-slate-800
-                    prose-hr:border-slate-200 prose-hr:my-10">
-          <slot />
-        </div>
-
-        <!-- Post Footer & Author Bio Card -->
-        <footer class="mt-16 pt-10 border-t border-slate-200">
-          <!-- Author Bio Card -->
-          <div class="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-amber-300/60 flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-12 shadow-sm">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-300 via-amber-400 to-amber-500 flex items-center justify-center text-slate-950 font-black text-2xl font-heading shadow-md shadow-amber-500/25 flex-shrink-0">
-              {author.charAt(0)}
-            </div>
-            <div class="flex-grow">
-              <div class="text-xs font-bold text-amber-600 uppercase tracking-wider mb-1 font-heading">About the Author</div>
-              <h2 class="text-lg font-black text-sky-950 font-heading mb-1.5">{author} &bull; Ohana Studios</h2>
-              <p class="text-sm text-slate-600 leading-relaxed font-normal">
-                Crafting calm, thoughtful, and accessible games for players of all ages. Creators of Shelly Jigsaw: Calm Puzzles.
-              </p>
-            </div>
-            <div class="flex-shrink-0">
-              <a
-                href="/#game"
-                class="inline-flex items-center gap-1.5 px-5 py-2.5 text-xs font-black font-heading rounded-full text-slate-950 bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-md shadow-amber-500/20 transition-all"
-              >
-                <span>Play Shelly Jigsaw</span>
-                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Navigation Back to Blog -->
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <a
-              href="/blog"
-              class="inline-flex items-center gap-2 text-sm font-bold font-heading text-sky-700 hover:text-amber-600 transition-colors focus:outline-none focus:underline"
-            >
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-              <span>Back to all dispatches</span>
-            </a>
-
-            <a
-              href="mailto:contact@ohanastudios.com"
-              class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-sky-700 transition-colors"
-            >
-              <span>Have thoughts on this post? Contact our team</span>
-              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </div>
-        </footer>
+  <div class="wrap">
+    <a class="back-link" href="/blog">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6" /></svg>
+      All posts
+    </a>
+    <article class="card prose-card">
+      <header class="page-head">
+        <h1>{title}</h1>
+        <p>{author} · {date} · {minutes} min read</p>
+      </header>
+      <div class="prose">
+        <slot />
       </div>
-    </div>
-  </article>
+    </article>
+  </div>
 </BaseLayout>

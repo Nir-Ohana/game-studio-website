@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CONTACT_EMAIL, STUDIO } from '../../site';
+
+const effective = 'September 23, 2026';
+---
+
+<BaseLayout
+  title="Shelly Jigsaw privacy policy"
+  description="How the Shelly Jigsaw app by Ohana Studios handles your information, including ads from Google AdMob."
+>
+  <div class="wrap">
+    <article class="card prose-card">
+      <header class="page-head">
+        <h1>Shelly Jigsaw privacy policy</h1>
+        <p>Effective {effective}</p>
+      </header>
+
+      <div class="prose">
+        <p>
+          This policy explains what information the <strong>Shelly Jigsaw</strong> app for Android
+          (package <code>com.ohanastudios.shellyjigsaw</code>) uses, why, and the choices you have.
+          The app is made by {STUDIO} ("we", "us").
+        </p>
+
+        <h2>The short version</h2>
+        <ul>
+          <li>You do not create an account, and we never ask for your name, email or photos.</li>
+          <li>Your puzzle progress and settings stay on your phone. We do not receive them.</li>
+          <li>We do not use analytics or tracking tools of our own.</li>
+          <li>
+            The game is free and shows ads from <strong>Google AdMob</strong>. Google collects some
+            device information to show and measure those ads, as described below.
+          </li>
+        </ul>
+
+        <h2>Information stored only on your phone</h2>
+        <p>
+          The app saves your puzzle progress, finished puzzles, stars and shells, achievements,
+          settings (such as text size, sound and vibration), and simple counters that decide how
+          often ads appear. This information stays in the app's private storage on your device. It
+          is not sent to us or to anyone else. Uninstalling the app, or clearing its data in
+          Android settings, deletes it.
+        </p>
+
+        <h2>Ads from Google AdMob</h2>
+        <p>
+          Shelly Jigsaw shows two kinds of ads: an optional video you can choose to watch for an
+          extra hint, and occasional full-screen ads between puzzles. Ads never appear while you
+          are solving a puzzle.
+        </p>
+        <p>
+          The ads are provided by Google AdMob. When the app requests or shows an ad, Google may
+          collect and process:
+        </p>
+        <ul>
+          <li>device identifiers, such as your device's advertising ID and app set ID;</li>
+          <li>your IP address, which can indicate your approximate location;</li>
+          <li>information about your device, such as model, operating system and language;</li>
+          <li>how you interact with ads, such as views and taps;</li>
+          <li>diagnostic information, such as ad loading errors.</li>
+        </ul>
+        <p>
+          Google uses this information to deliver ads, limit how often you see the same ad,
+          measure ad performance, prevent fraud and, where you allow it, show more relevant ads.
+          This information is sent to Google, not to us. We only see anonymous, combined reports
+          (for example, how many ads were shown). Google's use of this information is described in
+          <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">How Google uses information from sites or apps that use its services</a>
+          and the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>.
+        </p>
+
+        <h2>Your choices about ads</h2>
+        <ul>
+          <li>
+            <strong>Consent in the EEA, UK and Switzerland.</strong> If you are in these regions, the
+            app asks for your consent through Google's consent message before personalized ads are
+            shown. You can change your choice at any time with <strong>Privacy choices</strong> in
+            the game's Settings.
+          </li>
+          <li>
+            <strong>Advertising ID.</strong> You can reset or delete your advertising ID, or opt out
+            of personalized ads, in your phone's settings (usually
+            <em>Settings &gt; Google &gt; Ads</em> or <em>Settings &gt; Privacy &gt; Ads</em>).
+          </li>
+          <li>
+            <strong>Personalized ads in general.</strong> You can manage Google ad personalization at
+            <a href="https://myadcenter.google.com" rel="noopener">My Ad Center</a>.
+          </li>
+        </ul>
+        <p>If you opt out of personalized ads, you will still see ads, but they will be less tailored.</p>
+
+        <h2>Phone permissions</h2>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th>Permission</th><th>Why the app uses it</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Internet and network state</td><td>To load ads. Puzzles are built into the app and do not need a connection.</td></tr>
+              <tr><td>Advertising ID</td><td>Used by Google AdMob as described above.</td></tr>
+              <tr><td>Vibration</td><td>For the gentle buzz when pieces fit. You can turn it off in Settings.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The app does not access your photos, contacts, camera, microphone or precise location.</p>
+
+        <h2>Children</h2>
+        <p>
+          Shelly Jigsaw is made for adults and is not directed at children under 13. We do not
+          knowingly collect personal information from children. If you believe a child has provided
+          personal information, please contact us and we will help.
+        </p>
+
+        <h2>Your rights</h2>
+        <p>
+          Depending on where you live (for example under the GDPR in Europe or state laws in the
+          United States), you may have the right to access, correct or delete personal information,
+          or to opt out of its "sale" or "sharing" for targeted advertising. Because we do not hold
+          personal information about you, most requests are best handled by the choices above or
+          directly with Google. We are happy to help with any request: just email us.
+        </p>
+
+        <h2>Security and retention</h2>
+        <p>
+          Your game data never leaves your device, so we do not store it. Information collected by
+          Google for ads is kept according to Google's own retention policies.
+        </p>
+
+        <h2>Changes to this policy</h2>
+        <p>
+          If we change how the app uses information, we will update this page and its effective
+          date. Important changes will also be mentioned in the app's store listing.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          {STUDIO}<br />
+          Email: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+        </p>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

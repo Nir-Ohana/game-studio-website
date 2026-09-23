@@ -1,72 +1,46 @@
 ---
-title: "Building Shelly Jigsaw: Crafting A Calm Mobile Puzzle Experience"
-description: "How we built a cozy jigsaw game: Bezier interlocking tabs, magnetic piece snapping, and deterministic offline session state."
+title: "Why We Built Shelly Jigsaw: Making A Truly Calm Puzzle Game"
+description: "Why most mobile jigsaw games feel stressful, and how we set out to build a peaceful, cozy alternative you can play at your own pace."
 pubDate: 2026-09-11
 author: "Nir Ohana"
 image: "/images/games/shelly-jigsaw/feature-graphic.png"
-tags: ["Game Design", "Shelly Jigsaw", "Devlog", "Architecture"]
+tags: ["Game Design", "Shelly Jigsaw", "Devlog"]
 draft: false
 ---
 
-Most digital jigsaw games on mobile app stores are crowded with flashing countdown clocks, casino chimes, and full-screen video ads. For older players, tiny buttons and rigid touch targets make placing pieces frustrating.
+Have you ever downloaded a jigsaw puzzle app hoping to unwind, only to get blasted by loud casino chimes, flashing countdown timers, and unskippable video ads?
 
-We built **Shelly Jigsaw: Calm Puzzles** with a simple mandate: restore quiet concentration, multi-generational accessibility, and tactile satisfaction to digital puzzling.
+That frustration was the spark behind **Shelly Jigsaw: Calm Puzzles**. We wanted to make a digital puzzle game that actually lets you relax. Something simple, tactile, and quiet that feels good to play whether you are seven or seventy.
 
 ![Shelly Jigsaw Showcase](/images/games/shelly-jigsaw/feature-graphic.png)
 
----
+### Getting the feel just right
 
-## Core Technical Decisions
+Digital jigsaws usually fall apart in the controls. Tiny touch targets and rigid snapping can turn what should be a peaceful moment into a fight with your screen. We spent a lot of time dialing in the details so playing feels natural and satisfying:
 
-Shelly Jigsaw is built from the ground up for mobile with custom rendering and tactile physics. Here are the three technical pillars behind the feel of the game:
-
-### 1. Procedural Bezier Interlocking Tabs
-
-Rather than pre-baking rigid geometric masks, our jigsaw generator builds organic cubic Bezier curves for interlocking tabs and blanks from a seedable configuration. Each cut features subtle irregularities that mirror physical cardboard and wooden dies, providing subtle visual hints for matching neighbors.
-
-### 2. Generous Magnetic Snapping
-
-Imprecise touch screens can make mobile jigsaws frustrating when a piece is rejected for being a couple of pixels off.
-
-We implemented a two-phase snapping model:
-- **Proximity Snap**: When a dragged piece enters the target anchor radius, it eases into place with a subtle audio snap.
-- **Cluster Merging**: Neighboring pieces that belong together link permanently even when connected inside the staging tray, letting players assemble skies or borders before moving the cluster onto the board.
-
-```gdscript
-func test_snap_candidate(piece: PuzzlePiece, target_pos: Vector2) -> bool:
-    var distance: float = piece.global_position.distance_to(target_pos)
-    if distance <= SNAP_TOLERANCE_PX:
-        snap_to_anchor(piece, target_pos)
-        SfxPlayer.play(&"piece_snap_soft")
-        return true
-    return false
-```
+- **Forgiving snapping**: If you drop a piece near where it belongs, it gently glides into place with a soft, tactile click. No wrestling with pixel-perfect placement.
+- **Connect pieces anywhere**: You can link matching pieces together right inside your piece tray. Assemble a patch of sky or an edge group first, then move the whole cluster onto the board at once.
+- **Natural shapes**: Every piece cut has subtle curves and personality, mimicking physical cardboard puzzles so you can spot visual clues easily.
 
 ![Shelly Jigsaw Gameplay Board](/images/games/shelly-jigsaw/02-gameplay.png)
 
-### 3. Deterministic Local State & 100% Offline Play
+### Built for real comfort
 
-Puzzle state is owned by a standalone `PuzzleSession` resource. Board layout, tray order, connected piece clusters, and elapsed time serialize directly to local device storage. The game requires zero network connection and has zero tracking servers.
+We wanted anyone to be able to pick this up and feel right at home, especially older players or anyone tired of stressful mobile gaming habits:
 
----
-
-## Accessibility & Player Ergonomics
-
-We tested early builds with players aged 50 and older. Key findings shaped our design system:
-
-- **Touch Targets**: All primary buttons exceed 56×56 dp with high-contrast borders.
-- **Zero Timers**: No countdowns or speed penalties. Players can pause for ten seconds or ten days without losing state.
-- **Always-Free Assistance**: Every puzzle includes 3 free hints to highlight matching pieces without paywalls or ads.
+- **Big, clear buttons**: Everything is easy to see and easy to tap, with high contrast and plenty of breathing room.
+- **Zero timers, zero rush**: There are no countdown clocks or score penalties. Put your phone down, come back tomorrow or next week, and your progress is right where you left it.
+- **Free hints when you need them**: Every puzzle comes with free hints to give you a gentle nudge if you are stuck, with no paywalls or required ads.
+- **Play completely offline**: The game works anywhere without an internet connection. No sign-ups, no accounts, and no data tracking.
 
 ![Shelly Jigsaw Completion Screen](/images/games/shelly-jigsaw/03-completion.png)
 
----
+### What is coming up next
 
-## What's Next
+We are currently putting the finishing touches on our upcoming mobile releases:
 
-We are actively polishing our release build for Android and iOS:
-- Daily date-seeded challenges with a local streak calendar
-- Multi-chapter Adventure mode following Shelly across coastal harbors and reef ecosystems
-- Additional piece-count tiers (16, 36, 64, and 100 pieces)
+- Daily challenge puzzles to start your morning with a quiet cup of coffee
+- A story mode following Shelly through coastal shores and colorful reefs
+- More piece count options, from quick 16-piece warmups to 100-piece challenges
 
-If you'd like to test early builds or share feedback, visit our [home page](/) or reach out via [contact](/contact).
+If you want to try early builds or share your thoughts, check out our [home page](/) or drop us a note on our [contact page](/contact). We would love to hear what you think!

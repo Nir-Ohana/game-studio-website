@@ -1,9 +1,11 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   site: 'https://ohana-studios.me',
-  integrations: [tailwind({ applyBaseStyles: false })],
+  // The old studio-wide policy URL now points at the Shelly Jigsaw policy.
+  redirects: {
+    '/privacy': '/shelly-jigsaw/privacy',
+  },
   devToolbar: {
     enabled: false,
   },
