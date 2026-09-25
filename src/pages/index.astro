@@ -4,10 +4,10 @@ import { CONTACT_EMAIL } from '../site';
 
 const shots = '/images/games/shelly-jigsaw/screens';
 const screens = [
-  { src: `${shots}/home.webp`, title: 'Home', text: 'Everything one tap away.', alt: 'Shelly Jigsaw home screen with stars, shells and an Explore adventure button' },
-  { src: `${shots}/adventure.webp`, title: 'Adventure', text: 'Follow Shelly from level to level.', alt: 'Adventure map with numbered levels along an underwater path' },
-  { src: `${shots}/daily.webp`, title: 'Daily Challenge', text: 'A new picture every day.', alt: 'Daily Challenge screen with today’s puzzle and a weekly streak' },
-  { src: `${shots}/mypuzzles.webp`, title: 'My Puzzles', text: 'Revisit the pictures you finished.', alt: 'Collection of finished puzzles with their star ratings' },
+  { src: `${shots}/home.webp`, title: 'Home', text: 'Everything one tap away.', alt: 'Shelly Jigsaw home screen with Shelly the turtle, a puzzle picture and a Start button' },
+  { src: `${shots}/adventure.webp`, title: 'Adventure', text: 'Follow Shelly from level to level.', alt: 'Adventure trail of round puzzle pictures, with the next level marked' },
+  { src: `${shots}/daily.webp`, title: 'Daily puzzle', text: 'A new picture every day, in the size you like.', alt: 'Daily screen with today’s puzzle and piece-count choices' },
+  { src: `${shots}/settings.webp`, title: 'Settings', text: 'Bigger text, calmer motion, sound your way.', alt: 'Settings screen with Extra large text, Reduce motion, music, sound and vibration switches' },
 ];
 
 // Icon paths (24px, stroke) shared by the feature cards.
@@ -18,8 +18,8 @@ const features = [
     icon: '<path d="M4 7V5h12v2M10 5v14M7 19h6M14 12v-1h6v1M17 11v8M15.5 19h3"/>',
   },
   {
-    title: 'No timers, no pressure',
-    text: 'Take two minutes or two days. Your puzzle waits exactly where you left it.',
+    title: 'No rush, no pressure',
+    text: 'There is no countdown. Take two minutes or two days. Your puzzle waits exactly where you left it.',
     icon: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
   },
   {
@@ -39,7 +39,7 @@ const features = [
   },
   {
     title: 'Free to play',
-    text: 'The game is free. Short ads appear only between puzzles, never while you play.',
+    text: 'The game is free. A small banner sits below the puzzle, and a short ad may play between puzzles.',
     icon: '<path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H8a2.5 2.5 0 1 1 0-5c3 0 4 5 4 5zM12 7h4a2.5 2.5 0 1 0 0-5c-3 0-4 5-4 5z"/>',
   },
 ];
@@ -52,7 +52,7 @@ const features = [
         <span class="eyebrow">Coming soon to Android</span>
         <h1 id="hero-title">Shelly Jigsaw</h1>
         <p class="lead">
-          Calm jigsaw puzzles with big pieces, clear text and no timers. Relax with
+          Calm jigsaw puzzles with big pieces, clear text and no rush. Relax with
           Shelly the sea turtle, one beautiful picture at a time.
         </p>
         <div class="hero-actions">
