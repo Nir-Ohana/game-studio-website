@@ -3,13 +3,19 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
+    "check": "astro check",
     "dev": "astro dev",
     "build": "astro build",
+    "test:seo": "node --test tests/seo.test.mjs",
     "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "^5.4.2",
     "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "parse5": "^7.3.0"
   }
 }

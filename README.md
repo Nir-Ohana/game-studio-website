@@ -9,11 +9,13 @@ The shared layout follows Shelly Jigsaw's in-game style (aqua background, pearl 
 | URL | Source |
 | --- | --- |
 | `/` | `src/pages/index.astro` |
-| `/shelly-jigsaw/privacy` | `src/pages/shelly-jigsaw/privacy.astro` (Google Play and AdMob privacy policy URL) |
+| `/shelly-jigsaw/` | `src/pages/[game].astro` and shared game layout |
+| `/rocket-rabbit/` | `src/pages/[game].astro` and shared game layout |
+| `/shelly-jigsaw/privacy/` | `src/pages/shelly-jigsaw/privacy.astro` (Google Play and AdMob privacy policy URL) |
 | `/privacy` | Redirects to the Shelly Jigsaw policy (`astro.config.mjs`) |
 | `/app-ads.txt` | `public/app-ads.txt` (AdMob authorized sellers) |
 
-The homepage links directly to `/#shelly-jigsaw` and `/#rocket-rabbit`. Both games are labeled **In development · Android**; add a store link only when public availability is confirmed. The existing `/privacy` redirect remains specific to Shelly Jigsaw.
+The homepage links to both dedicated game pages and retains its game section anchors. Both games are labeled **In development · Android**; add a store link only when public availability is confirmed. The existing `/privacy` redirect remains specific to Shelly Jigsaw.
 
 The contact email is set once in `src/site.ts`.
 
@@ -32,10 +34,15 @@ Web assets are copied into `public/images/`; the site has no runtime dependency 
 ```sh
 npm ci
 npm run dev      # http://localhost:4321
-npx astro check  # Astro and TypeScript diagnostics
+npm run check    # Astro and TypeScript diagnostics
 npm run build    # static site in dist/
+npm run test:seo # checks the built HTML, sitemap and robots.txt
 ```
 
 ## Deploy
 
 Pushing to `main` builds and publishes to GitHub Pages (`.github/workflows/deploy.yml`). The custom domain comes from `public/CNAME`.
+
+## SEO
+
+Canonical URLs use trailing slashes. The sitemap integration generates `/sitemap-index.xml` and `/sitemap-0.xml`; `/robots.txt` advertises the sitemap. Unique metadata and JSON-LD describe the studio and each game. Fonts are served locally, and images use WebP and responsive sizes. See [SEO verification and indexing status](docs/seo.md).

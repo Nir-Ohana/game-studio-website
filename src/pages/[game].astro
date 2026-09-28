@@ -1,0 +1,12 @@
+---
+import GameLayout from '../layouts/GameLayout.astro';
+import { games } from '../data/games';
+
+export function getStaticPaths() {
+  return games.map(game => ({ params: { game: game.slug }, props: { game } }));
+}
+
+const { game } = Astro.props;
+---
+
+<GameLayout game={game} />

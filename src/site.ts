@@ -2,4 +2,4 @@
 export const STUDIO = 'Ohana Studios';
 export const CONTACT_EMAIL = 'hello@ohana-studios.me';
 export const GAME = 'Shelly Jigsaw';
-export const PRIVACY_PATH = '/shelly-jigsaw/privacy';
+export const PRIVACY_PATH = '/shelly-jigsaw/privacy/';

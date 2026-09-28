@@ -3,6 +3,14 @@
    in the game repo): flat aqua water on top, pearl cards, dark ink text, reef art
    only at the bottom. One font family (Nunito); hierarchy comes from weight and size. */
 
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600 900;
+  font-display: swap;
+  src: url('/fonts/nunito-latin-variable.woff2') format('woff2');
+}
+
 :root {
   --ink: #0f3a4a;
   --tide: #3d6270;
@@ -58,7 +66,7 @@ body {
   height: 360px;
   z-index: -1;
   pointer-events: none;
-  background: url('/images/backgrounds/reef-ocean-desktop.jpg') center bottom / cover no-repeat;
+  background: url('/images/backgrounds/reef-ocean-desktop.webp') center bottom / cover no-repeat;
   filter: blur(4px) saturate(0.8);
   opacity: 0.55;
   -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 70%);
@@ -67,7 +75,7 @@ body {
 
 @media (max-width: 640px) {
   .reef {
-    background-image: url('/images/backgrounds/reef-ocean-mobile.jpg');
+    background-image: url('/images/backgrounds/reef-ocean-mobile.webp');
   }
 }
 
@@ -672,6 +680,66 @@ section[id],
 }
 
 /* ---------- Article / legal text ---------- */
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 0;
+  margin: 8px 0 20px;
+  list-style: none;
+  font-size: 17px;
+}
+
+.breadcrumbs li + li::before {
+  content: '/';
+  margin-right: 12px;
+  color: var(--tide);
+}
+
+.breadcrumbs a,
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-weight: 800;
+}
+
+.hero-copy > .text-link {
+  align-self: flex-start;
+}
+
+.game-tagline {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.game-story {
+  display: grid;
+  gap: 20px;
+  max-width: 880px;
+}
+
+.questions {
+  display: grid;
+  gap: 16px;
+  max-width: 880px;
+}
+
+.questions summary {
+  min-height: 44px;
+  padding-block: 8px;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.questions p {
+  margin-top: 12px;
+  color: var(--tide);
+}
 
 .page-head {
   padding: 24px 0 28px;

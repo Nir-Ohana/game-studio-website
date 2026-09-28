@@ -1,0 +1,18 @@
+---
+interface Props {
+  screens: { src: string; title: string; text: string; alt: string }[];
+}
+const { screens } = Astro.props;
+---
+
+<div class="screens">
+  {screens.map(screen => (
+    <figure class="card screen">
+      <img src={screen.src}
+        srcset={`${screen.src.replace('.webp', '-340.webp')} 340w, ${screen.src} 540w`}
+        sizes="(max-width: 480px) calc(100vw - 56px), (max-width: 767px) calc((100vw - 100px) / 2), (max-width: 960px) calc((100vw - 132px) / 2), 225px"
+        alt={screen.alt} width="540" height="1170" loading="lazy" decoding="async" />
+      <figcaption><strong>{screen.title}</strong><span>{screen.text}</span></figcaption>
+    </figure>
+  ))}
+</div>

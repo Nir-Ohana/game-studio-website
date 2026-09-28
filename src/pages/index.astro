@@ -1,62 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ScreenGallery from '../components/ScreenGallery.astro';
 import { CONTACT_EMAIL, PRIVACY_PATH } from '../site';
-
-const shots = '/images/games/shelly-jigsaw/screens';
-const screens = [
-  { src: `${shots}/home.webp`, title: 'A gentle beginning', text: 'Meet Shelly and start with a 12-piece puzzle.', alt: 'Shelly welcomes a new player above a turtle reef picture and a Start button' },
-  { src: `${shots}/adventure.webp`, title: 'Adventure', text: '192 puzzles, 32 chapters, one lovely journey.', alt: 'Sunlit Shallows, chapter 1 of 32, with six puzzles along a winding trail' },
-  { src: `${shots}/daily.webp`, title: 'Your daily puzzle', text: 'Choose 12 to 432 pieces. Earlier puzzles wait for you, too.', alt: 'Daily Yarn Shop puzzle with six piece counts and an Earlier puzzles button' },
-  { src: `${shots}/complete.webp`, title: 'Enjoy the picture', text: 'A moment to admire what you have made.', alt: 'Puzzle complete screen showing the finished Coral Turtle Reef picture and three stars' },
-];
-
-const rocketShots = '/images/games/rocket-rabbit/screens';
-const rocketScreens = [
-  { src: `${rocketShots}/home.webp`, title: 'Meet Rocket', text: 'One rabbit. One jetpack. A runaway carrot.', alt: 'Rocket Rabbit pixel art menu with Play, Friends, Shop and Settings buttons' },
-  { src: `${rocketShots}/climb.webp`, title: 'Up, up and away', text: 'Bounce on islands, collect fuel and keep climbing.', alt: 'Rocket wearing a blue cap, bouncing among meadow platforms, coins and fuel cans' },
-  { src: `${rocketShots}/friends.webp`, title: 'Bring a friend', text: 'Unlock Pip, Rusty and Pebble through play.', alt: 'Friends screen showing Rocket the rabbit, Pip the frog, Rusty the fox and Pebble the penguin' },
-  { src: `${rocketShots}/shop.webp`, title: 'Make it yours', text: 'Spend collected coins on a whole new look.', alt: 'Rocket previews a wizard hat in the shop, with tabs for fur, hats, faces, jetpacks and trails' },
-];
-
-// Icon paths (24px, stroke) shared by the feature cards.
-const features = [
-  {
-    title: 'Easy to read',
-    text: 'Large, clear text and big buttons. Choose Extra large text or Reduce motion to make yourself comfortable.',
-    icon: '<path d="M4 7V5h12v2M10 5v14M7 19h6M14 12v-1h6v1M17 11v8M15.5 19h3"/>',
-  },
-  {
-    title: 'No rush, no pressure',
-    text: 'There is no countdown. Take two minutes or two days. Your puzzle waits exactly where you left it.',
-    icon: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
-  },
-  {
-    title: 'Room for every piece',
-    text: 'Pinch to zoom, sort edge and middle pieces, and let each piece snap gently into place. Optional zoom buttons help, too.',
-    icon: '<path d="M9 3h4a2 2 0 1 1 4 0h2v6a2 2 0 1 0 0 4v6h-6a2 2 0 1 0-4 0H3v-6a2 2 0 1 1 0-4V3z"/>',
-  },
-  {
-    title: 'A journey with Shelly',
-    text: 'Explore 192 puzzles across 32 chapters. Finish each chapter to collect a Field Note with a little fact from Shelly.',
-    icon: '<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/>',
-  },
-  {
-    title: 'A gentle hint',
-    text: 'Every puzzle starts with one free hint. Get another for 15 earned shells or choose to watch a short ad. You always see the cost first.',
-    icon: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3z"/>',
-  },
-  {
-    title: 'A collection of your own',
-    text: 'Finished pictures live in My puzzles, ready to play again. Puzzles work offline, and your progress stays on your phone.',
-    icon: '<path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H8a2.5 2.5 0 1 1 0-5c3 0 4 5 4 5zM12 7h4a2.5 2.5 0 1 0 0-5c-3 0-4 5-4 5z"/>',
-  },
-];
-
-const rocketFeatures = [
-  { title: 'Bounce, then boost', text: 'Tilt to steer and hold the screen to fire your jetpack. Springs send you higher, and a bubble catches your first fall each run.' },
-  { title: 'A world that keeps going', text: 'Climb from Meadow to Treetops, Clouds and Space, then discover Candy Clouds, Cheese Moon and more. The higher you go, the trickier it gets.' },
-  { title: 'Friends and fresh looks', text: 'Complete challenges to play as Pip the frog, Rusty the fox or Pebble the penguin. Collected coins unlock hats, face accessories, furs, jetpacks and trails.' },
-];
+import { shots, screens, features, rocketScreens, rocketFeatures } from '../data/games';
 ---
 
 <BaseLayout title="Ohana Studios — Shelly Jigsaw & Rocket Rabbit">
@@ -66,15 +12,15 @@ const rocketFeatures = [
       <h1 id="studio-intro-title">A little calm.<br />A little adventure.</h1>
       <p class="intro-text">Settle into a puzzle with Shelly, or reach for the sky with Rocket. Meet the two games we are making at Ohana Studios.</p>
       <nav class="game-links" aria-label="Explore our games">
-        <a class="card game-link" href="#shelly-jigsaw">
-          <img src="/images/games/shelly-jigsaw/app-icon.png" alt="" width="64" height="64" />
+        <a class="card game-link" href="/shelly-jigsaw/">
+          <img src="/images/games/shelly-jigsaw/app-icon.webp" alt="" width="64" height="64" />
           <span><strong>Shelly Jigsaw</strong><span>Calm puzzles, at your pace</span></span>
-          <span class="game-link-arrow" aria-hidden="true">↓</span>
+          <span class="game-link-arrow" aria-hidden="true">→</span>
         </a>
-        <a class="card game-link" href="#rocket-rabbit">
-          <img src="/images/games/rocket-rabbit/app-icon.png" alt="" width="64" height="64" />
+        <a class="card game-link" href="/rocket-rabbit/">
+          <img src="/images/games/rocket-rabbit/app-icon.webp" alt="" width="64" height="64" />
           <span><strong>Rocket Rabbit</strong><span>A cheerful endless climb</span></span>
-          <span class="game-link-arrow" aria-hidden="true">↓</span>
+          <span class="game-link-arrow" aria-hidden="true">→</span>
         </a>
       </nav>
     </div>
@@ -96,6 +42,7 @@ const rocketFeatures = [
           </a>
           <span class="store-note">Free to play · Contains ads</span>
         </div>
+        <a class="text-link" href="/shelly-jigsaw/">Explore Shelly Jigsaw <span aria-hidden="true">→</span></a>
       </div>
       <div class="phone">
         <img src={`${shots}/home.webp`} width="540" height="1170" alt="Shelly Jigsaw home screen on a phone" loading="lazy" />
@@ -109,17 +56,7 @@ const rocketFeatures = [
         <h2 id="screens-title">A peaceful place to puzzle</h2>
         <p>A look inside the current game, from your first puzzle to the finished picture.</p>
       </div>
-      <div class="screens">
-        {screens.map((s) => (
-          <figure class="card screen">
-            <img src={s.src} alt={s.alt} width="540" height="1170" loading="lazy" />
-            <figcaption>
-              <strong>{s.title}</strong>
-              <span>{s.text}</span>
-            </figcaption>
-          </figure>
-        ))}
-      </div>
+      <ScreenGallery screens={screens} />
     </div>
   </section>
 
@@ -162,6 +99,7 @@ const rocketFeatures = [
             <a class="btn btn-rocket" href="#rocket-screens">Meet Rocket and friends <span aria-hidden="true">↓</span></a>
           </div>
           <p class="store-note">Tilt and touch on a phone. Arrow keys or A/D and Space on desktop.</p>
+          <a class="text-link" href="/rocket-rabbit/">Explore Rocket Rabbit <span aria-hidden="true">→</span></a>
         </div>
         <img class="rocket-art" src="/images/games/rocket-rabbit/feature.webp" width="1024" height="500" loading="lazy" alt="Rocket Rabbit flying after a carrot balloon over green pixel-art hills" />
       </div>
@@ -170,17 +108,7 @@ const rocketFeatures = [
         <h3>One more jump</h3>
         <p>Fresh from the current game: the climb, the crew and a little dress-up.</p>
       </div>
-      <div class="screens">
-        {rocketScreens.map((s) => (
-          <figure class="card screen">
-            <img src={s.src} alt={s.alt} width="540" height="1170" loading="lazy" />
-            <figcaption>
-              <strong>{s.title}</strong>
-              <span>{s.text}</span>
-            </figcaption>
-          </figure>
-        ))}
-      </div>
+      <ScreenGallery screens={rocketScreens} />
       <div class="features rocket-features">
         {rocketFeatures.map((f) => (
           <div class="card feature">

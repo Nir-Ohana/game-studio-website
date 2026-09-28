@@ -46,6 +46,11 @@ jobs:
       - name: Build with Astro
         run: npm run build
 
+      - name: Check types and SEO output
+        run: |
+          npm run check
+          npm run test:seo
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
