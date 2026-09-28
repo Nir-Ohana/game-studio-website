@@ -1,0 +1,63 @@
+---
+interface Props { title: string }
+const { title } = Astro.props;
+---
+
+<section class="section play-demo" id="play" aria-labelledby="play-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="play-title">{title}</h2>
+      <p>A short demo that runs right here. Tap or click to move the pieces.</p>
+    </div>
+    <div class="play-frame" data-play-frame>
+      <button class="btn btn-primary play-start" type="button" data-play-start>Play now</button>
+      <p class="play-note">Loads about 55 MB. Progress in the demo stays on this device.</p>
+    </div>
+    <p class="play-fullscreen"><button class="text-link" type="button" data-play-fullscreen hidden>Full screen</button></p>
+  </div>
+</section>
+
+<script>
+  const frame = document.querySelector<HTMLElement>('[data-play-frame]');
+  const start = document.querySelector<HTMLButtonElement>('[data-play-start]');
+  const full = document.querySelector<HTMLButtonElement>('[data-play-fullscreen]');
+  start?.addEventListener('click', () => {
+    if (!frame) return;
+    const game = document.createElement('iframe');
+    game.src = '/play/index.html';
+    game.title = 'Shelly Jigsaw demo';
+    game.allow = 'fullscreen; autoplay';
+    game.setAttribute('allowfullscreen', '');
+    frame.replaceChildren(game);
+    frame.classList.add('is-running');
+    if (full) full.hidden = false;
+    game.focus();
+  });
+  full?.addEventListener('click', () => {
+    frame?.querySelector('iframe')?.requestFullscreen?.();
+  });
+</script>
+
+<style>
+  .play-frame {
+    position: relative;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 12px;
+    width: min(100%, 420px);
+    aspect-ratio: 9 / 16;
+    max-height: 82vh;
+    margin: 0 auto;
+    border-radius: var(--radius-card);
+    background: var(--shallows);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    text-align: center;
+  }
+  .play-frame.is-running { display: block; background: var(--water); }
+  .play-frame :global(iframe) { width: 100%; height: 100%; border: 0; display: block; }
+  .play-note { margin: 0; padding: 0 16px; color: var(--tide); font-size: 1rem; }
+  .play-fullscreen { text-align: center; margin: 16px 0 0; }
+  .play-fullscreen button[hidden] { display: none; }
+</style>
