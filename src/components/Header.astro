@@ -3,7 +3,7 @@ import { STUDIO } from '../site';
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const links = [
-  { href: '/#shelly-jigsaw', label: 'Our game', match: (p: string) => p === '/' },
+  { href: '/#games', label: 'Our games', match: (p: string) => p === '/' },
   { href: '/#contact', label: 'Contact', match: () => false },
 ];
 ---
@@ -11,7 +11,7 @@ const links = [
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="/">
-      <img src="/images/games/shelly-jigsaw/app-icon.png" alt="" width="48" height="48" />
+      <img src="/favicon.svg" alt="" width="48" height="48" />
       <span>{STUDIO}</span>
     </a>
     <nav class="nav" aria-label="Main">
