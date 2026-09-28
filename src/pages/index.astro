@@ -1,138 +1,46 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ScreenGallery from '../components/ScreenGallery.astro';
-import { CONTACT_EMAIL, PRIVACY_PATH } from '../site';
-import { shots, screens, features, rocketScreens, rocketFeatures } from '../data/games';
+import { CONTACT_EMAIL } from '../site';
+import { games } from '../data/games';
 ---
 
 <BaseLayout title="Ohana Studios — Shelly Jigsaw & Rocket Rabbit">
   <section class="studio-intro" id="games" aria-labelledby="studio-intro-title">
     <div class="wrap">
       <p class="intro-kicker">Small studio. Games with heart.</p>
-      <h1 id="studio-intro-title">A little calm.<br />A little adventure.</h1>
-      <p class="intro-text">Settle into a puzzle with Shelly, or reach for the sky with Rocket. Meet the two games we are making at Ohana Studios.</p>
-      <nav class="game-links" aria-label="Explore our games">
-        <a class="card game-link" href="/shelly-jigsaw/">
-          <img src="/images/games/shelly-jigsaw/app-icon.webp" alt="" width="64" height="64" />
-          <span><strong>Shelly Jigsaw</strong><span>Calm puzzles, at your pace</span></span>
-          <span class="game-link-arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="card game-link" href="/rocket-rabbit/">
-          <img src="/images/games/rocket-rabbit/app-icon.webp" alt="" width="64" height="64" />
-          <span><strong>Rocket Rabbit</strong><span>A cheerful endless climb</span></span>
-          <span class="game-link-arrow" aria-hidden="true">→</span>
-        </a>
-      </nav>
-    </div>
-  </section>
-
-  <section class="hero" id="shelly-jigsaw" aria-labelledby="shelly-title">
-    <div class="wrap">
-      <div class="hero-copy">
-        <span class="eyebrow">In development · Android</span>
-        <h2 class="game-title" id="shelly-title">Shelly Jigsaw</h2>
-        <p class="lead">
-          Calm jigsaw puzzles with big pieces, clear text and no rush. Relax with
-          Shelly the sea turtle, one beautiful picture at a time.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#screens">
-            See the game
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
-          </a>
-          <span class="store-note">Free to play · Contains ads</span>
-        </div>
-        <a class="text-link" href="/shelly-jigsaw/">Explore Shelly Jigsaw <span aria-hidden="true">→</span></a>
-      </div>
-      <div class="phone">
-        <img src={`${shots}/home.webp`} width="540" height="1170" alt="Shelly Jigsaw home screen on a phone" loading="lazy" />
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="screens" aria-labelledby="screens-title">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="screens-title">A peaceful place to puzzle</h2>
-        <p>A look inside the current game, from your first puzzle to the finished picture.</p>
-      </div>
-      <ScreenGallery screens={screens} />
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="features-title">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="features-title">Made to be comfortable</h2>
-        <p>Made for players over 50, and anyone who wants a quiet moment.</p>
-      </div>
-      <div class="features">
-        {features.map((f) => (
-          <div class="card feature">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={f.icon} />
+      <h1 id="studio-intro-title">A little calm. A little adventure.</h1>
+      <p class="intro-text">Two games in the making. Try each one right here.</p>
+      <div class="home-games">
+        {games.map((game) => (
+          <article class="card home-game">
+            <a class="home-game-shot" href={game.path} tabindex="-1" aria-hidden="true">
+              <img src={game.hero} width="540" height="1170" alt="" loading="lazy" />
+            </a>
+            <div class="home-game-body">
+              <h2><a href={game.path}>{game.name}</a></h2>
+              <p>{game.tagline}</p>
+              <div class="home-game-actions">
+                <a class:list={['btn', game.slug === 'rocket-rabbit' ? 'btn-rocket' : 'btn-primary']} href={`${game.path}#play`}>Play a demo</a>
+                <a class="text-link" href={game.path}>Learn more <span aria-hidden="true">→</span></a>
+              </div>
             </div>
-            <h3>{f.title}</h3>
-            <p>{f.text}</p>
-          </div>
-        ))}
-      </div>
-      <p class="game-note">
-        Shelly Jigsaw is free and contains ads: a banner below the puzzle, optional videos for
-        hints, and occasional full-screen ads between puzzles.
-        <a href={PRIVACY_PATH}>Read Shelly Jigsaw’s privacy policy</a>.
-      </p>
-    </div>
-  </section>
-
-  <section class="section rocket-section" id="rocket-rabbit" aria-labelledby="rocket-title">
-    <div class="wrap">
-      <div class="rocket-intro">
-        <div class="hero-copy">
-          <span class="eyebrow">In development · Android</span>
-          <h2 class="game-title" id="rocket-title">Rocket Rabbit</h2>
-          <p class="lead">
-            A runaway carrot, a trusty jetpack and a sky full of surprises. Bounce ever higher
-            with Rocket in a cheerful pixel-art adventure made for younger players.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-rocket" href="#rocket-screens">Meet Rocket and friends <span aria-hidden="true">↓</span></a>
-          </div>
-          <p class="store-note">Tilt and touch on a phone. Arrow keys or A/D and Space on desktop.</p>
-          <a class="text-link" href="/rocket-rabbit/">Explore Rocket Rabbit <span aria-hidden="true">→</span></a>
-        </div>
-        <img class="rocket-art" src="/images/games/rocket-rabbit/feature.webp" width="1024" height="500" loading="lazy" alt="Rocket Rabbit flying after a carrot balloon over green pixel-art hills" />
-      </div>
-
-      <div class="section-head" id="rocket-screens">
-        <h3>One more jump</h3>
-        <p>Fresh from the current game: the climb, the crew and a little dress-up.</p>
-      </div>
-      <ScreenGallery screens={rocketScreens} />
-      <div class="features rocket-features">
-        {rocketFeatures.map((f) => (
-          <div class="card feature">
-            <h3>{f.title}</h3>
-            <p>{f.text}</p>
-          </div>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section" id="contact" aria-labelledby="studio-title">
+  <section class="section home-contact" id="contact" aria-labelledby="studio-title">
     <div class="wrap split">
       <div class="card">
         <h2 id="studio-title">About Ohana Studios</h2>
         <p>
           We are a small, independent studio. <em>Ohana</em> means family, and we make games
-          for different moments and different generations: a quiet puzzle with Shelly,
-          a playful climb with Rocket, and a little joy in every day.
+          for different moments and different generations.
         </p>
       </div>
       <div class="card">
         <h2>Say hello</h2>
-        <p>Questions, ideas or something you would love to see in our games? We read every message.</p>
         <p class="email">{CONTACT_EMAIL}</p>
         <a class="btn btn-secondary" href={`mailto:${CONTACT_EMAIL}`}>Send us an email</a>
       </div>

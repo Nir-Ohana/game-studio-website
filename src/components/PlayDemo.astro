@@ -1,17 +1,17 @@
 ---
-interface Props { title: string }
-const { title } = Astro.props;
+interface Props { title: string; src: string; name: string; intro: string; size: string }
+const { title, src, name, intro, size } = Astro.props;
 ---
 
 <section class="section play-demo" id="play" aria-labelledby="play-title">
   <div class="wrap">
     <div class="section-head">
       <h2 id="play-title">{title}</h2>
-      <p>Solve one puzzle right here. Drag the pieces onto the board.</p>
+      <p>{intro}</p>
     </div>
-    <div class="play-frame" data-play-frame>
+    <div class="play-frame" data-play-frame data-src={src} data-name={name}>
       <button class="btn btn-primary play-start" type="button" data-play-start>Play now</button>
-      <p class="play-note">Loads about 25 MB the first time.</p>
+      <p class="play-note">Loads about {size} the first time.</p>
     </div>
     <p class="play-fullscreen"><button class="text-link" type="button" data-play-fullscreen hidden>Full screen</button></p>
   </div>
@@ -24,8 +24,8 @@ const { title } = Astro.props;
   start?.addEventListener('click', () => {
     if (!frame) return;
     const game = document.createElement('iframe');
-    game.src = '/play/index.html';
-    game.title = 'Shelly Jigsaw demo';
+    game.src = frame.dataset.src ?? '';
+    game.title = `${frame.dataset.name} demo`;
     game.allow = 'fullscreen; autoplay';
     game.setAttribute('allowfullscreen', '');
     frame.replaceChildren(game);

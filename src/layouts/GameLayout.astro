@@ -45,8 +45,8 @@ const structuredData = [
         <p class="game-tagline">{game.tagline}</p>
         <p class="lead">{game.introduction}</p>
         <div class="hero-actions">
-          {game.slug === 'shelly-jigsaw' && <a class="btn btn-primary" href="#play">Play in your browser</a>}
-          <a class:list={['btn', game.slug === 'shelly-jigsaw' ? 'btn-secondary' : 'btn-rocket']} href="#screens">See the screenshots <span aria-hidden="true">↓</span></a>
+          <a class:list={['btn', game.slug === 'rocket-rabbit' ? 'btn-rocket' : 'btn-primary']} href="#play">Play in your browser</a>
+          <a class="btn btn-secondary" href="#screens">See the screenshots <span aria-hidden="true">↓</span></a>
           <a class="text-link" href="/#contact">Contact the studio</a>
         </div>
       </div>
@@ -59,7 +59,7 @@ const structuredData = [
     </div>
   </section>
 
-  {game.slug === 'shelly-jigsaw' && <PlayDemo title="Try Shelly Jigsaw" />}
+  <PlayDemo title={`Try ${game.name}`} src={game.demo.src} name={game.name} intro={game.demo.intro} size={game.demo.size} />
 
   <section class="section" aria-labelledby="about-game">
     <div class="wrap game-story">

@@ -57,6 +57,7 @@ export const rocketFeatures = [
 export interface Game {
   slug: string;
   path: string;
+  demo: { src: string; intro: string; size: string };
   name: string;
   title: string;
   description: string;
@@ -77,6 +78,7 @@ export const games: Game[] = [
   {
     slug: 'shelly-jigsaw',
     path: '/shelly-jigsaw/',
+    demo: { src: '/play/index.html', intro: 'Solve one puzzle right here. Drag the pieces onto the board.', size: '25 MB' },
     name: 'Shelly Jigsaw',
     title: 'Shelly Jigsaw: Calm Android Puzzles',
     description: 'Discover Shelly Jigsaw, a relaxing Android puzzle game in development. Explore 192 Adventure puzzles, daily jigsaws and gentle hints with Shelly the turtle.',
@@ -103,6 +105,7 @@ export const games: Game[] = [
   {
     slug: 'rocket-rabbit',
     path: '/rocket-rabbit/',
+    demo: { src: '/rocket-rabbit-play/index.html', intro: 'Climb as high as you can. Arrow keys to steer, hold Space to blast off.', size: '12 MB' },
     name: 'Rocket Rabbit',
     title: 'Rocket Rabbit: Pixel-Art Climbing Game',
     description: 'Meet Rocket Rabbit, an Android endless climber in development. Bounce, boost a jetpack, collect coins and unlock animal friends in a bright pixel-art world.',

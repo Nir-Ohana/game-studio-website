@@ -336,7 +336,7 @@ section[id],
 }
 
 .studio-intro {
-  padding: 40px 0 72px;
+  padding: 28px 0 32px;
 }
 
 .intro-kicker {
@@ -347,7 +347,7 @@ section[id],
 
 .intro-text {
   max-width: 660px;
-  margin-top: 20px;
+  margin-top: 12px;
   font-size: 22px;
   color: var(--tide);
 }
@@ -869,4 +869,64 @@ section[id],
   align-items: center;
   min-height: 48px;
   font-weight: 800;
+}
+
+/* Home: two compact game cards */
+
+.home-games {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.home-game {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.home-game-shot {
+  flex: 0 0 132px;
+}
+
+.home-game-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-inner);
+  box-shadow: var(--shadow-card);
+}
+
+.home-game-body h2 {
+  font-size: 26px;
+}
+
+.home-game-body h2 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.home-game-body p {
+  margin-top: 6px;
+  color: var(--tide);
+}
+
+.home-game-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  margin-top: 14px;
+}
+
+.home-contact {
+  padding: 8px 0 48px;
+}
+
+@media (max-width: 760px) {
+  .home-games {
+    grid-template-columns: 1fr;
+  }
 }
