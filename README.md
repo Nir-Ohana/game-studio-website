@@ -6,6 +6,8 @@ The shared layout follows Shelly Jigsaw's in-game style (aqua background, pearl 
 
 ## Pages
 
+The homepage pairs a spacious introduction with two illustrated game showcases, each using its own colors and real game screenshots. The shared header uses the heart-and-waves studio mark, and the layout adapts to narrow phone screens. Browser demos load only after the player chooses to play.
+
 | URL | Source |
 | --- | --- |
 | `/` | `src/pages/index.astro` |

@@ -5,20 +5,36 @@ import { games } from '../data/games';
 ---
 
 <BaseLayout title="Ohana Studios — Shelly Jigsaw & Rocket Rabbit">
-  <section class="studio-intro" id="games" aria-labelledby="studio-intro-title">
+  <section class="studio-intro" aria-labelledby="studio-intro-title">
     <div class="wrap">
       <p class="intro-kicker">Small studio. Games with heart.</p>
-      <h1 id="studio-intro-title">A little calm. A little adventure.</h1>
-      <p class="intro-text">Two games in the making. Try each one right here.</p>
+      <h1 id="studio-intro-title">A little calm.<br /><span>A little adventure.</span></h1>
+      <p class="intro-text">A quiet puzzle by the sea. A rabbit reaching for the stars.<br class="desktop-break" /> We make little worlds you'll love spending time in.</p>
+      <a class="intro-link text-link" href="#games">Find your next little escape <span aria-hidden="true">↓</span></a>
+    </div>
+  </section>
+
+  <section class="home-showcase" id="games" aria-labelledby="games-title">
+    <div class="wrap">
+      <div class="home-section-head">
+        <h2 id="games-title">Two worlds. Your kind of play.</h2>
+        <p>In the making. Ready to try.</p>
+      </div>
       <div class="home-games">
         {games.map((game) => (
-          <article class="card home-game">
-            <a class="home-game-shot" href={game.path} tabindex="-1" aria-hidden="true">
-              <img src={game.hero} width="540" height="1170" alt="" loading="lazy" />
-            </a>
+          <article class:list={['card', 'home-game', `home-game-${game.slug}`]}>
+            <div class="home-game-visual">
+              <span class="game-genre">{game.genre}</span>
+              <a class="home-game-shot" href={game.path} tabindex="-1" aria-hidden="true">
+                <img src={game.hero} width="540" height="1170" alt="" loading="lazy" />
+              </a>
+              <img class="home-game-icon" src={game.icon} width="80" height="80" alt="" loading="lazy" />
+              <span class="game-mood">{game.slug === 'shelly-jigsaw' ? 'Take a breath. Place a piece.' : 'Dream big. Jump higher.'}</span>
+            </div>
             <div class="home-game-body">
               <h2><a href={game.path}>{game.name}</a></h2>
               <p>{game.tagline}</p>
+              <span class="game-status">In development · Android</span>
               <div class="home-game-actions">
                 <a class:list={['btn', game.slug === 'rocket-rabbit' ? 'btn-rocket' : 'btn-primary']} href={`${game.path}#play`}>Play a demo</a>
                 <a class="text-link" href={game.path}>Learn more <span aria-hidden="true">→</span></a>
@@ -31,18 +47,21 @@ import { games } from '../data/games';
   </section>
 
   <section class="section home-contact" id="contact" aria-labelledby="studio-title">
-    <div class="wrap split">
-      <div class="card">
-        <h2 id="studio-title">About Ohana Studios</h2>
-        <p>
-          We are a small, independent studio. <em>Ohana</em> means family, and we make games
-          for different moments and different generations.
-        </p>
-      </div>
-      <div class="card">
-        <h2>Say hello</h2>
-        <p class="email">{CONTACT_EMAIL}</p>
-        <a class="btn btn-secondary" href={`mailto:${CONTACT_EMAIL}`}>Send us an email</a>
+    <div class="wrap">
+      <div class="studio-note">
+        <div class="studio-note-copy">
+          <p class="intro-kicker">Made with heart</p>
+          <h2 id="studio-title">Small studio.<br />A warm welcome.</h2>
+          <p>
+            We are a small, independent studio. <em>Ohana</em> means family, and we make games
+            for different moments and different generations.
+          </p>
+        </div>
+        <div class="studio-note-contact">
+          <h2>Say hello</h2>
+          <p class="email">{CONTACT_EMAIL}</p>
+          <a class="btn btn-secondary" href={`mailto:${CONTACT_EMAIL}`}>Send us an email</a>
+        </div>
       </div>
     </div>
   </section>
