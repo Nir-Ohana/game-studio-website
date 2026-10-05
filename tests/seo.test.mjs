@@ -5,8 +5,8 @@ import test from 'node:test';
 import { parse } from 'parse5';
 
 const origin = 'https://ohana-studios.me';
-const routes = ['/', '/shelly-jigsaw/', '/rocket-rabbit/', '/shelly-jigsaw/privacy/'];
-const games = [['/shelly-jigsaw/', 'Shelly Jigsaw'], ['/rocket-rabbit/', 'Rocket Rabbit']];
+const routes = ['/', '/shelly-jigsaw/', '/rocket-rabbit/', '/pili-words/', '/shelly-jigsaw/privacy/'];
+const games = [['/shelly-jigsaw/', 'Shelly Jigsaw'], ['/rocket-rabbit/', 'Rocket Rabbit'], ['/pili-words/', 'Pili Words']];
 
 function nodes(node, tag) {
   return [...(node.tagName === tag ? [node] : []), ...(node.childNodes ?? []).flatMap(child => nodes(child, tag))];

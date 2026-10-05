@@ -25,6 +25,10 @@
   --rocket-sky: #e6f4fc;
   --rocket-sun: #fff0bb;
   --rocket-ink: #624719;
+  --pili-lilac: #ece4ff;
+  --pili-peach: #fff0e0;
+  --pili-violet: #6a4cc8;
+  --pili-violet-deep: #4f379c;
   --surface-glass: rgba(255, 253, 248, 0.65);
   --shadow-showcase: 0 16px 40px rgba(15, 58, 74, 0.09);
 
@@ -654,6 +658,16 @@ section[id],
   box-shadow: var(--shadow-card);
 }
 
+.btn-pili {
+  background: var(--pili-violet);
+  color: #ffffff;
+  box-shadow: 0 4px 0 var(--pili-violet-deep), 0 8px 18px rgba(106, 76, 200, 0.28);
+}
+
+.btn-pili:hover {
+  background: var(--pili-violet-deep);
+}
+
 .btn-rocket {
   color: #38240b;
   background: #f9ce28;
@@ -940,7 +954,7 @@ section[id],
 
 .home-games {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 28px;
   margin-top: 24px;
 }
@@ -960,6 +974,14 @@ section[id],
   justify-content: center;
   overflow: hidden;
   background: linear-gradient(145deg, var(--water), var(--shallows));
+}
+
+.home-game-pili-words .home-game-visual {
+  background: linear-gradient(145deg, var(--pili-lilac), var(--pili-peach));
+}
+
+.home-game-pili-words .game-mood {
+  color: var(--pili-violet);
 }
 
 .home-game-rocket-rabbit .home-game-visual {
@@ -1015,7 +1037,7 @@ section[id],
   position: absolute;
   left: 24px;
   bottom: 24px;
-  max-width: 130px;
+  max-width: 96px;
   font-size: 20px;
   line-height: 1.35;
   font-weight: 800;
@@ -1029,6 +1051,9 @@ section[id],
 .home-game-shot {
   position: relative;
   width: 174px;
+  /* Right of center, so the mood line keeps the left of the card. */
+  margin-left: auto;
+  margin-right: 40px;
   padding: 7px;
   margin-bottom: -56px;
   border-radius: 30px;
@@ -1146,7 +1171,8 @@ section[id],
   }
   .home-game-shot {
     width: 150px;
-    margin-left: 36px;
+    margin-left: auto;
+    margin-right: 64px;
     margin-bottom: -80px;
   }
   .game-mood {

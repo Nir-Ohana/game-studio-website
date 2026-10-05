@@ -9,7 +9,7 @@ interface Props { game: Game }
 const { game } = Astro.props;
 const siteURL = Astro.site!;
 const url = new URL(game.path, siteURL).href;
-const otherGame = games.find(other => other.slug !== game.slug)!;
+const otherGames = games.filter(other => other.slug !== game.slug);
 const structuredData = [
   {
     '@type': 'VideoGame', '@id': `${url}#game`, name: game.name,
@@ -45,7 +45,7 @@ const structuredData = [
         <p class="game-tagline">{game.tagline}</p>
         <p class="lead">{game.introduction}</p>
         <div class="hero-actions">
-          <a class:list={['btn', game.slug === 'rocket-rabbit' ? 'btn-rocket' : 'btn-primary']} href="#play">Play in your browser</a>
+          <a class:list={['btn', game.button]} href="#play">Play in your browser</a>
           <a class="btn btn-secondary" href="#screens">See the screenshots <span aria-hidden="true">↓</span></a>
           <a class="text-link" href="/#contact">Contact the studio</a>
         </div>
@@ -99,11 +99,15 @@ const structuredData = [
   <section class="section" aria-labelledby="more-games-title">
     <div class="wrap">
       <div class="section-head"><h2 id="more-games-title">More from Ohana Studios</h2></div>
-      <a class="card game-link" href={otherGame.path}>
-        <img src={otherGame.icon.replace('.png', '.webp')} alt="" width="64" height="64" loading="lazy" />
-        <span><strong>{otherGame.name}</strong><span>{otherGame.tagline}</span></span>
-        <span class="game-link-arrow" aria-hidden="true">→</span>
-      </a>
+      <div class="game-links">
+        {otherGames.map(otherGame => (
+          <a class="card game-link" href={otherGame.path}>
+            <img src={otherGame.icon.replace('.png', '.webp')} alt="" width="64" height="64" loading="lazy" />
+            <span><strong>{otherGame.name}</strong><span>{otherGame.tagline}</span></span>
+            <span class="game-link-arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>

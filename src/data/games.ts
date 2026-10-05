@@ -14,6 +14,14 @@ export const rocketScreens = [
   { src: `${rocketShots}/shop.webp`, title: 'Make it yours', text: 'Spend collected coins on a whole new look.', alt: 'Rocket previews a wizard hat in the shop, with tabs for fur, hats, faces, jetpacks and trails' },
 ];
 
+export const piliShots = '/images/games/pili-words/screens';
+export const piliScreens = [
+  { src: `${piliShots}/play.webp`, title: 'Find the fit', text: 'Tap a word, then the spot where it belongs.', alt: 'Pili Words board with In the sky, Out at night and Animals circles; BAT locked in the middle and STREETLIGHT selected' },
+  { src: `${piliShots}/mystery.webp`, title: 'Mystery circles', text: 'Later puzzles hide a category for you to work out.', alt: 'A mystery board with one category label hidden and three words already locked in' },
+  { src: `${piliShots}/win.webp`, title: 'Three stars', text: 'Solve with no slips and no hints for a perfect score.', alt: 'All joined up! card with three gold stars and a five-day daily streak' },
+  { src: `${piliShots}/levels.webp`, title: 'Sixty puzzles', text: 'Earn stars on every level and keep your daily streak.', alt: 'Levels menu with star ratings on each solved puzzle and a running star total' },
+];
+
 // Icon paths (24px, stroke) shared by the feature cards.
 export const features = [
   {
@@ -49,9 +57,17 @@ export const features = [
 ];
 
 export const rocketFeatures = [
-  { title: 'Bounce, then boost', text: 'Tilt to steer and hold the screen to fire your jetpack. Springs send you higher, and a bubble catches your first fall each run.' },
+  { title: 'Bounce, then boost', text: 'Hold the arrows to steer and BLAST to fire your jetpack. Use both together to steer while flying. The Android game also offers tilt controls in Settings. Springs send you higher, and a bubble catches your first fall each run.' },
   { title: 'A world that keeps going', text: 'Climb from Meadow to Treetops, Clouds and Space, then discover Candy Clouds, Cheese Moon and more. The higher you go, the trickier it gets.' },
   { title: 'Friends and fresh looks', text: 'Complete challenges to play as Pip the frog, Rusty the fox or Pebble the penguin. Collected coins unlock hats, face accessories, furs, jetpacks and trails.' },
+];
+
+export const piliFeatures = [
+  { title: 'Think, then place', text: 'Each puzzle has three overlapping circles and seven everyday words. A word in an overlap must fit every circle it touches, so a bat sits where "Has a tail" meets "Can fly".' },
+  { title: 'Clever, not tricky', text: 'Sixty puzzles draw on 85 categories, from Has horns to Melts to Starts with B. No word gives its answer away, and every word comes with a short explanation.' },
+  { title: 'Mystery circles', text: 'Once you know the ropes, some puzzles hide one or two categories. Work out what the words have in common, and the labels appear when you solve.' },
+  { title: 'Stars and streaks', text: 'Earn up to three stars on each puzzle. Solve the Daily puzzle on consecutive days to build a streak, then share your result without spoilers.' },
+  { title: 'Help when you want it', text: 'Five tries per puzzle, with correct words locking in green. A hint places one word for you without costing a try; it just caps that puzzle at two stars.' },
 ];
 
 export interface Game {
@@ -59,6 +75,8 @@ export interface Game {
   path: string;
   demo: { src: string; intro: string; size: string };
   name: string;
+  mood: string;
+  button: 'btn-primary' | 'btn-rocket' | 'btn-pili';
   title: string;
   description: string;
   genre: string;
@@ -80,6 +98,8 @@ export const games: Game[] = [
     path: '/shelly-jigsaw/',
     demo: { src: '/play/index.html', intro: 'Solve one puzzle right here. Drag the pieces onto the board.', size: '25 MB' },
     name: 'Shelly Jigsaw',
+    mood: 'Take a breath. Place a piece.',
+    button: 'btn-primary',
     title: 'Shelly Jigsaw: Calm Android Puzzles',
     description: 'Discover Shelly Jigsaw, a relaxing Android puzzle game in development. Explore 192 Adventure puzzles, daily jigsaws and gentle hints with Shelly the turtle.',
     genre: 'Jigsaw puzzle',
@@ -105,8 +125,10 @@ export const games: Game[] = [
   {
     slug: 'rocket-rabbit',
     path: '/rocket-rabbit/',
-    demo: { src: '/rocket-rabbit-play/index.html', intro: 'Climb as high as you can. Arrow keys to steer, hold Space to blast off.', size: '12 MB' },
+    demo: { src: '/rocket-rabbit-play/index.html', intro: 'Climb as high as you can. On a phone, hold the on-screen arrows to steer and BLAST to fly. Hold an arrow and BLAST together, or slide between the arrows to change direction. On a computer, use the arrow keys or A/D to steer and hold Space to boost. Rocket bounces automatically.', size: '41 MB' },
     name: 'Rocket Rabbit',
+    mood: 'Dream big. Jump higher.',
+    button: 'btn-rocket',
     title: 'Rocket Rabbit: Pixel-Art Climbing Game',
     description: 'Meet Rocket Rabbit, an Android endless climber in development. Bounce, boost a jetpack, collect coins and unlock animal friends in a bright pixel-art world.',
     genre: 'Endless platformer',
@@ -124,9 +146,38 @@ export const games: Game[] = [
     features: rocketFeatures,
     questions: [
       { question: 'Can I download Rocket Rabbit yet?', answer: 'Rocket Rabbit is in development for Android. A public download link and release date have not been announced on this site.' },
-      { question: 'How do I control Rocket?', answer: 'On a phone, tilt to steer and hold a finger on the screen to fire the jetpack. In the desktop build, use the arrow keys or A/D to steer and Space to boost. Landing on a platform makes Rocket bounce automatically.' },
+      { question: 'How do I control Rocket?', answer: 'The browser demo starts with touch controls: hold the left or right arrow to steer and hold BLAST to fire the jetpack. Use two fingers to steer and boost together; slide your steering finger between the arrows to change direction. On a computer, the arrow keys or A/D and Space work too. The Android game also offers tilt steering, sensitivity and calibration in Settings. Landing on a platform makes Rocket bounce automatically.' },
       { question: 'How do I unlock the other animals?', answer: 'Pip the frog joins after 30 spring bounces, Rusty the fox after 300 collected coins, and Pebble the penguin after a climb to 1,600 metres. These challenges track your progress across runs. The friends share the same movement and can wear your hats, face items, jetpacks and trails.' },
       { question: 'What are coins for?', answer: 'Coins go into a saved bank and unlock cosmetic items in the shop: fur colors for Rocket, hats, face accessories, jetpacks and trails. Fuel cans power the jetpack during a run; spending coins does not use up your fuel or undo progress toward unlocking Rusty.' },
+    ],
+  },
+  {
+    slug: 'pili-words',
+    path: '/pili-words/',
+    demo: { src: '/pili-words-play/index.html', intro: 'Start with a short guided tutorial. Tap a word, then tap the spot where it belongs, and press Check when you are ready.', size: '41 MB' },
+    name: 'Pili Words',
+    mood: 'Find the fit. Join it up.',
+    button: 'btn-pili',
+    title: 'Pili Words: Word Circles Puzzle Game',
+    description: 'Meet Pili Words, an Android word puzzle in development. Sort everyday words into three overlapping circles, earn stars and keep a daily streak with Pili the octopus.',
+    genre: 'Word puzzle',
+    tagline: 'Seven words. Three circles. One clever fit.',
+    introduction: 'Join Pili the octopus and sort everyday words into three overlapping circles. Each word belongs in exactly one spot, and the overlaps are where it gets interesting.',
+    detailHeading: 'Every word has its place',
+    details: [
+      'Pili means "to join" in Hawaiian, and that is the whole idea. A comet has a tail but no wings. An airplane has both. A paper plane has wings but no tail. Place all seven words, press Check, and correct words lock in.',
+      'Sixty puzzles start with every category shown, then move on to mystery boards where one or two categories stay hidden until you solve. A Daily puzzle rotates through the collection, and stars on every level give you a reason to come back for a perfect score.',
+    ],
+    icon: '/images/games/pili-words/app-icon.png',
+    hero: `${piliShots}/play.webp`,
+    heroAlt: piliScreens[0].alt,
+    screens: piliScreens,
+    features: piliFeatures,
+    questions: [
+      { question: 'Can I download Pili Words yet?', answer: 'Pili Words is in development for Android. A public download link and release date have not been announced on this site.' },
+      { question: 'Does it need the internet?', answer: 'No. Pili Words plays fully offline, needs no account, and keeps your stars and streak on your phone.' },
+      { question: 'How do stars work?', answer: 'Solve with no mistakes and no hints for three stars. One mistake or one hint earns two, and any other solve earns one. Replaying a puzzle keeps your best result.' },
+      { question: 'What happens if I run out of tries?', answer: 'You can try the puzzle again from the start or look at the solution, which explains why each word belongs where it does.' },
     ],
   },
 ];
