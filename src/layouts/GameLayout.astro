@@ -14,8 +14,9 @@ const structuredData = [
   {
     '@type': 'VideoGame', '@id': `${url}#game`, name: game.name,
     url, description: game.description, image: new URL(game.icon, siteURL).href,
-    genre: game.genre, gamePlatform: 'Android',
-    playMode: 'https://schema.org/SinglePlayer', creativeWorkStatus: 'In development',
+    genre: game.genre, gamePlatform: game.demo.full ? ['Web browser', 'Android'] : 'Android',
+    playMode: 'https://schema.org/SinglePlayer', creativeWorkStatus: game.demo.full ? 'Published' : 'In development',
+    ...(game.demo.full ? { isAccessibleForFree: true, potentialAction: { '@type': 'PlayAction', target: new URL(game.demo.src, siteURL).href } } : {}),
     inLanguage: 'en', publisher: { '@id': new URL('/#organization', siteURL).href },
     mainEntityOfPage: { '@id': `${url}#webpage` },
   },
@@ -40,12 +41,12 @@ const structuredData = [
   <section class="hero game-page-hero" aria-labelledby="game-title">
     <div class="wrap">
       <div class="hero-copy">
-        <span class="eyebrow">In development · Android</span>
+        <span class="eyebrow">{game.status}</span>
         <h1 id="game-title">{game.name}</h1>
         <p class="game-tagline">{game.tagline}</p>
         <p class="lead">{game.introduction}</p>
         <div class="hero-actions">
-          <a class:list={['btn', game.button]} href="#play">Play in your browser</a>
+          <a class:list={['btn', game.button]} href="#play">{game.demo.full ? 'Play free in your browser' : 'Play in your browser'}</a>
           <a class="btn btn-secondary" href="#screens">See the screenshots <span aria-hidden="true">↓</span></a>
           <a class="text-link" href="/#contact">Contact the studio</a>
         </div>
@@ -59,7 +60,7 @@ const structuredData = [
     </div>
   </section>
 
-  <PlayDemo title={`Try ${game.name}`} src={game.demo.src} name={game.name} intro={game.demo.intro} size={game.demo.size} />
+  <PlayDemo title={game.demo.full ? `Play ${game.name}` : `Try ${game.name}`} src={game.demo.src} name={game.name} intro={game.demo.intro} size={game.demo.size} full={game.demo.full} />
 
   <section class="section" aria-labelledby="about-game">
     <div class="wrap game-story">
@@ -70,7 +71,7 @@ const structuredData = [
 
   <section class="section" id="screens" aria-labelledby="screens-title">
     <div class="wrap">
-      <div class="section-head"><h2 id="screens-title">Inside {game.name}</h2><p>Real screenshots from the game in development.</p></div>
+      <div class="section-head"><h2 id="screens-title">Inside {game.name}</h2><p>{game.demo.full ? 'Real screenshots from the game.' : 'Real screenshots from the game in development.'}</p></div>
       <ScreenGallery screens={game.screens} />
     </div>
   </section>

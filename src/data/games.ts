@@ -73,7 +73,8 @@ export const piliFeatures = [
 export interface Game {
   slug: string;
   path: string;
-  demo: { src: string; intro: string; size: string };
+  demo: { src: string; intro: string; size: string; full?: boolean };
+  status: string;
   name: string;
   mood: string;
   button: 'btn-primary' | 'btn-rocket' | 'btn-pili';
@@ -97,6 +98,7 @@ export const games: Game[] = [
     slug: 'shelly-jigsaw',
     path: '/shelly-jigsaw/',
     demo: { src: '/play/index.html', intro: 'Solve one puzzle right here. Drag the pieces onto the board.', size: '25 MB' },
+    status: 'In development · Android',
     name: 'Shelly Jigsaw',
     mood: 'Take a breath. Place a piece.',
     button: 'btn-primary',
@@ -126,6 +128,7 @@ export const games: Game[] = [
     slug: 'rocket-rabbit',
     path: '/rocket-rabbit/',
     demo: { src: '/rocket-rabbit-play/index.html', intro: 'Climb as high as you can. On a phone, hold the on-screen arrows to steer and BLAST to fly. Hold an arrow and BLAST together, or slide between the arrows to change direction. On a computer, use the arrow keys or A/D to steer and hold Space to boost. Rocket bounces automatically.', size: '41 MB' },
+    status: 'In development · Android',
     name: 'Rocket Rabbit',
     mood: 'Dream big. Jump higher.',
     button: 'btn-rocket',
@@ -154,12 +157,13 @@ export const games: Game[] = [
   {
     slug: 'pili-words',
     path: '/pili-words/',
-    demo: { src: '/pili-words-play/index.html', intro: 'Start with a short guided tutorial. Tap a word, then tap the spot where it belongs, and press Check when you are ready.', size: '41 MB' },
+    demo: { src: '/pili-words-play/index.html', intro: 'This is the whole game: all 60 puzzles, free, with no download or account. Start with a short guided tutorial. Tap a word, then tap the spot where it belongs, and press Check when you are ready.', size: '41 MB', full: true },
+    status: 'Full game · Free in your browser',
     name: 'Pili Words',
     mood: 'Find the fit. Join it up.',
     button: 'btn-pili',
     title: 'Pili Words: Word Circles Puzzle Game',
-    description: 'Meet Pili Words, an Android word puzzle in development. Sort everyday words into three overlapping circles, earn stars and keep a daily streak with Pili the octopus.',
+    description: 'Play Pili Words free in your browser: all 60 puzzles, no download. Sort everyday words into three overlapping circles, earn stars and keep a daily streak with Pili the octopus.',
     genre: 'Word puzzle',
     tagline: 'Seven words. Three circles. One clever fit.',
     introduction: 'Join Pili the octopus and sort everyday words into three overlapping circles. Each word belongs in exactly one spot, and the overlaps are where it gets interesting.',
@@ -174,8 +178,8 @@ export const games: Game[] = [
     screens: piliScreens,
     features: piliFeatures,
     questions: [
-      { question: 'Can I download Pili Words yet?', answer: 'Pili Words is in development for Android. A public download link and release date have not been announced on this site.' },
-      { question: 'Does it need the internet?', answer: 'No. Pili Words plays fully offline, needs no account, and keeps your stars and streak on your phone.' },
+      { question: 'Can I play without downloading anything?', answer: 'Yes. The full game, with all 60 puzzles, runs right here in your browser for free, with no account. An Android version is in development.' },
+      { question: 'Does it need the internet?', answer: 'The browser version needs a connection to load the first time. The Android version will play fully offline, need no account, and keep your stars and streak on your phone.' },
       { question: 'How do stars work?', answer: 'Solve with no mistakes and no hints for three stars. One mistake or one hint earns two, and any other solve earns one. Replaying a puzzle keeps your best result.' },
       { question: 'What happens if I run out of tries?', answer: 'You can try the puzzle again from the start or look at the solution, which explains why each word belongs where it does.' },
     ],

@@ -15,9 +15,9 @@ export interface Props {
 
 const {
   title,
-  description = 'Meet the games from Ohana Studios: Shelly Jigsaw, a calm puzzle journey with a sea turtle, and Rocket Rabbit, a cheerful pixel-art endless climber.',
+  description = 'Meet the games from Ohana Studios: Shelly Jigsaw, a calm puzzle journey with a sea turtle; Rocket Rabbit, a cheerful pixel-art endless climber; and Pili Words, a word circles puzzle you can play free in your browser.',
   image = '/images/ohana-studios.png',
-  imageAlt = 'Ohana Studios heart and waves logo',
+  imageAlt = 'Ohana Studios rising heart logo',
   structuredData = [],
   mainEntity,
 } = Astro.props;
@@ -35,7 +35,7 @@ const schema = {
       '@type': 'Organization', '@id': organizationId, name: STUDIO,
       url: siteURL.href, logo: new URL('/images/ohana-studios.png', siteURL).href,
       email: CONTACT_EMAIL,
-      description: 'An independent game studio making Shelly Jigsaw and Rocket Rabbit.',
+      description: 'An independent game studio making Shelly Jigsaw, Rocket Rabbit and Pili Words.',
     },
     {
       '@type': 'WebSite', '@id': websiteId, name: STUDIO, url: siteURL.href,
@@ -65,7 +65,9 @@ const schemaJSON = JSON.stringify(schema).replace(/</g, '\\u003c');
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href={canonical} />
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#BFE6EE" />
 

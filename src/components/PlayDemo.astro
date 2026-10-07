@@ -1,6 +1,6 @@
 ---
-interface Props { title: string; src: string; name: string; intro: string; size: string }
-const { title, src, name, intro, size } = Astro.props;
+interface Props { title: string; src: string; name: string; intro: string; size: string; full?: boolean }
+const { title, src, name, intro, size, full = false } = Astro.props;
 ---
 
 <section class="section play-demo" id="play" aria-labelledby="play-title">
@@ -9,13 +9,13 @@ const { title, src, name, intro, size } = Astro.props;
       <h2 id="play-title">{title}</h2>
       <p>{intro}</p>
     </div>
-    <div class="play-frame" data-play-frame data-src={src} data-name={name}>
+    <div class="play-frame" data-play-frame data-src={src} data-name={name} data-label={full ? 'game' : 'demo'}>
       <button class="btn btn-primary play-start" type="button" data-play-start>Play now</button>
       <p class="play-note">Loads about {size} the first time.</p>
     </div>
     <div class="play-actions" data-play-actions hidden>
       <button class="text-link" type="button" data-play-fullscreen>Full screen</button>
-      <a class="text-link" href={src} target="_blank" rel="noopener">Open demo in a new tab</a>
+      <a class="text-link" href={src} target="_blank" rel="noopener">Open {full ? 'the game' : 'demo'} in a new tab</a>
     </div>
   </div>
 </section>
@@ -29,7 +29,7 @@ const { title, src, name, intro, size } = Astro.props;
     if (!frame) return;
     const game = document.createElement('iframe');
     game.src = frame.dataset.src ?? '';
-    game.title = `${frame.dataset.name} demo`;
+    game.title = `${frame.dataset.name} ${frame.dataset.label ?? 'demo'}`;
     game.allow = 'fullscreen; autoplay';
     game.setAttribute('allowfullscreen', '');
     frame.replaceChildren(game);
