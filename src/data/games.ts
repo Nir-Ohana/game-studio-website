@@ -16,10 +16,10 @@ export const rocketScreens = [
 
 export const piliShots = '/images/games/pili-words/screens';
 export const piliScreens = [
-  { src: `${piliShots}/play.webp`, title: 'Find the fit', text: 'Tap a word, then the spot where it belongs.', alt: 'Pili Words board with In the sky, Out at night and Animals circles; BAT locked in the middle and STREETLIGHT selected' },
-  { src: `${piliShots}/mystery.webp`, title: 'Mystery circles', text: 'Later puzzles hide a category for you to work out.', alt: 'A mystery board with one category label hidden and three words already locked in' },
-  { src: `${piliShots}/win.webp`, title: 'Three stars', text: 'Solve with no slips and no hints for a perfect score.', alt: 'All joined up! card with three gold stars and a five-day daily streak' },
-  { src: `${piliShots}/levels.webp`, title: 'Sixty puzzles', text: 'Earn stars on every level and keep your daily streak.', alt: 'Levels menu with star ratings on each solved puzzle and a running star total' },
+  { src: `${piliShots}/play.webp`, title: 'Find the fit', text: 'Tap a word, then the spot where it belongs.', alt: 'Pili Words board with Used for cleaning, Has bristles and In the bathroom circles; TOOTHBRUSH locked in the middle and PAINTBRUSH selected' },
+  { src: `${piliShots}/mystery.webp`, title: 'Mystery circles', text: 'Later puzzles hide a category for you to work out.', alt: 'Level 49 mystery board with Has a lid and Holds food shown, the third category hidden and three words locked in' },
+  { src: `${piliShots}/win.webp`, title: 'Three stars', text: 'Solve with no slips and no hints for a perfect score.', alt: 'Perfect! card with three gold stars, the three connections and a five-day streak' },
+  { src: `${piliShots}/levels.webp`, title: 'Seventy-two levels', text: 'Six reef chapters, unlocked one level at a time.', alt: 'Sunny Shallows reef path with star ratings on solved levels and Pili waiting at level 12' },
 ];
 
 // Icon paths (24px, stroke) shared by the feature cards.
@@ -64,9 +64,9 @@ export const rocketFeatures = [
 
 export const piliFeatures = [
   { title: 'Think, then place', text: 'Each puzzle has three overlapping circles and seven everyday words. A word in an overlap must fit every circle it touches, so a bat sits where "Has a tail" meets "Can fly".' },
-  { title: 'Clever, not tricky', text: 'Sixty puzzles draw on 85 categories, from Has horns to Melts to Starts with B. No word gives its answer away, and every word comes with a short explanation.' },
+  { title: 'Clever, not tricky', text: 'Seventy-two puzzles draw on over 100 categories, from Has horns to Melts to Starts with B. No word gives its answer away, and every word comes with a short explanation.' },
   { title: 'Mystery circles', text: 'Once you know the ropes, some puzzles hide one or two categories. Work out what the words have in common, and the labels appear when you solve.' },
-  { title: 'Stars and streaks', text: 'Earn up to three stars on each puzzle. Solve the Daily puzzle on consecutive days to build a streak, then share your result without spoilers.' },
+  { title: 'Stars and streaks', text: 'Earn up to three stars on each puzzle. Solve a level on consecutive days to build a streak, then share your result without spoilers.' },
   { title: 'Help when you want it', text: 'Five tries per puzzle, with correct words locking in green. A hint places one word for you without costing a try; it just caps that puzzle at two stars.' },
 ];
 
@@ -127,7 +127,7 @@ export const games: Game[] = [
   {
     slug: 'rocket-rabbit',
     path: '/rocket-rabbit/',
-    demo: { src: '/rocket-rabbit-play/index.html', intro: 'Climb as high as you can. On a phone, hold the on-screen arrows to steer and BLAST to fly. Hold an arrow and BLAST together, or slide between the arrows to change direction. On a computer, use the arrow keys or A/D to steer and hold Space to boost. Rocket bounces automatically.', size: '41 MB' },
+    demo: { src: '/rocket-rabbit-play/index.html', intro: 'Climb as high as you can. On a phone, hold the on-screen arrows to steer and BLAST to fly. Hold an arrow and BLAST together, or slide between the arrows to change direction. On a computer, use the arrow keys or A/D to steer and hold Space to boost. Rocket bounces automatically.', size: '42 MB' },
     status: 'In development · Android',
     name: 'Rocket Rabbit',
     mood: 'Dream big. Jump higher.',
@@ -157,20 +157,20 @@ export const games: Game[] = [
   {
     slug: 'pili-words',
     path: '/pili-words/',
-    demo: { src: '/pili-words-play/index.html', intro: 'This is the whole game: all 60 puzzles, free, with no download or account. Start with a short guided tutorial. Tap a word, then tap the spot where it belongs, and press Check when you are ready.', size: '41 MB', full: true },
+    demo: { src: '/pili-words-play/index.html', intro: 'This is the whole game: all 72 levels, free, with no download or account. Start with a short guided tutorial. Tap a word, then tap the spot where it belongs, and press Check when you are ready.', size: '42 MB', full: true },
     status: 'Full game · Free in your browser',
     name: 'Pili Words',
     mood: 'Find the fit. Join it up.',
     button: 'btn-pili',
     title: 'Pili Words: Word Circles Puzzle Game',
-    description: 'Play Pili Words free in your browser: all 60 puzzles, no download. Sort everyday words into three overlapping circles, earn stars and keep a daily streak with Pili the octopus.',
+    description: 'Play Pili Words free in your browser: all 72 levels, no download. Sort everyday words into three overlapping circles, earn stars and keep a streak with Pili the octopus.',
     genre: 'Word puzzle',
     tagline: 'Seven words. Three circles. One clever fit.',
     introduction: 'Join Pili the octopus and sort everyday words into three overlapping circles. Each word belongs in exactly one spot, and the overlaps are where it gets interesting.',
     detailHeading: 'Every word has its place',
     details: [
       'Pili means "to join" in Hawaiian, and that is the whole idea. A comet has a tail but no wings. An airplane has both. A paper plane has wings but no tail. Place all seven words, press Check, and correct words lock in.',
-      'Sixty puzzles start with every category shown, then move on to mystery boards where one or two categories stay hidden until you solve. A Daily puzzle rotates through the collection, and stars on every level give you a reason to come back for a perfect score.',
+      'Seventy-two levels across six chapters, from Sunny Shallows to the Sunken Ship, start with every category shown, then move on to mystery boards where one or two categories stay hidden until you solve. Each level unlocks when you solve the one before it, and stars on every level give you a reason to come back for a perfect score.',
     ],
     icon: '/images/games/pili-words/app-icon.png',
     hero: `${piliShots}/play.webp`,
@@ -178,7 +178,7 @@ export const games: Game[] = [
     screens: piliScreens,
     features: piliFeatures,
     questions: [
-      { question: 'Can I play without downloading anything?', answer: 'Yes. The full game, with all 60 puzzles, runs right here in your browser for free, with no account. An Android version is in development.' },
+      { question: 'Can I play without downloading anything?', answer: 'Yes. The full game, with all 72 levels, runs right here in your browser for free, with no account. An Android version is in development.' },
       { question: 'Does it need the internet?', answer: 'The browser version needs a connection to load the first time. The Android version will play fully offline, need no account, and keep your stars and streak on your phone.' },
       { question: 'How do stars work?', answer: 'Solve with no mistakes and no hints for three stars. One mistake or one hint earns two, and any other solve earns one. Replaying a puzzle keeps your best result.' },
       { question: 'What happens if I run out of tries?', answer: 'You can try the puzzle again from the start or look at the solution, which explains why each word belongs where it does.' },
