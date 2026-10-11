@@ -28,7 +28,7 @@ Refreshed September 28, 2026 from the local game projects:
 
 - **Shelly Jigsaw** — `C:/dev/puzzle-game`, revision `3d232db`. Features checked against the Adventure catalog, Daily puzzle sizes, hint system and current player-experience docs. Screenshots come from `docs/evidence/schell-lenses/2026-09-27/` (`home.png`, `adventure.png`, `daily.png`, `completion-photo.png`); the app icon comes from `design/store-listing/icon-play-512.png`.
 - **Rocket Rabbit** — `C:/Users/Nir/orca/rocket-rabbit`, revision `4e926dc`. Features checked against the README, `Characters.gd`, `Zones.gd` and the cosmetics catalog. Fresh screenshots were captured with `tools/capture_screenshots.tscn` (`00_menu`, `01_start`, `94_friends`, `92_shop_hats`) using a temporary player profile. The older screenshots in `docs/design/screenshots/` predate the pixel art. The app icon and feature art come from `docs/store/`.
-- **Pili Words** — `C:/dev/venn-puzzle`, added October 5, 2026. Features checked against the puzzle catalog (72 levels in six chapters), star ratings and streak. Screenshots are 540 × 1170 captures from `tools/capture_store_shots.gd` (`play`, `mystery`, `win`, `levels`) using isolated saves; the app icon is rendered from the game's `assets/icon.svg`, drawn by `tools/generate_pili_art.py`.
+- **Pili Words** — `C:/dev/venn-puzzle`, added October 5, 2026. Features checked against the puzzle catalog (96 levels in eight chapters), star ratings and streak. Screenshots are 540 × 1170 captures from `tools/capture_store_shots.gd` (`play`, `mystery`, `win`, `levels`) using isolated saves; the app icon is rendered from the game's `assets/icon.svg`, drawn by `tools/generate_pili_art.py`.
 - **Studio branding** — Shelly Jigsaw's `design/shelly-style-handoff/brand/ohana-studios/ohana-symbol-full-colour.svg` and `ohana-square-full-colour.svg`.
 
 Web assets are copied into `public/images/`; the site has no runtime dependency on either game checkout. Screenshots are 540 × 1170 WebP images. Rocket Rabbit uses lossless WebP to preserve its pixel art.
@@ -46,7 +46,7 @@ This exports into a temporary folder, gives the game pack a content-hashed filen
 
 ## Rocket Rabbit browser demo
 
-Updated September 30, 2026 from `C:/Users/Nir/orca/rocket-rabbit` at `532a947`, including the current local game changes. The demo starts a run directly, with the game's touch arrows and BLAST button enabled for every browser. Players can hold an arrow and BLAST together, or slide a steering finger between arrows. Arrow keys / A-D and Space also work. Tilt remains available in the Android game; the browser export keeps touch steering because its motion sensors are disabled.
+Updated October 11, 2026 from `C:/Users/Nir/orca/rocket-rabbit` at `cc9c1aa`. The demo starts a run directly, with the game's touch arrows and BLAST button enabled for every browser. Players can hold an arrow and BLAST together, or slide a steering finger between arrows. Arrow keys / A-D and Space also work. Tilt remains available in the Android game; the browser export keeps touch steering because its motion sensors are disabled.
 
 The portrait demo keeps its proportions on short screens. Both demos offer a new-tab link after loading, and a full-screen button where the browser supports it. Game packs use a content hash in their filenames so updated controls load for returning visitors.
 
