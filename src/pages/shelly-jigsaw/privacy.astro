@@ -2,12 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { CONTACT_EMAIL, STUDIO } from '../../site';
 
-const effective = 'September 25, 2026';
+const effective = 'October 11, 2026';
 ---
 
 <BaseLayout
   title="Shelly Jigsaw privacy policy"
-  description="How the Shelly Jigsaw app by Ohana Studios handles your information, including ads from Google AdMob."
+  description="How the Shelly Jigsaw app by Ohana Studios handles your information, including cloud saves with Google Play Games and ads from Google AdMob."
 >
   <div class="wrap">
     <article class="card prose-card">
@@ -26,7 +26,11 @@ const effective = 'September 25, 2026';
         <h2>The short version</h2>
         <ul>
           <li>You do not create an account, and we never ask for your name, email or photos.</li>
-          <li>Your puzzle progress and settings stay on your phone. We do not receive them.</li>
+          <li>
+            Your puzzle progress and settings are saved on your phone. If you use Google Play Games,
+            a backup copy is kept in your own Google account so you can get it back on a new phone.
+            We never receive your progress.
+          </li>
           <li>We do not use analytics or tracking tools of our own.</li>
           <li>
             The game is free and shows ads from <strong>Google AdMob</strong>. Google collects some
@@ -34,13 +38,56 @@ const effective = 'September 25, 2026';
           </li>
         </ul>
 
-        <h2>Information stored only on your phone</h2>
+        <h2>Information stored on your phone</h2>
         <p>
           The app saves your puzzle progress, finished puzzles, stars and shells, Shelly's
-          field notes, settings (such as text size, sound and vibration), and simple counters that decide how
-          often ads appear. This information stays in the app's private storage on your device. It
-          is not sent to us or to anyone else. Uninstalling the app, or clearing its data in
-          Android settings, deletes it.
+          field notes, settings (such as sound and vibration), and simple counters that decide how
+          often ads appear. This information is kept in the app's private storage on your device and
+          is never sent to us. Uninstalling the app, or clearing its data in Android settings,
+          deletes it from your phone.
+        </p>
+
+        <h2>Cloud save with Google Play Games</h2>
+        <p>
+          So you do not lose your progress when you change phones or reinstall the game, Shelly
+          Jigsaw backs up your progress with <strong>Google Play Games</strong>. When the game
+          starts, Google Play Games signs you in with your Google account. You can choose
+          <strong>Not now</strong> on Google's sign-in message, and the game then keeps your progress
+          on your phone only.
+        </p>
+        <p>When you are signed in:</p>
+        <ul>
+          <li>
+            A copy of your game progress (puzzle progress, finished puzzles, stars and shells,
+            Shelly's field notes and game settings) is saved in a private game folder in your own
+            Google account. Only Shelly Jigsaw can read it, and only for your account. It does not
+            include your photos, contacts, or the ad counters.
+          </li>
+          <li>
+            The game receives your Play Games player ID, a code for your Play Games profile, so it
+            can make sure a backup is restored to the same account. It does not receive your email
+            address, and we do not keep the ID anywhere except on your phone.
+          </li>
+          <li>
+            When you install the game on a new phone, or reinstall it, your saved progress is
+            restored. If both your phone and your backup have progress, the game asks which one to
+            keep.
+          </li>
+          <li>
+            Google Play Games itself collects some information, such as your Play Games profile and
+            information to keep its service working, as described in the
+            <a href="https://developer.android.com/games/pgs/data-collection" rel="noopener">Play Games Services data disclosure</a>
+            and the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>.
+            This data is sent to Google over an encrypted connection, not to us.
+          </li>
+        </ul>
+        <p>
+          <strong>Your choices.</strong> You can turn cloud saving off at any time with
+          <strong>Settings &gt; Cloud save &gt; Turn off cloud syncing</strong> in the game. To
+          delete your backup, open Google Drive on the web, go to <em>Settings &gt; Manage apps</em>,
+          find Shelly Jigsaw and choose <em>Delete hidden app data</em>. You can also delete your
+          Play Games data for this game in the Google Play Games app or in your
+          <a href="https://myaccount.google.com" rel="noopener">Google Account</a>.
         </p>
 
         <h2>Ads from Google AdMob</h2>
@@ -96,7 +143,7 @@ const effective = 'September 25, 2026';
               <tr><th>Permission</th><th>Why the app uses it</th></tr>
             </thead>
             <tbody>
-              <tr><td>Internet and network state</td><td>To load ads. Puzzles are built into the app and do not need a connection.</td></tr>
+              <tr><td>Internet and network state</td><td>To load ads and to back up your progress with Google Play Games. Puzzles are built into the app and do not need a connection.</td></tr>
               <tr><td>Advertising ID</td><td>Used by Google AdMob as described above.</td></tr>
               <tr><td>Vibration</td><td>For the gentle buzz when pieces fit. You can turn it off in Settings.</td></tr>
             </tbody>
@@ -117,13 +164,15 @@ const effective = 'September 25, 2026';
           United States), you may have the right to access, correct or delete personal information,
           or to opt out of its "sale" or "sharing" for targeted advertising. Because we do not hold
           personal information about you, most requests are best handled by the choices above or
-          directly with Google. We are happy to help with any request: just email us.
+          directly with Google, which holds your ad data and your cloud backup. We are happy to help with any request: just email us.
         </p>
 
         <h2>Security and retention</h2>
         <p>
-          Your game data never leaves your device, so we do not store it. Information collected by
-          Google for ads is kept according to Google's own retention policies.
+          We do not run servers that store your game data. Your progress is kept on your phone and,
+          if you use cloud saving, in your own Google account until you delete it as described
+          above. Information collected by Google for ads and for Google Play Games is kept
+          according to Google's own retention policies.
         </p>
 
         <h2>Changes to this policy</h2>
