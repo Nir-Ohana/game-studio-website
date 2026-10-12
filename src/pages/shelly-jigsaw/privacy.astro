@@ -2,12 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { CONTACT_EMAIL, STUDIO } from '../../site';
 
-const effective = 'October 11, 2026';
+const effective = 'October 13, 2026';
 ---
 
 <BaseLayout
   title="Shelly Jigsaw privacy policy"
-  description="How the Shelly Jigsaw app by Ohana Studios handles your information, including cloud saves with Google Play Games and ads from Google AdMob."
+  description="How the Shelly Jigsaw app by Ohana Studios handles your information, including cloud saves with Google Play Games, game measurement with Google Analytics for Firebase, and ads from Google AdMob."
 >
   <div class="wrap">
     <article class="card prose-card">
@@ -31,7 +31,11 @@ const effective = 'October 11, 2026';
             a backup copy is kept in your own Google account so you can get it back on a new phone.
             We never receive your progress.
           </li>
-          <li>We do not use analytics or tracking tools of our own.</li>
+          <li>
+            We use <strong>Google Analytics for Firebase</strong> to count, in general, how the game
+            is played, such as how many puzzles are started and finished. It never receives your
+            name, email or photos.
+          </li>
           <li>
             The game is free and shows ads from <strong>Google AdMob</strong>. Google collects some
             device information to show and measure those ads, as described below.
@@ -87,6 +91,27 @@ const effective = 'October 11, 2026';
           delete your backup, see <a href="#delete-your-data">Delete your Shelly Jigsaw data</a>.
         </p>
 
+        <h2 id="game-measurement">How we measure the game</h2>
+        <p>
+          Shelly Jigsaw uses <strong>Google Analytics for Firebase</strong>, a Google service, to
+          understand which puzzles people enjoy and to improve the game and its ads. The app sends
+          Google a few game events: when a puzzle starts or is finished, its number of pieces and
+          its mode (Adventure, Daily), the Adventure level, and when the Daily tab is opened.
+        </p>
+        <p>
+          Google Analytics also records basic app information, such as when the app was first
+          opened, how long it is used, the app version, the phone model, the Android version, the
+          country, and a random app-instance identifier. When ads are allowed it can use the
+          advertising ID to measure which ads brought players to the game. We see these numbers only
+          as totals and cannot tell who you are.
+        </p>
+        <p>
+          In the European Economic Area, the UK and Switzerland, your choice in the consent message
+          shown at first launch also applies to this measurement. Google keeps event-level
+          measurement data for 2 months, and then only totals remain. Learn more in
+          <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">how Google uses information from apps that use its services</a>.
+        </p>
+
         <h2 id="delete-your-data">Delete your Shelly Jigsaw data</h2>
         <p>
           Ohana Studios does not keep any of your Shelly Jigsaw data on its own servers, so you can
@@ -108,6 +133,12 @@ const effective = 'October 11, 2026';
             <strong>Settings &gt; Cloud save</strong> in the game, or uninstall it.
           </li>
           <li>
+            <strong>Game measurement data:</strong> it is not linked to your name or Google
+            account. Uninstalling the app or clearing its data resets the app-instance identifier,
+            and Google deletes event-level data after 2 months. To ask us to delete the data for your
+            installation sooner, email us.
+          </li>
+          <li>
             <strong>Google Play Games profile data:</strong> you can delete the Play Games data for
             this game, or your whole Play Games profile, in the Google Play Games app or in your
             <a href="https://myaccount.google.com" rel="noopener">Google Account</a>.
@@ -115,7 +146,7 @@ const effective = 'October 11, 2026';
         </ol>
         <p>
           <strong>What is kept:</strong> nothing is kept by Ohana Studios. Information collected by
-          Google for ads and for Google Play Games is handled under Google's own retention policies;
+          Google for ads, game measurement and Google Play Games is handled under Google's own retention policies;
           you can manage ad data at <a href="https://myadcenter.google.com" rel="noopener">My Ad Center</a>.
           If you need help, email us at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
         </p>
@@ -173,8 +204,8 @@ const effective = 'October 11, 2026';
               <tr><th>Permission</th><th>Why the app uses it</th></tr>
             </thead>
             <tbody>
-              <tr><td>Internet and network state</td><td>To load ads and to back up your progress with Google Play Games. Puzzles are built into the app and do not need a connection.</td></tr>
-              <tr><td>Advertising ID</td><td>Used by Google AdMob as described above.</td></tr>
+              <tr><td>Internet and network state</td><td>To load ads, to back up your progress with Google Play Games, and to send the game measurements described above. Puzzles are built into the app and do not need a connection.</td></tr>
+              <tr><td>Advertising ID</td><td>Used by Google AdMob, and by Google Analytics to measure ads, as described above.</td></tr>
               <tr><td>Vibration</td><td>For the gentle buzz when pieces fit. You can turn it off in Settings.</td></tr>
             </tbody>
           </table>
@@ -201,7 +232,7 @@ const effective = 'October 11, 2026';
         <p>
           We do not run servers that store your game data. Your progress is kept on your phone and,
           if you use cloud saving, in your own Google account until you delete it as described
-          above. Information collected by Google for ads and for Google Play Games is kept
+          above. Information collected by Google for ads, game measurement and Google Play Games is kept
           according to Google's own retention policies.
         </p>
 
