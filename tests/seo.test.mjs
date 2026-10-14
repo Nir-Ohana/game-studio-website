@@ -79,10 +79,9 @@ for (const [route, name] of games) {
     assert.equal(text(nodes(document, 'h1')[0]), name);
     assert.equal(game?.name, name);
     assert.equal(game?.url, origin + route);
-    const full = route === '/pili-words/';
-    assert.equal(game?.creativeWorkStatus, full ? 'Published' : 'In development');
-    assert.match(text(document), full ? /Full game/ : /In development/);
-    assert.deepEqual(game?.gamePlatform, full ? ['Web browser', 'Android'] : 'Android');
+    assert.equal(game?.creativeWorkStatus, 'In development');
+    assert.match(text(document), /In development/);
+    assert.equal(game?.gamePlatform, 'Android');
     assert.equal(webpage?.mainEntity?.['@id'], game?.['@id']);
     assert.ok(!game.offers && !game.aggregateRating && !game.datePublished, 'Do not invent availability, reviews or a launch date');
     assert.equal(breadcrumbs?.itemListElement[0].item, origin + '/');

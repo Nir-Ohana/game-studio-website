@@ -42,7 +42,7 @@ The game's own `Web` export preset builds the demo. To refresh it from the curre
 # Optional: -GamePath C:/path/to/venn-puzzle -Godot C:/path/to/Godot_console.exe
 ```
 
-This exports into a temporary folder, gives the game pack a content-hashed filename, and replaces `public/pili-words-play/`. The game checkout is only read.
+By default this exports the game's "Web Demo" preset (the first chapter only); pass `-Preset Web` for the whole game. It exports into a temporary folder, gives the game pack a content-hashed filename, and replaces `public/pili-words-play/`. The game checkout is only read.
 
 ## Rocket Rabbit browser demo
 

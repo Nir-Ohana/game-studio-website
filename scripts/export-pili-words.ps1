@@ -1,9 +1,11 @@
 param(
     [string]$GamePath = 'C:\dev\venn-puzzle',
-    [string]$Godot = 'C:\dev\godot\Godot_v4.7.1-stable_win64_console.exe'
+    [string]$Godot = 'C:\dev\godot\Godot_v4.7.1-stable_win64_console.exe',
+    # "Web Demo" plays the first chapter only; "Web" is the whole game.
+    [string]$Preset = 'Web Demo'
 )
 
-# Exports Pili Words with the game's own Web preset and installs it as the
+# Exports Pili Words with one of the game's Web presets and installs it as the
 # website demo in public/pili-words-play. The game checkout is only read.
 $ErrorActionPreference = 'Stop'
 $sitePath = Split-Path $PSScriptRoot -Parent
@@ -14,7 +16,7 @@ New-Item -ItemType Directory -Path $outputPath | Out-Null
 $utf8 = New-Object System.Text.UTF8Encoding($false)
 
 $log = Join-Path $outputPath 'export.log'
-& $Godot --headless --path $GamePath --export-release Web (Join-Path $outputPath 'index.html') *> $log
+& $Godot --headless --path $GamePath --export-release $Preset (Join-Path $outputPath 'index.html') *> $log
 $text = [IO.File]::ReadAllText($log)
 if ($text -match '(?m)(SCRIPT ERROR:|ERROR:)') { throw "Export failed. Log: $log" }
 foreach ($file in @('index.html', 'index.js', 'index.wasm', 'index.pck')) {
