@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { CONTACT_EMAIL, STUDIO } from '../../site';
 
-const effective = 'October 12, 2026';
+const effective = 'October 17, 2026';
 ---
 
 <BaseLayout
@@ -78,6 +78,10 @@ const effective = 'October 12, 2026';
             keep.
           </li>
           <li>
+            The game also unlocks Shelly Jigsaw achievements in Google Play Games, based on the
+            puzzles you finish. Google Play Games keeps them with your Play Games profile.
+          </li>
+          <li>
             Google Play Games itself collects some information, such as your Play Games profile and
             information to keep its service working, as described in the
             <a href="https://developer.android.com/games/pgs/data-collection" rel="noopener">Play Games Services data disclosure</a>
@@ -95,14 +99,14 @@ const effective = 'October 12, 2026';
         <p>
           Shelly Jigsaw uses <strong>Google Analytics for Firebase</strong>, a Google service, to
           understand which puzzles people enjoy and to improve the game and its ads. The app sends
-          Google a few game events: when a puzzle starts or is finished, its number of pieces and
-          its mode (Adventure, Daily), the Adventure level, and when the Daily tab is opened.
+          Google game events, such as when a puzzle is started, finished or left, how long it took,
+          hints used and video ads watched. These events never include your name, email or photos.
         </p>
         <p>
           Google Analytics also records basic app information, such as when the app was first
           opened, how long it is used, the app version, the phone model, the Android version, the
           country, and a random app-instance identifier. When ads are allowed it can use the
-          advertising ID to measure which ads brought players to the game. We see these numbers only
+          advertising ID to measure which ads brought players to the game. We look at these numbers
           as totals and cannot tell who you are.
         </p>
         <p>
@@ -154,8 +158,8 @@ const effective = 'October 12, 2026';
         <h2>Ads from Google AdMob</h2>
         <p>
           Shelly Jigsaw shows three kinds of ads: a small banner below the puzzle while you play,
-          an optional video you can choose to watch for an extra hint, and occasional full-screen
-          ads between puzzles. Full-screen ads never interrupt a puzzle you are solving.
+          optional videos you can choose to watch for an extra hint or to double the shells you
+          earn for a puzzle, and occasional full-screen ads between puzzles. Full-screen ads never interrupt a puzzle you are solving.
         </p>
         <p>
           The ads are provided by Google AdMob. When the app requests or shows an ad, Google may
@@ -206,6 +210,8 @@ const effective = 'October 12, 2026';
             <tbody>
               <tr><td>Internet and network state</td><td>To load ads, to back up your progress with Google Play Games, and to send the game measurements described above. Puzzles are built into the app and do not need a connection.</td></tr>
               <tr><td>Advertising ID</td><td>Used by Google AdMob, and by Google Analytics to measure ads, as described above.</td></tr>
+              <tr><td>Ad and install measurement (install referrer, Android ad services)</td><td>Used by Google AdMob and Google Analytics to measure which ads and store pages bring players to the game and, where you allow it, to show more relevant ads.</td></tr>
+              <tr><td>Background work (wake lock, foreground service)</td><td>Used by Google's ads and measurement code to finish sending its data when the app is closed. The game itself does not run in the background.</td></tr>
               <tr><td>Vibration</td><td>For the gentle buzz when pieces fit. You can turn it off in Settings.</td></tr>
             </tbody>
           </table>
