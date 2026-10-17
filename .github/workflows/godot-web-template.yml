@@ -1,0 +1,71 @@
+name: Build slim Godot web template
+
+# One small Godot web export template for every game demo on the site
+# (Shelly Jigsaw, Rocket Rabbit, Pili Words). The stock template is 39.5 MB;
+# this one drops 3D and the modules none of the games use. It is published as a
+# release asset of this public repo, so each game's CI downloads it without a
+# token. Run it by hand when the games move to a new Godot version.
+
+on:
+  workflow_dispatch:
+    inputs:
+      godot_version:
+        description: Godot tag to build, matching the games' editor
+        default: 4.7.1-stable
+
+permissions:
+  contents: write
+
+env:
+  # Emscripten version Godot's own web builds use for this release.
+  EM_VERSION: 4.0.11
+  TAG: godot-web-${{ inputs.godot_version }}-slim
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout Godot
+        uses: actions/checkout@v4
+        with:
+          repository: godotengine/godot
+          ref: ${{ inputs.godot_version }}
+
+      - name: Set up Emscripten
+        uses: emscripten-core/setup-emsdk@v16
+        with:
+          version: ${{ env.EM_VERSION }}
+
+      - name: Set up SCons
+        run: pip install scons
+
+      - name: Build the template
+        # Nothing here is used by the three games: no 3D, networking, XR, video,
+        # camera, noise or visual shaders. Their Web presets are single-threaded
+        # without GDExtension, so only the nothreads template is built.
+        run: |
+          scons platform=web target=template_release threads=no arch=wasm32 \
+            production=yes optimize=size_extra disable_3d=yes \
+            module_navigation_3d_enabled=no module_godot_physics_3d_enabled=no \
+            module_jolt_physics_enabled=no module_openxr_enabled=no \
+            module_mobile_vr_enabled=no module_webxr_enabled=no module_vhacd_enabled=no \
+            module_raycast_enabled=no module_camera_enabled=no module_theora_enabled=no \
+            module_enet_enabled=no module_multiplayer_enabled=no module_websocket_enabled=no \
+            module_webrtc_enabled=no module_jsonrpc_enabled=no module_upnp_enabled=no \
+            module_noise_enabled=no module_visual_shader_enabled=no \
+            module_interactive_music_enabled=no module_mp3_enabled=no \
+            module_objectdb_profiler_enabled=no module_tga_enabled=no module_hdr_enabled=no \
+            module_tinyexr_enabled=no module_bmp_enabled=no module_ktx_enabled=no \
+            module_dds_enabled=no module_astcenc_enabled=no module_etcpak_enabled=no
+          cp bin/godot.web.template_release.wasm32.nothreads.zip web_nothreads_release.zip
+          unzip -l web_nothreads_release.zip
+
+      - name: Publish the release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes="Slim Godot ${{ inputs.godot_version }} web export template (nothreads, no 3D) for the game demos. Built by run ${{ github.run_id }}."
+          gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 \
+            || gh release create "$TAG" --repo "$GITHUB_REPOSITORY" --title "$TAG" --notes "$notes" --latest=false
+          gh release upload "$TAG" web_nothreads_release.zip --repo "$GITHUB_REPOSITORY" --clobber
