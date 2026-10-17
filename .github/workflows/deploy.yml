@@ -4,6 +4,9 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
+  # Picks up the games' newest web demos every night.
+  schedule:
+    - cron: "30 2 * * *"
 
 permissions:
   contents: read
@@ -39,6 +42,52 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
+
+      - name: Fetch the game demos
+        # Each game's CI on main uploads its web demo as the "web-demo" artifact.
+        # The games are private, so this needs GAME_DEMOS_TOKEN: a fine-grained
+        # token with Actions: read on puzzle-game, rocket-rabbit and pili-words.
+        # A game without a readable artifact keeps the demo committed here.
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GAME_DEMOS_TOKEN || github.token }}
+          script: |
+            const fs = require('node:fs');
+            const games = [
+              { repo: 'puzzle-game', folder: 'play' },
+              { repo: 'rocket-rabbit', folder: 'rocket-rabbit-play' },
+              { repo: 'pili-words', folder: 'pili-words-play' },
+            ];
+            fs.mkdirSync('demos', { recursive: true });
+            for (const { repo, folder } of games) {
+              try {
+                const { data } = await github.rest.actions.listArtifactsForRepo({
+                  owner: 'Nir-Ohana', repo, name: 'web-demo', per_page: 50,
+                });
+                const artifact = data.artifacts
+                  .filter(a => !a.expired && a.workflow_run?.head_branch === 'main')
+                  .sort((a, b) => b.created_at.localeCompare(a.created_at))[0];
+                if (!artifact) { core.warning(`${repo}: no web-demo artifact from main; keeping public/${folder}`); continue; }
+                const zip = await github.rest.actions.downloadArtifact({
+                  owner: 'Nir-Ohana', repo, artifact_id: artifact.id, archive_format: 'zip',
+                });
+                fs.writeFileSync(`demos/${folder}.zip`, Buffer.from(zip.data));
+                core.info(`${repo}: web-demo from ${artifact.created_at} (run ${artifact.workflow_run.id})`);
+              } catch (error) {
+                core.warning(`${repo}: ${error.message}; keeping public/${folder}`);
+              }
+            }
+
+      - name: Install the game demos
+        run: |
+          for zip in demos/*.zip; do
+            [ -e "$zip" ] || continue
+            folder=$(basename "$zip" .zip)
+            mkdir -p "demos/$folder"
+            python3 -m zipfile -e "$zip" "demos/$folder"
+            sh scripts/install-demo.sh "demos/$folder" "$folder"
+          done
+          rm -rf demos
 
       - name: Install dependencies
         run: npm ci

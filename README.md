@@ -33,31 +33,29 @@ Refreshed September 28, 2026 from the local game projects:
 
 Web assets are copied into `public/images/`; the site has no runtime dependency on either game checkout. Screenshots are 540 × 1170 WebP images. Rocket Rabbit uses lossless WebP to preserve its pixel art.
 
-## Pili Words browser demo
+## Browser demos
 
-The game's own `Web` export preset builds the demo. To refresh it from the current local game, run:
+| Demo | Folder | Built by |
+| --- | --- | --- |
+| Shelly Jigsaw | `public/play/` | `puzzle-game`: `scripts/export_web.sh`, CI artifact `web-demo` |
+| Rocket Rabbit | `public/rocket-rabbit-play/` | `rocket-rabbit`: `scripts/export_web.sh`, CI artifact `web-demo` |
+| Pili Words | `public/pili-words-play/` | `pili-words`: the "Web Demo" preset, via `scripts/export-pili-words.ps1` here until its CI exports it |
 
-```powershell
-./scripts/export-pili-words.ps1
-# Optional: -GamePath C:/path/to/venn-puzzle -Godot C:/path/to/Godot_console.exe
+Every demo uses one slim Godot web template (no 3D, no networking, XR or video): about 23.7 MB of wasm, 7.3 MB gzipped, against 39.5 MB and 10.2 MB for the stock template. The **Build slim Godot web template** workflow (`.github/workflows/godot-web-template.yml`, run by hand) builds it and publishes it as the `godot-web-<version>-slim` release of this repo; each game's export script downloads it from there. Rebuild it when the games move to a new Godot version, and add a module back if a game starts using it.
+
+`deploy.yml` installs each game's newest `web-demo` artifact from `main` with `scripts/install-demo.sh`, on every push and nightly. The games are private, so this needs the `GAME_DEMOS_TOKEN` secret: a fine-grained token with Actions: read on `puzzle-game`, `rocket-rabbit` and `pili-words`. A game without a readable artifact keeps the demo committed in `public/`.
+
+To install a local build by hand:
+
+```sh
+sh scripts/install-demo.sh ../puzzle-game/scratch/web_build play
 ```
 
-By default this exports the game's "Web Demo" preset (the first chapter only); pass `-Preset Web` for the whole game. It exports into a temporary folder, gives the game pack a content-hashed filename, and replaces `public/pili-words-play/`. The game checkout is only read.
+`install-demo.sh` gives the game pack a content-hashed filename, so returning visitors load the new version, and replaces the demo folder as a whole. The games' export scripts call it unless given `--no-publish`.
 
-## Rocket Rabbit browser demo
+Pili Words' "Web Demo" preset plays the first chapter only; pass `-Preset Web` to `export-pili-words.ps1` for the whole game.
 
-Updated October 11, 2026 from `C:/Users/Nir/orca/rocket-rabbit` at `cc9c1aa`. The demo starts a run directly, with the game's touch arrows and BLAST button enabled for every browser. Players can hold an arrow and BLAST together, or slide a steering finger between arrows. Arrow keys / A-D and Space also work. Tilt remains available in the Android game; the browser export keeps touch steering because its motion sensors are disabled.
-
-The portrait demo keeps its proportions on short screens. Both demos offer a new-tab link after loading, and a full-screen button where the browser supports it. Game packs use a content hash in their filenames so updated controls load for returning visitors.
-
-To refresh Rocket Rabbit from the current local game, run:
-
-```powershell
-./scripts/export-rocket-rabbit.ps1
-# Optional: -GamePath C:/path/to/rocket-rabbit -Godot C:/path/to/Godot_console.exe
-```
-
-This exports a temporary copy using the installed Godot Web templates, then replaces the website's demo only after a successful export. It leaves the game checkout unchanged and prints the location of the import/export logs. Run the site checks below afterward.
+Rocket Rabbit's demo starts a run directly, with the game's touch arrows and BLAST button enabled for every browser. Players can hold an arrow and BLAST together, or slide a steering finger between arrows. Arrow keys / A-D and Space also work. Tilt remains available in the Android game; the web build turns the motion sensors off. The portrait demo keeps its proportions on short screens. Both demos offer a new-tab link after loading, and a full-screen button where the browser supports it.
 
 For a browser smoke check with an installed Playwright and Chrome:
 
