@@ -44,10 +44,13 @@ jobs:
           enablement: true
 
       - name: Fetch the game demos
-        # Each game's CI on main uploads its web demo as the "web-demo" artifact.
-        # The games are private, so this needs GAME_DEMOS_TOKEN: a fine-grained
-        # token with Actions: read on puzzle-game, rocket-rabbit and pili-words.
-        # A game without a readable artifact keeps the demo committed here.
+        # Each game's CI on main publishes its web demo: as web-demo.zip on a rolling
+        # "web-demo" release (puzzle-game, Nir-Ohana/puzzle-game#580; release files
+        # do not count against the artifact storage quota), or as the "web-demo"
+        # artifact. The release is tried first. The games are private, so this
+        # needs GAME_DEMOS_TOKEN: a fine-grained token with Contents: read and
+        # Actions: read on puzzle-game, rocket-rabbit and pili-words.
+        # A game without a readable demo keeps the one committed here.
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GAME_DEMOS_TOKEN || github.token }}
@@ -59,7 +62,24 @@ jobs:
               { repo: 'pili-words', folder: 'pili-words-play' },
             ];
             fs.mkdirSync('demos', { recursive: true });
+            async function fromRelease(repo, folder) {
+              try {
+                const { data: release } = await github.rest.repos.getReleaseByTag({ owner: 'Nir-Ohana', repo, tag: 'web-demo' });
+                const asset = release.assets.find(a => a.name === 'web-demo.zip');
+                if (!asset) return false;
+                const zip = await github.rest.repos.getReleaseAsset({
+                  owner: 'Nir-Ohana', repo, asset_id: asset.id, headers: { accept: 'application/octet-stream' },
+                });
+                fs.writeFileSync(`demos/${folder}.zip`, Buffer.from(zip.data));
+                core.info(`${repo}: web-demo release asset from ${asset.updated_at}`);
+                return true;
+              } catch (error) {
+                if (error.status !== 404) core.warning(`${repo}: web-demo release: ${error.message}`);
+                return false;
+              }
+            }
             for (const { repo, folder } of games) {
+              if (await fromRelease(repo, folder)) continue;
               try {
                 const { data } = await github.rest.actions.listArtifactsForRepo({
                   owner: 'Nir-Ohana', repo, name: 'web-demo', per_page: 50,
