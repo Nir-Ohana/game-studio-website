@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { CONTACT_EMAIL, STUDIO } from '../../site';
 
-const effective = 'October 17, 2026';
+const effective = 'October 23, 2026';
 ---
 
 <BaseLayout
@@ -25,7 +25,11 @@ const effective = 'October 17, 2026';
 
         <h2>The short version</h2>
         <ul>
-          <li>You do not create an account, and we never ask for your name, email or photos.</li>
+          <li>You do not create an account, and we never ask for your name or email.</li>
+          <li>
+            If you turn one of your own photos into a puzzle, it stays on your phone. It is never
+            uploaded, backed up or shared, and we never see it.
+          </li>
           <li>
             Your puzzle progress and settings are saved on your phone. If you use Google Play Games,
             a backup copy is kept in your own Google account so you can get it back on a new phone.
@@ -49,6 +53,22 @@ const effective = 'October 17, 2026';
           often ads appear. This information is kept in the app's private storage on your device and
           is never sent to us. Uninstalling the app, or clearing its data in Android settings,
           deletes it from your phone.
+        </p>
+
+        <h2 id="your-own-photos">Your own photos</h2>
+        <p>
+          You can choose a photo from your phone to play as a puzzle. You pick it in your phone's own
+          photo picker, so the app only receives the one photo you choose and never asks for access
+          to your photo library. The app keeps a copy, cropped to the puzzle's shape, in its private
+          storage on your phone, and deletes it when no unfinished puzzle uses it.
+        </p>
+        <p>
+          Your photos are never sent to us, to Google Analytics, or to your cloud save, and they are
+          never shown to anyone else. No ads appear next to a puzzle made from your photo.
+        </p>
+        <p>
+          You are responsible for the photos you choose. Please only use photos you own or have
+          permission to use.
         </p>
 
         <h2>Cloud save with Google Play Games</h2>
@@ -216,7 +236,11 @@ const effective = 'October 17, 2026';
             </tbody>
           </table>
         </div>
-        <p>The app does not access your photos, contacts, camera, microphone or precise location.</p>
+        <p>
+          The app does not access your photo library, contacts, camera, microphone or precise
+          location. It only receives a photo you pick yourself in your phone's photo picker, as
+          described in <a href="#your-own-photos">Your own photos</a>.
+        </p>
 
         <h2>Children</h2>
         <p>
