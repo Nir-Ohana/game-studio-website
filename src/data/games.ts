@@ -1,9 +1,10 @@
 export const shots = '/images/games/shelly-jigsaw/screens';
 export const screens = [
-  { src: `${shots}/home.webp`, title: 'A gentle beginning', text: 'Meet Shelly and start with a 12-piece puzzle.', alt: 'Shelly welcomes a new player above a turtle reef picture and a Start button' },
-  { src: `${shots}/adventure.webp`, title: 'Adventure', text: '192 puzzles, 32 chapters, one lovely journey.', alt: 'Sunlit Shallows, chapter 1 of 32, with six puzzles along a winding trail' },
-  { src: `${shots}/daily.webp`, title: 'Your daily puzzle', text: 'Choose 12 to 432 pieces. Earlier puzzles wait for you, too.', alt: 'Daily Yarn Shop puzzle with six piece counts and an Earlier puzzles button' },
-  { src: `${shots}/complete.webp`, title: 'Enjoy the picture', text: 'A moment to admire what you have made.', alt: 'Puzzle complete screen showing the finished Coral Turtle Reef picture and three stars' },
+  { src: `${shots}/home.webp`, title: 'A gentle beginning', text: 'Meet Shelly and start with a small first puzzle.', alt: 'Shelly welcomes a new player above a turtle reef picture and a Start button' },
+  { src: `${shots}/play.webp`, title: 'Big pieces, easy to see', text: 'Pieces snap gently into place. Sort edges and middles in the tray.', alt: 'A Daily puzzle in progress with large pieces in the tray below the board' },
+  { src: `${shots}/daily.webp`, title: 'A new picture every day', text: 'Pick the size you like. Earlier days wait for you, too.', alt: 'Daily puzzle with a size picker, a Start button and the month of earlier puzzles' },
+  { src: `${shots}/adventure.webp`, title: 'Adventure', text: 'Chapter after chapter of hand-picked puzzles.', alt: 'Sunlit Shallows chapter with six puzzles along a winding trail' },
+  { src: `${shots}/complete.webp`, title: 'Enjoy the picture', text: 'A moment to admire what you have made.', alt: 'Puzzle complete screen showing the finished picture and three stars' },
 ];
 
 export const rocketShots = '/images/games/rocket-rabbit/screens';
@@ -26,7 +27,7 @@ export const piliScreens = [
 export const features = [
   {
     title: 'Easy to read',
-    text: 'Large, clear text and big buttons. Choose Extra large text or Reduce motion to make yourself comfortable.',
+    text: 'Large, clear text and big buttons on every screen. Turn on Reduce motion if you prefer things still.',
     icon: '<path d="M4 7V5h12v2M10 5v14M7 19h6M14 12v-1h6v1M17 11v8M15.5 19h3"/>',
   },
   {
@@ -41,7 +42,7 @@ export const features = [
   },
   {
     title: 'A journey with Shelly',
-    text: 'Explore 192 puzzles across 32 chapters. Finish each chapter to collect a Field Note with a little fact from Shelly.',
+    text: 'Travel chapter by chapter through hand-picked puzzles. Finish each chapter to collect a Field Note with a little fact from Shelly.',
     icon: '<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/>',
   },
   {
@@ -88,6 +89,7 @@ export interface Game {
   icon: string;
   hero: string;
   heroAlt: string;
+  stores?: { label: string; href: string }[];
   screens: typeof screens;
   features: { title: string; text: string; icon?: string }[];
   questions: { question: string; answer: string }[];
@@ -98,30 +100,34 @@ export const games: Game[] = [
     slug: 'shelly-jigsaw',
     path: '/shelly-jigsaw/',
     demo: { src: '/play/index.html', intro: 'Solve one puzzle right here. Drag the pieces onto the board.', size: '25 MB' },
-    status: 'In development · Android',
+    status: 'Free on iPhone and Android',
     name: 'Shelly Jigsaw',
     mood: 'Take a breath. Place a piece.',
     button: 'btn-primary',
-    title: 'Shelly Jigsaw: Calm Android Puzzles',
-    description: 'Discover Shelly Jigsaw, a relaxing Android puzzle game in development. Explore 192 Adventure puzzles, daily jigsaws and gentle hints with Shelly the turtle.',
+    title: 'Shelly Jigsaw: Calm Puzzles for iPhone and Android',
+    description: 'Shelly Jigsaw is a relaxing jigsaw puzzle game for iPhone and Android, with big pieces, large text, a new picture every day and gentle hints from Shelly the turtle.',
     genre: 'Jigsaw puzzle',
     tagline: 'Relaxing jigsaw puzzles, one lovely picture at a time.',
     introduction: 'Join Shelly the sea turtle for calm jigsaw puzzles with big pieces, clear text and no countdown. Made for adults over 50 and anyone who enjoys a quiet moment.',
     detailHeading: 'A puzzle for the way you like to play',
     details: [
-      'Start small with a 12-piece puzzle, or settle into a bigger Daily jigsaw with up to 432 pieces. Choose from six Daily sizes: 12, 48, 108, 192, 300 and 432. Missed a day? Earlier puzzles wait for you, so there is no need to keep a streak.',
-      'Adventure takes you through 32 chapters and 192 puzzles, from sunny reefs to cozy storybook scenes. Each finished chapter brings a Field Note from Shelly. Your completed pictures stay together in My puzzles, where you can return to a favorite and play again.',
+      'Start small with a quick puzzle, or settle into a big Daily jigsaw with hundreds of pieces. A new picture arrives every day in the size you like. Missed a day? Earlier puzzles wait for you, so there is no streak to keep.',
+      'Adventure takes you chapter by chapter, from sunny reefs to cozy storybook scenes, and each finished chapter brings a Field Note from Shelly. You can also turn one of your own photos into a puzzle; it stays on your phone. Your finished pictures stay together in My puzzles.',
     ],
     icon: '/images/games/shelly-jigsaw/app-icon.png',
     hero: `${shots}/home.webp`,
     heroAlt: screens[0].alt,
+    stores: [
+      { label: 'Download on the App Store', href: 'https://apps.apple.com/app/id6829383943' },
+      { label: 'Get it on Google Play', href: 'https://play.google.com/store/apps/details?id=com.ohanastudios.shellyjigsaw' },
+    ],
     screens,
     features,
     questions: [
-      { question: 'Can I download Shelly Jigsaw yet?', answer: 'Shelly Jigsaw is in development for Android. A public download link and release date have not been announced on this site.' },
+      { question: 'Where can I download Shelly Jigsaw?', answer: 'Shelly Jigsaw is free on the App Store for iPhone and on Google Play for Android phones. It works on the iPhone Duo too, folded or unfolded.' },
       { question: 'Can I play the puzzles offline?', answer: 'Yes. The puzzle pictures are bundled with the game, and progress stays on your phone. You do not need an account to play. Ads and optional rewarded videos need an internet connection.' },
-      { question: 'What makes the game comfortable for older players?', answer: 'Large controls, clear text, gentle snapping and an Extra large text setting help make play comfortable. You can pinch to zoom or turn on zoom buttons, sort edge and middle pieces, and reduce motion in Settings. There is no countdown to beat.' },
-      { question: 'How do hints and ads work?', answer: 'Each puzzle starts with one free hint. Additional hints cost 15 shells earned through play, or you can choose a short rewarded ad. The game also has a banner below the puzzle and occasional full-screen ads between puzzles. Paid hints show their cost and ask for confirmation first.' },
+      { question: 'What makes the game comfortable for older players?', answer: 'Large controls, clear text and gentle snapping help make play comfortable. You can pinch to zoom or turn on zoom buttons, sort edge and middle pieces, and reduce motion in Settings. There is no countdown to beat.' },
+      { question: 'How do hints and ads work?', answer: 'Each puzzle starts with one free hint. Additional hints cost 15 shells earned through play, or you can choose a short rewarded ad. After your first few puzzles, the game also shows a banner below the puzzle and occasional full-screen ads between puzzles. Paid hints show their cost and ask for confirmation first.' },
     ],
   },
   {
