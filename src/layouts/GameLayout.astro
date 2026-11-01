@@ -45,8 +45,15 @@ const structuredData = [
         <h1 id="game-title">{game.name}</h1>
         <p class="game-tagline">{game.tagline}</p>
         <p class="lead">{game.introduction}</p>
+        {game.stores && (
+          <ul class="store-links" aria-label={`Download ${game.name}`}>
+            {game.stores.map(store => (
+              <li><a class:list={['btn', game.button]} href={store.href} rel="noopener">{store.label}</a></li>
+            ))}
+          </ul>
+        )}
         <div class="hero-actions">
-          <a class:list={['btn', game.button]} href="#play">{game.demo.full ? 'Play free in your browser' : 'Play in your browser'}</a>
+          <a class:list={[game.stores ? 'btn btn-secondary' : 'btn', !game.stores && game.button]} href="#play">{game.demo.full ? 'Play free in your browser' : 'Play in your browser'}</a>
           <a class="btn btn-secondary" href="#screens">See the screenshots <span aria-hidden="true">↓</span></a>
           <a class="text-link" href="/#contact">Contact the studio</a>
         </div>
