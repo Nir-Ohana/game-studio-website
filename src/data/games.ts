@@ -127,7 +127,7 @@ export const games: Game[] = [
       { question: 'Where can I download Shelly Jigsaw?', answer: 'Shelly Jigsaw is free on the App Store for iPhone and on Google Play for Android phones. It works on the iPhone Duo too, folded or unfolded.' },
       { question: 'Can I play the puzzles offline?', answer: 'Yes. The puzzle pictures are bundled with the game, and progress stays on your phone. You do not need an account to play. Ads and optional rewarded videos need an internet connection.' },
       { question: 'What makes the game comfortable for older players?', answer: 'Large controls, clear text and gentle snapping help make play comfortable. You can pinch to zoom or turn on zoom buttons, sort edge and middle pieces, and reduce motion in Settings. There is no countdown to beat.' },
-      { question: 'How do hints and ads work?', answer: 'Each puzzle starts with one free hint. Additional hints cost 15 shells earned through play, or you can choose a short rewarded ad. After your first few puzzles, the game also shows a banner below the puzzle and occasional full-screen ads between puzzles. Paid hints show their cost and ask for confirmation first.' },
+      { question: 'How do hints and ads work?', answer: 'Each puzzle starts with one free hint. Additional hints cost 15 shells earned through play, or you can choose a short rewarded ad. After your first few puzzles, the game also shows occasional full-screen ads between puzzles. Paid hints show their cost and ask for confirmation first.' },
     ],
   },
   {
