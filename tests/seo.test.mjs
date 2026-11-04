@@ -70,7 +70,7 @@ test('game pages are discoverable from the homepage and have unique search descr
 });
 
 for (const [route, name] of games) {
-  test(`${name} schema agrees with its visible development status and breadcrumbs`, () => {
+  test(`${name} schema agrees with its visible status and breadcrumbs`, () => {
     const document = page(route);
     const data = graph(document);
     const game = data.find(node => node['@type'] === 'VideoGame');
@@ -79,9 +79,10 @@ for (const [route, name] of games) {
     assert.equal(text(nodes(document, 'h1')[0]), name);
     assert.equal(game?.name, name);
     assert.equal(game?.url, origin + route);
-    assert.equal(game?.creativeWorkStatus, 'In development');
-    assert.match(text(document), /In development/);
-    assert.equal(game?.gamePlatform, 'Android');
+    const released = name === 'Shelly Jigsaw';
+    assert.equal(game?.creativeWorkStatus, released ? 'Published' : 'In development');
+    assert.match(text(document), released ? /Free on iPhone and Android/ : /In development/);
+    assert.deepEqual(game?.gamePlatform, released ? ['iOS', 'Android'] : 'Android');
     assert.equal(webpage?.mainEntity?.['@id'], game?.['@id']);
     assert.ok(!game.offers && !game.aggregateRating && !game.datePublished, 'Do not invent availability, reviews or a launch date');
     assert.equal(breadcrumbs?.itemListElement[0].item, origin + '/');

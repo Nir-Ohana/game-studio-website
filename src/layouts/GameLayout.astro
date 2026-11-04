@@ -14,8 +14,8 @@ const structuredData = [
   {
     '@type': 'VideoGame', '@id': `${url}#game`, name: game.name,
     url, description: game.description, image: new URL(game.icon, siteURL).href,
-    genre: game.genre, gamePlatform: game.demo.full ? ['Web browser', 'Android'] : 'Android',
-    playMode: 'https://schema.org/SinglePlayer', creativeWorkStatus: game.demo.full ? 'Published' : 'In development',
+    genre: game.genre, gamePlatform: game.slug === 'shelly-jigsaw' ? ['iOS', 'Android'] : game.demo.full ? ['Web browser', 'Android'] : 'Android',
+    playMode: 'https://schema.org/SinglePlayer', creativeWorkStatus: game.stores || game.demo.full ? 'Published' : 'In development',
     ...(game.demo.full ? { isAccessibleForFree: true, potentialAction: { '@type': 'PlayAction', target: new URL(game.demo.src, siteURL).href } } : {}),
     inLanguage: 'en', publisher: { '@id': new URL('/#organization', siteURL).href },
     mainEntityOfPage: { '@id': `${url}#webpage` },

@@ -2,12 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { CONTACT_EMAIL, STUDIO } from '../../site';
 
-const effective = 'October 31, 2026';
+const effective = 'November 2, 2026';
 ---
 
 <BaseLayout
   title="Shelly Jigsaw privacy policy"
-  description="How the Shelly Jigsaw app by Ohana Studios handles your information, including cloud saves with Google Play Games, game measurement with Google Analytics for Firebase, and ads from Google AdMob."
+  description="How the Shelly Jigsaw app by Ohana Studios handles your information, including cloud saves with Google Play Games and iCloud, game measurement with Google Analytics for Firebase, and ads from Google AdMob."
 >
   <div class="wrap">
     <article class="card prose-card">
@@ -32,9 +32,9 @@ const effective = 'October 31, 2026';
             uploaded, backed up or shared, and we never see it.
           </li>
           <li>
-            Your puzzle progress and settings are saved on your phone. On Android, if you use Google
-            Play Games, a backup copy is kept in your own Google account so you can get it back on a
-            new phone. We never receive your progress.
+            Your puzzle progress and settings are saved on your phone. If you use cloud saving, a
+            backup copy is kept in your own account (Google Play Games on Android, iCloud on iPhone)
+            so you can get it back on a new phone. We never receive your progress.
           </li>
           <li>
             We use <strong>Google Analytics for Firebase</strong> to count, in general, how the game
@@ -74,9 +74,6 @@ const effective = 'October 31, 2026';
 
         <h2>Cloud save with Google Play Games (Android)</h2>
         <p>
-          On iPhone, the game does not back up your progress yet. It stays on your phone only.
-        </p>
-        <p>
           So you do not lose your progress when you change phones or reinstall the game, Shelly
           Jigsaw backs up your progress with <strong>Google Play Games</strong>. When the game
           starts, Google Play Games signs you in with your Google account. You can choose
@@ -111,6 +108,44 @@ const effective = 'October 31, 2026';
             <a href="https://developer.android.com/games/pgs/data-collection" rel="noopener">Play Games Services data disclosure</a>
             and the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>.
             This data is sent to Google over an encrypted connection, not to us.
+          </li>
+        </ul>
+        <p>
+          <strong>Your choices.</strong> You can turn cloud saving off at any time with
+          <strong>Settings &gt; Cloud save &gt; Turn off cloud syncing</strong> in the game. To
+          delete your backup, see <a href="#delete-your-data">Delete your Shelly Jigsaw data</a>.
+        </p>
+
+        <h2 id="icloud">Cloud save with iCloud (iPhone)</h2>
+        <p>
+          On iPhone, Shelly Jigsaw can back up your progress with <strong>iCloud</strong>, using the
+          Apple Account you are signed in with on the iPhone. The game has no sign-in of its own.
+          Cloud saving starts when you choose <strong>Settings &gt; Cloud save &gt; Turn on cloud
+          saving</strong> in the game.
+        </p>
+        <ul>
+          <li>
+            A copy of your game progress (puzzle progress, finished puzzles, stars and shells,
+            Shelly's field notes and game settings) is saved in the app's private iCloud storage in
+            your own Apple Account. Only Shelly Jigsaw can read it, and only for your account. It does
+            not include your photos, contacts, or the ad counters. It uses a little of your iCloud
+            storage.
+          </li>
+          <li>
+            The game receives an iCloud user code that Apple makes for this app only, so it can make
+            sure a backup is restored to the same account. It does not receive your name, email
+            address or Apple Account details, and we do not keep the code anywhere except on your
+            phone.
+          </li>
+          <li>
+            When you install the game on a new iPhone signed in to the same Apple Account, or
+            reinstall it, your saved progress is restored. If both your phone and your backup have
+            progress, the game asks which one to keep.
+          </li>
+          <li>
+            iCloud is run by Apple under the
+            <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple Privacy Policy</a>.
+            The backup is sent to Apple over an encrypted connection, not to us, and we cannot open it.
           </li>
         </ul>
         <p>
@@ -163,6 +198,13 @@ const effective = 'October 31, 2026';
             <strong>Settings &gt; Cloud save</strong> in the game, or uninstall it.
           </li>
           <li>
+            <strong>iCloud backup (iPhone):</strong> first turn off <strong>Settings &gt; Cloud
+            save</strong> in the game. Then open iPhone <em>Settings</em>, tap your name, then
+            <em>iCloud &gt; Manage Account Storage</em> (or <em>Storage</em>), choose
+            <strong>Shelly Jigsaw</strong> and <em>Delete Data</em>. If Shelly Jigsaw is not
+            listed there, email us and we will help.
+          </li>
+          <li>
             <strong>Game measurement data:</strong> it is not linked to your name or Google
             account. Uninstalling the app or clearing its data resets the app-instance identifier,
             and Google deletes event-level data after 2 months. To ask us to delete the data for your
@@ -183,9 +225,9 @@ const effective = 'October 31, 2026';
 
         <h2>Ads from Google AdMob</h2>
         <p>
-          Shelly Jigsaw shows three kinds of ads: a small banner below the puzzle while you play,
-          optional videos you can choose to watch for an extra hint or to double the shells you
-          earn for a puzzle, and occasional full-screen ads between puzzles. Full-screen ads never interrupt a puzzle you are solving.
+          Shelly Jigsaw shows two kinds of ads: optional videos you can choose to watch for an extra
+          hint or to double the shells you earn for a puzzle, and occasional full-screen ads between
+          puzzles. Full-screen ads never interrupt a puzzle you are solving.
         </p>
         <p>
           The ads are provided by Google AdMob. When the app requests or shows an ad, Google may
@@ -245,7 +287,7 @@ const effective = 'October 31, 2026';
               <tr><th>Permission</th><th>Why the app uses it</th></tr>
             </thead>
             <tbody>
-              <tr><td>Internet and network state</td><td>To load ads, to back up your progress with Google Play Games, and to send the game measurements described above. Puzzles are built into the app and do not need a connection.</td></tr>
+              <tr><td>Internet and network state</td><td>To load ads, to back up your progress with Google Play Games or iCloud, and to send the game measurements described above. Puzzles are built into the app and do not need a connection.</td></tr>
               <tr><td>Advertising ID</td><td>Used by Google AdMob, and on Android by Google Analytics to measure ads, as described above.</td></tr>
               <tr><td>Tracking (iPhone)</td><td>Asked with Apple's tracking message. If you allow it, Google AdMob can use the IDFA to show more relevant ads. The game works the same either way.</td></tr>
               <tr><td>Ad and install measurement (install referrer, Android ad services)</td><td>Used by Google AdMob and Google Analytics to measure which ads and store pages bring players to the game and, where you allow it, to show more relevant ads.</td></tr>
@@ -273,14 +315,14 @@ const effective = 'October 31, 2026';
           United States), you may have the right to access, correct or delete personal information,
           or to opt out of its "sale" or "sharing" for targeted advertising. Because we do not hold
           personal information about you, most requests are best handled by the choices above or
-          directly with Google, which holds your ad data and your cloud backup. We are happy to help with any request: just email us.
+          directly with Google, which holds your ad data and your Android cloud backup, or with Apple for your iCloud backup. We are happy to help with any request: just email us.
         </p>
 
         <h2>Security and retention</h2>
         <p>
           We do not run servers that store your game data. Your progress is kept on your phone and,
-          if you use cloud saving, in your own Google account until you delete it as described
-          above. Information collected by Google for ads, game measurement and Google Play Games is kept
+          if you use cloud saving, in your own Google account or iCloud until you delete it as
+          described above. Information collected by Google for ads, game measurement and Google Play Games is kept
           according to Google's own retention policies.
         </p>
 
