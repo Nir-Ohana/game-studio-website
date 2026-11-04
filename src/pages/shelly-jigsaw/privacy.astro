@@ -2,12 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { CONTACT_EMAIL, STUDIO } from '../../site';
 
-const effective = 'November 2, 2026';
+const effective = 'November 4, 2026';
 ---
 
 <BaseLayout
   title="Shelly Jigsaw privacy policy"
-  description="How the Shelly Jigsaw app by Ohana Studios handles your information, including cloud saves with Google Play Games and iCloud, game measurement with Google Analytics for Firebase, and ads from Google AdMob."
+  description="How the Shelly Jigsaw app by Ohana Studios handles your information, including cloud saves with Google Play Games and iCloud, game measurement with Google Analytics for Firebase, ad measurement with Meta, and ads from Google AdMob."
 >
   <div class="wrap">
     <article class="card prose-card">
@@ -44,6 +44,11 @@ const effective = 'November 2, 2026';
           <li>
             The game is free and shows ads from <strong>Google AdMob</strong>. Google collects some
             device information to show and measure those ads, as described below.
+          </li>
+          <li>
+            We advertise the game on Facebook and Instagram. In many countries the Android app tells
+            <strong>Meta</strong> when it is installed and opened and when you finish your first
+            puzzle, so we can see whether those ads work. It never sends your name, email or photos.
           </li>
         </ul>
 
@@ -176,6 +181,36 @@ const effective = 'November 2, 2026';
           <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">how Google uses information from apps that use its services</a>.
         </p>
 
+        <h2 id="meta">Measuring our ads with Meta (Android)</h2>
+        <p>
+          We advertise Shelly Jigsaw on Facebook and Instagram. The Android app includes the
+          <strong>Meta SDK</strong>, a tool from Meta Platforms, so Meta can tell whether its ads led
+          to the game being installed and played, and show the ads to people more likely to enjoy
+          the game. The iPhone app does not include it.
+        </p>
+        <p>When the Meta SDK runs, the app sends Meta:</p>
+        <ul>
+          <li>that the app was installed or opened, and that you finished your first puzzle;</li>
+          <li>your device's advertising ID and an anonymous identifier the SDK creates;</li>
+          <li>your IP address, which can indicate your approximate location;</li>
+          <li>
+            information about your device, such as model, Android version, language, time zone,
+            screen size and free storage space;
+          </li>
+          <li>the app's name and version, and crash reports about the Meta SDK itself.</li>
+        </ul>
+        <p>
+          It never sends your name, email or photos, or any other game events. Meta may connect this
+          information with a Facebook or Instagram account you have, and uses it under the
+          <a href="https://www.facebook.com/privacy/policy/" rel="noopener">Meta Privacy Policy</a>.
+        </p>
+        <p>
+          The Meta SDK does not run if you are in the European Economic Area, the UK, Switzerland, or
+          a US state where the app offers Privacy choices. You can delete your advertising ID in your
+          phone's settings, as described below. If you have a Facebook or Instagram account, you can
+          also manage this in its settings, under your activity off Meta technologies.
+        </p>
+
         <h2 id="delete-your-data">Delete your Shelly Jigsaw data</h2>
         <p>
           Ohana Studios does not keep any of your Shelly Jigsaw data on its own servers, so you can
@@ -220,6 +255,7 @@ const effective = 'November 2, 2026';
           <strong>What is kept:</strong> nothing is kept by Ohana Studios. Information collected by
           Google for ads, game measurement and Google Play Games is handled under Google's own retention policies;
           you can manage ad data at <a href="https://myadcenter.google.com" rel="noopener">My Ad Center</a>.
+          Information sent to Meta is handled under Meta's own retention policies.
           If you need help, email us at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
         </p>
 
@@ -288,9 +324,9 @@ const effective = 'November 2, 2026';
             </thead>
             <tbody>
               <tr><td>Internet and network state</td><td>To load ads, to back up your progress with Google Play Games or iCloud, and to send the game measurements described above. Puzzles are built into the app and do not need a connection.</td></tr>
-              <tr><td>Advertising ID</td><td>Used by Google AdMob, and on Android by Google Analytics to measure ads, as described above.</td></tr>
+              <tr><td>Advertising ID</td><td>Used by Google AdMob, and on Android by Google Analytics and the Meta SDK to measure ads, as described above.</td></tr>
               <tr><td>Tracking (iPhone)</td><td>Asked with Apple's tracking message. If you allow it, Google AdMob can use the IDFA to show more relevant ads. The game works the same either way.</td></tr>
-              <tr><td>Ad and install measurement (install referrer, Android ad services)</td><td>Used by Google AdMob and Google Analytics to measure which ads and store pages bring players to the game and, where you allow it, to show more relevant ads.</td></tr>
+              <tr><td>Ad and install measurement (install referrer, Android ad services)</td><td>Used by Google AdMob, Google Analytics and the Meta SDK to measure which ads and store pages bring players to the game and, where you allow it, to show more relevant ads.</td></tr>
               <tr><td>Background work (Android: wake lock, foreground service)</td><td>Used by Google's ads and measurement code to finish sending its data when the app is closed. The game itself does not run in the background.</td></tr>
               <tr><td>Vibration</td><td>For the gentle buzz when pieces fit. You can turn it off in Settings.</td></tr>
             </tbody>
