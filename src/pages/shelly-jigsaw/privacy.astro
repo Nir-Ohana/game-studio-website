@@ -29,7 +29,8 @@ const effective = 'November 8, 2026';
           <li>You do not create an account, and we never ask for your name or email.</li>
           <li>
             If you turn one of your own photos into a puzzle, it stays on your phone. It is never
-            uploaded, backed up or shared, and we never see it.
+            uploaded or backed up, and we never see it. When you finish a puzzle, you can tap
+            Share to send or save the framed picture using your phone's share sheet.
           </li>
           <li>
             Your puzzle progress and settings are saved on your phone. If you use cloud saving, a
@@ -69,8 +70,11 @@ const effective = 'November 8, 2026';
           storage on your phone, and deletes it when no unfinished puzzle uses it.
         </p>
         <p>
-          Your photos are never sent to us, to Google Analytics, or to your cloud save, and they are
-          never shown to anyone else. No ads appear next to a puzzle made from your photo.
+          Your photos are never sent to us, to Google Analytics, or to your cloud save, and nobody
+          else sees them unless you choose to share a finished puzzle with the
+          <strong>Share</strong> button. When you share, the app passes the framed picture directly
+          to your phone's share sheet, where you decide where to send or save it. No ads appear
+          next to a puzzle made from your photo.
         </p>
         <p>
           You are responsible for the photos you choose. Please only use photos you own or have
@@ -163,7 +167,7 @@ const effective = 'November 8, 2026';
         <p>
           Shelly Jigsaw uses <strong>Google Analytics for Firebase</strong>, a Google service, to
           understand which puzzles people enjoy and to improve the game and its ads. The app sends
-          Google game events, such as when a puzzle is started, finished or left, how long it took,
+          Google game events, such as when a puzzle is started, finished, shared or left, how long it took,
           hints used and video ads watched. These events never include your name, email or photos.
         </p>
         <p>
@@ -330,11 +334,12 @@ const effective = 'November 8, 2026';
               <tr><td>Ad and install measurement (install referrer, Android ad services)</td><td>Used by Google AdMob, Google Analytics and the Meta SDK to measure which ads and store pages bring players to the game and, where you allow it, to show more relevant ads.</td></tr>
               <tr><td>Background work (Android: wake lock, foreground service)</td><td>Used by Google's ads and measurement code to finish sending its data when the app is closed. The game itself does not run in the background.</td></tr>
               <tr><td>Vibration</td><td>For the gentle buzz when pieces fit. You can turn it off in Settings.</td></tr>
+              <tr><td>Photos, add only (iPhone)</td><td>Used only if you tap Save Image in the phone's share sheet to save a framed puzzle picture to Photos. The app never reads your photo library.</td></tr>
             </tbody>
           </table>
         </div>
         <p>
-          The app does not access your photo library, contacts, camera, microphone or precise
+          The app does not read your photo library, contacts, camera, microphone or precise
           location. It only receives a photo you pick yourself in your phone's photo picker, as
           described in <a href="#your-own-photos">Your own photos</a>.
         </p>
