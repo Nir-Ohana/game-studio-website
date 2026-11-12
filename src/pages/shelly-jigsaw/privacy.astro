@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { CONTACT_EMAIL, STUDIO } from '../../site';
 
-const effective = 'November 10, 2026';
+const effective = 'November 12, 2026';
 ---
 
 <BaseLayout
@@ -56,8 +56,9 @@ const effective = 'November 10, 2026';
         <h2>Information stored on your phone</h2>
         <p>
           The app saves your puzzle progress, finished puzzles, stars and shells, Shelly's
-          field notes, settings (such as sound and vibration), and simple counters that decide how
-          often ads appear. This information is kept in the app's private storage on your device and
+          field notes, settings (such as sound and vibration), simple counters that decide how
+          often ads appear and, if you turn on the Daily reminder, the hour you usually first open
+          the game each day. This information is kept in the app's private storage on your device and
           is never sent to us. Uninstalling the app, or clearing its data in Android settings,
           deletes it from your phone. On iPhone, deleting the app deletes it.
         </p>
@@ -332,7 +333,8 @@ const effective = 'November 10, 2026';
               <tr><td>Advertising ID</td><td>Used by Google AdMob, and on Android by Google Analytics and the Meta SDK to measure ads, as described above.</td></tr>
               <tr><td>Tracking (iPhone)</td><td>Asked with Apple's tracking message. If you allow it, Google AdMob can use the IDFA to show more relevant ads. The game works the same either way.</td></tr>
               <tr><td>Ad and install measurement (install referrer, Android ad services)</td><td>Used by Google AdMob, Google Analytics and the Meta SDK to measure which ads and store pages bring players to the game and, where you allow it, to show more relevant ads.</td></tr>
-              <tr><td>Background work (Android: wake lock, foreground service)</td><td>Used by Google's ads and measurement code to finish sending its data when the app is closed. The game itself does not run in the background.</td></tr>
+              <tr><td>Background work (Android: wake lock, foreground service)</td><td>Used by Google's ads and measurement code to finish sending its data when the app is closed. The game itself only schedules the Daily reminder, if you turn it on.</td></tr>
+              <tr><td>Notifications (Android)</td><td>Asked only if you tap Remind me after finishing a Daily. The app then sends at most one quiet note a day, only on days you have not opened the game, and stops after three in a row. You can turn it off any time in Android's notification settings.</td></tr>
               <tr><td>Vibration</td><td>For the gentle buzz when pieces fit. You can turn it off in Settings.</td></tr>
               <tr><td>Photos, add only (iPhone)</td><td>Used only if you tap Save Image in the phone's share sheet to save a framed puzzle picture to Photos. The app never reads your photo library.</td></tr>
             </tbody>
