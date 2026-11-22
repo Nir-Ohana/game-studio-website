@@ -90,6 +90,7 @@ export interface Game {
   hero: string;
   heroAlt: string;
   stores?: { label: string; href: string }[];
+  platforms?: string[];
   screens: typeof screens;
   features: { title: string; text: string; icon?: string }[];
   questions: { question: string; answer: string }[];
@@ -100,12 +101,12 @@ export const games: Game[] = [
     slug: 'shelly-jigsaw',
     path: '/shelly-jigsaw/',
     demo: { src: '/play/index.html', intro: 'Solve one puzzle right here. Drag the pieces onto the board.', size: '25 MB' },
-    status: 'Free on Android · iPhone soon',
+    status: 'Free on Android, iPhone and iPad',
     name: 'Shelly Jigsaw',
     mood: 'Take a breath. Place a piece.',
     button: 'btn-primary',
     title: 'Shelly Jigsaw: Easy Jigsaw Puzzles for Seniors',
-    description: 'Free, relaxing jigsaw puzzles for adults and seniors on Android: big easy-to-see pieces, large text, a new daily jigsaw puzzle, your own photos as puzzles, and offline play.',
+    description: 'Free, relaxing jigsaw puzzles for adults and seniors on Android, iPhone and iPad: big easy-to-see pieces, large text, a new daily jigsaw puzzle, your own photos as puzzles, and offline play.',
     genre: 'Jigsaw puzzle',
     tagline: 'Relaxing jigsaw puzzles, one lovely picture at a time.',
     introduction: 'Join Shelly the sea turtle for easy, relaxing jigsaw puzzles with big pieces, clear text and no countdown. Made for adults and seniors, and for anyone who enjoys a quiet moment.',
@@ -117,13 +118,15 @@ export const games: Game[] = [
     icon: '/images/games/shelly-jigsaw/app-icon.png',
     hero: `${shots}/home.webp`,
     heroAlt: screens[0].alt,
+    platforms: ['Android', 'iOS'],
     stores: [
       { label: 'Get it on Google Play', href: 'https://play.google.com/store/apps/details?id=com.ohanastudios.shellyjigsaw' },
+      { label: 'Download on the App Store', href: 'https://apps.apple.com/app/id6829383943' },
     ],
     screens,
     features,
     questions: [
-      { question: 'Where can I download Shelly Jigsaw?', answer: 'Shelly Jigsaw is free on Google Play for Android phones. The iPhone version is coming soon.' },
+      { question: 'Where can I download Shelly Jigsaw?', answer: 'Shelly Jigsaw is free on Google Play for Android phones and on the App Store for iPhone and iPad.' },
       { question: 'Can I play the puzzles offline?', answer: 'Yes. The puzzle pictures are bundled with the game, and progress stays on your phone. You do not need an account to play. Ads and optional rewarded videos need an internet connection.' },
       { question: 'Is Shelly Jigsaw good for seniors?', answer: 'Yes. It is made for adults and seniors who want bigger pieces and clearer text. Large controls, clear text and gentle snapping help make play comfortable. You can pinch to zoom or turn on zoom buttons, sort edge and middle pieces, and reduce motion in Settings. There is no countdown to beat.' },
       { question: 'Can I make a jigsaw puzzle from my own photos?', answer: 'Yes. Pick any photo on your phone, such as grandchildren, pets or a family trip, and play it as a jigsaw puzzle. Your photo stays on your phone. It is never uploaded or shared.' },

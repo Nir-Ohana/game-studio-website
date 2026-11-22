@@ -82,7 +82,8 @@ for (const [route, name] of games) {
     const released = name === 'Shelly Jigsaw';
     assert.equal(game?.creativeWorkStatus, released ? 'Published' : 'In development');
     assert.match(text(document), released ? /Free on Android/ : /In development/);
-    assert.equal(game?.gamePlatform, 'Android');
+    if (released) assert.deepEqual(game?.gamePlatform, ['Android', 'iOS']);
+    else assert.equal(game?.gamePlatform, 'Android');
     assert.equal(webpage?.mainEntity?.['@id'], game?.['@id']);
     assert.ok(!game.offers && !game.aggregateRating && !game.datePublished, 'Do not invent availability, reviews or a launch date');
     assert.equal(breadcrumbs?.itemListElement[0].item, origin + '/');
