@@ -78,7 +78,7 @@ const structuredData = [
 
   <section class="section" id="screens" aria-labelledby="screens-title">
     <div class="wrap">
-      <div class="section-head"><h2 id="screens-title">Inside {game.name}</h2><p>{game.demo.full ? 'Real screenshots from the game.' : 'Real screenshots from the game in development.'}</p></div>
+      <div class="section-head"><h2 id="screens-title">Inside {game.name}</h2><p>{game.demo.full || game.stores ? 'Real screenshots from the game.' : 'Real screenshots from the game in development.'}</p></div>
       <ScreenGallery screens={game.screens} />
     </div>
   </section>

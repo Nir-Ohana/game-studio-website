@@ -1,10 +1,10 @@
 export const shots = '/images/games/shelly-jigsaw/screens';
 export const screens = [
-  { src: `${shots}/home.webp`, title: 'A gentle beginning', text: 'Meet Shelly and start with a small first puzzle.', alt: 'Shelly welcomes a new player above a turtle reef picture and a Start button' },
-  { src: `${shots}/play.webp`, title: 'Big pieces, easy to see', text: 'Pieces snap gently into place. Sort edges and middles in the tray.', alt: 'A Daily puzzle in progress with large pieces in the tray below the board' },
-  { src: `${shots}/daily.webp`, title: 'A new picture every day', text: 'Pick the size you like. Earlier days wait for you, too.', alt: 'Daily puzzle with a size picker, a Start button and the month of earlier puzzles' },
-  { src: `${shots}/adventure.webp`, title: 'Adventure', text: 'Chapter after chapter of hand-picked puzzles.', alt: 'Sunlit Shallows chapter with six puzzles along a winding trail' },
-  { src: `${shots}/complete.webp`, title: 'Enjoy the picture', text: 'A moment to admire what you have made.', alt: 'Puzzle complete screen showing the finished picture and three stars' },
+  { src: `${shots}/home.webp`, title: 'A gentle beginning', text: 'Meet Shelly and start with a small first puzzle.', alt: 'Shelly says hi above a sea turtle reef picture for the first 12-piece puzzle, with a Start button' },
+  { src: `${shots}/play.webp`, title: 'Big pieces, easy to see', text: 'Pieces snap gently into place. Sort edges and middles in the tray.', alt: 'A cottage garden puzzle nearly done, with large pieces in the tray below the board' },
+  { src: `${shots}/daily.webp`, title: 'A new picture every day', text: 'Pick the size you like. Earlier days wait for you, too.', alt: 'Today\'s Daily picture, a steam train on a viaduct, with a size picker, a Start button and the month of earlier puzzles' },
+  { src: `${shots}/adventure.webp`, title: 'Adventure', text: 'Chapter after chapter of hand-picked puzzles.', alt: 'The painted Adventure map at chapter 1, Sunlit Shallows, with Shelly beside the first numbered puzzles along a winding trail' },
+  { src: `${shots}/complete.webp`, title: 'Enjoy the picture', text: 'A moment to admire what you have made.', alt: 'Finished windmill picture with three stars, the time, hints used and shells earned, and a button to play the next picture' },
 ];
 
 export const rocketShots = '/images/games/rocket-rabbit/screens';
