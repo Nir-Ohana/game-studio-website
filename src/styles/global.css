@@ -35,7 +35,11 @@
   --radius-card: 24px;
   --radius-inner: 16px;
   --shadow-card: 0 6px 22px rgba(15, 58, 74, 0.12);
-  --shadow-button: 0 4px 0 var(--lagoon-deep), 0 8px 18px rgba(11, 111, 126, 0.28);
+  /* The game's primary button (ui/theme/shelly_theme_builder.gd primary_fill):
+     a lagoon gradient with a white top highlight, a 4px darker edge and a soft glow. */
+  --primary-top: #15899a;
+  --shadow-button: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 4px 0 var(--lagoon-deep), 0 10px 22px rgba(11, 111, 126, 0.28);
+  --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 5l7 7-7 7'/%3E%3C/svg%3E");
 
   --font: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --page-width: 1200px;
@@ -205,20 +209,40 @@ p {
   transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
 }
 
+/* Primary and secondary match the game's buttons: 22px and 20px labels, a
+   trailing chevron on primary actions and text links, never an arrow. */
 .btn-primary {
+  padding: 0 24px;
   color: #fff;
-  background: var(--lagoon);
+  font-size: 22px;
+  background: linear-gradient(180deg, var(--primary-top), var(--lagoon));
   box-shadow: var(--shadow-button);
+}
+
+.btn-primary::after,
+.text-link::after {
+  content: "";
+  flex: none;
+  width: 22px;
+  height: 22px;
+  background: currentColor;
+  -webkit-mask: var(--chevron) center / contain no-repeat;
+  mask: var(--chevron) center / contain no-repeat;
+}
+
+.text-link::after {
+  width: 18px;
+  height: 18px;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background: var(--lagoon-deep);
+  background: linear-gradient(180deg, var(--lagoon), var(--lagoon-deep));
 }
 
 .btn-primary:active {
-  transform: translateY(3px);
-  box-shadow: 0 1px 0 var(--lagoon-deep);
+  transform: translateY(4px);
+  box-shadow: 0 0 0 var(--lagoon-deep);
 }
 
 .btn-secondary {
@@ -226,9 +250,12 @@ p {
   color: var(--lagoon);
   background: var(--pearl);
   border: 2px solid var(--lagoon);
+  box-shadow: 0 4px 12px rgba(15, 58, 74, 0.08);
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover,
+.btn-secondary:active {
+  color: var(--lagoon-deep);
   background: var(--shallows);
 }
 
@@ -960,20 +987,12 @@ section[id],
   right: 4%;
   z-index: 1;
   rotate: 4deg;
-  animation: poster-float 7s ease-in-out infinite;
 }
 
 .poster-phone-back {
   top: 10%;
   right: 42%;
   rotate: -7deg;
-  animation: poster-float 8s ease-in-out -3s infinite;
-}
-
-@keyframes poster-float {
-  50% {
-    translate: 0 -10px;
-  }
 }
 
 /* Reel: Shelly Jigsaw screens fanned out, then the best moments. */
@@ -1312,12 +1331,15 @@ section[id],
   .moments {
     grid-template-columns: minmax(0, 1fr);
   }
-  .poster .store-links li {
+  .store-links li {
     flex: 1 1 100%;
   }
-  .poster .store-links .btn {
+  .store-links .btn {
     width: 100%;
-    padding-inline: 16px;
+    padding-inline: 14px;
+    gap: 6px;
+    font-size: 20px;
+    white-space: nowrap;
   }
   .moments li {
     display: grid;
@@ -1332,30 +1354,16 @@ section[id],
   }
 }
 
-/* Parallax (src/pages/index.astro): the script moves [data-depth] layers with
-   transform, so it never fights the rotate and translate set above. Sections
-   rise in once as they reach the screen. Both stay off under reduced motion. */
-[data-depth] {
+/* The smallest phones let a long store label wrap rather than overflow. */
+@media (max-width: 340px) {
+  .store-links .btn {
+    white-space: normal;
+  }
+}
+
+/* Parallax (src/pages/index.astro): only the poster painting moves, slower
+   than the page, behind the card. Nothing moves over text. */
+.poster-art {
   will-change: transform;
 }
 
-.motion [data-reveal] {
-  opacity: 0;
-  translate: 0 32px;
-  transition: opacity 0.8s ease, translate 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-.motion [data-reveal].is-in {
-  opacity: 1;
-  translate: none;
-}
-
-.motion .moments li:nth-child(2) { transition-delay: 0.08s; }
-.motion .moments li:nth-child(3) { transition-delay: 0.16s; }
-.motion .moments li:nth-child(4) { transition-delay: 0.24s; }
-
-@media (prefers-reduced-motion: reduce) {
-  .poster-phone {
-    animation: none;
-  }
-}
