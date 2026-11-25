@@ -1,10 +1,11 @@
 export const shots = '/images/games/shelly-jigsaw/screens';
 export const screens = [
-  { src: `${shots}/home.webp`, title: 'A gentle beginning', text: 'Meet Shelly and start with a small first puzzle.', alt: 'Shelly says hi above a sea turtle reef picture for the first 12-piece puzzle, with a Start button' },
+  { src: `${shots}/home.webp`, title: 'Pick up where you left off', text: 'Shelly says hello and your puzzle waits right where you left it.', alt: 'Shelly says good evening above the Peony Garden Daily puzzle with a Continue button, and three more puzzles in progress below' },
   { src: `${shots}/play.webp`, title: 'Big pieces, easy to see', text: 'Pieces snap gently into place. Sort edges and middles in the tray.', alt: 'A cottage garden puzzle nearly done, with large pieces in the tray below the board' },
-  { src: `${shots}/daily.webp`, title: 'A new picture every day', text: 'Pick the size you like. Earlier days wait for you, too.', alt: 'Today\'s Daily picture, a steam train on a viaduct, with a size picker, a Start button and the month of earlier puzzles' },
-  { src: `${shots}/adventure.webp`, title: 'Adventure', text: 'Chapter after chapter of hand-picked puzzles.', alt: 'The painted Adventure map at chapter 1, Sunlit Shallows, with Shelly beside the first numbered puzzles along a winding trail' },
-  { src: `${shots}/complete.webp`, title: 'Enjoy the picture', text: 'A moment to admire what you have made.', alt: 'Finished windmill picture with three stars, the time, hints used and shells earned, and a button to play the next picture' },
+  { src: `${shots}/daily.webp`, title: 'A new picture every day', text: 'Pick the size you like. Earlier days wait for you, too.', alt: "Today's Daily picture, a field of sunflowers at sunset, with a 48-piece size picker, a Start button and the month of earlier puzzles" },
+  { src: `${shots}/adventure.webp`, title: 'Adventure', text: 'Chapter after chapter of hand-picked puzzles.', alt: 'The painted Adventure map in chapter 1, Sunlit Shallows: a trail of round puzzle pictures over a coral reef and a sea turtle, with Shelly at level 4' },
+  { src: `${shots}/puzzles.webp`, title: 'Hundreds of pictures', text: 'Animals, cozy places and more. Or use your own photo.', alt: 'The Puzzles screen with a Use your own photo button and an Animals row showing a woodland tea party, a puppy and kitten, a badger tailor and a cat napping in a bookshop' },
+  { src: `${shots}/complete.webp`, title: 'Enjoy the picture', text: 'A moment to admire what you have made.', alt: "Finished windmill picture with three stars, the time, hints used and shells earned, and a button to play today's picture" },
 ];
 
 export const rocketShots = '/images/games/rocket-rabbit/screens';

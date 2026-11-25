@@ -504,6 +504,10 @@ section[id],
   gap: 20px;
 }
 
+.screens-three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .screen {
   display: flex;
   flex-direction: column;
@@ -1003,7 +1007,7 @@ section[id],
 
 .reel-strip {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 20px;
   max-width: var(--page-width);
   margin: 0 auto;
@@ -1033,8 +1037,8 @@ section[id],
 
 .reel-item:nth-child(1) .phone { rotate: -4deg; }
 .reel-item:nth-child(2) .phone { rotate: -2deg; }
-.reel-item:nth-child(4) .phone { rotate: 2deg; }
-.reel-item:nth-child(5) .phone { rotate: 4deg; }
+.reel-item:nth-child(5) .phone { rotate: 2deg; }
+.reel-item:nth-child(6) .phone { rotate: 4deg; }
 
 .reel-item:hover .phone {
   translate: 0 -8px;
@@ -1252,6 +1256,14 @@ section[id],
   }
 }
 
+@media (max-width: 1100px) {
+  .reel-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 36px;
+    max-width: 760px;
+  }
+}
+
 @media (max-width: 860px) {
   .poster-inner,
   .band-grid,
@@ -1319,6 +1331,28 @@ section[id],
     margin: 0;
   }
 }
+
+/* Parallax (src/pages/index.astro): the script moves [data-depth] layers with
+   transform, so it never fights the rotate and translate set above. Sections
+   rise in once as they reach the screen. Both stay off under reduced motion. */
+[data-depth] {
+  will-change: transform;
+}
+
+.motion [data-reveal] {
+  opacity: 0;
+  translate: 0 32px;
+  transition: opacity 0.8s ease, translate 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.motion [data-reveal].is-in {
+  opacity: 1;
+  translate: none;
+}
+
+.motion .moments li:nth-child(2) { transition-delay: 0.08s; }
+.motion .moments li:nth-child(3) { transition-delay: 0.16s; }
+.motion .moments li:nth-child(4) { transition-delay: 0.24s; }
 
 @media (prefers-reduced-motion: reduce) {
   .poster-phone {
