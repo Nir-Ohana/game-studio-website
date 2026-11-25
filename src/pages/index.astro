@@ -26,7 +26,7 @@ const moments = [
     <div class="wrap poster-inner">
       <div class="poster-copy">
         <img class="poster-icon" src={shelly.icon} width="88" height="88" alt="" />
-        <h1 id="poster-title"><span>Ohana Studios presents</span> {shelly.name}</h1>
+        <h1 id="poster-title"><span class="poster-presents"><img src="/images/logo-mark.webp" alt="" width="32" height="32" />Ohana Studios presents</span> {shelly.name}</h1>
         <p class="poster-tagline">Relaxing jigsaw puzzles with big pieces and no clock.</p>
         <p class="poster-status">{shelly.status}</p>
         <ul class="store-links" aria-label={`Download ${shelly.name}`}>
@@ -112,10 +112,11 @@ const moments = [
     </div>
   </section>
 
-  <WaveEdge seed={11} from="var(--pili-peach)" to="var(--pearl)" />
+  <WaveEdge seed={11} from="var(--pili-peach)" to="var(--brand-deep)" />
   <section class="studio" id="contact" aria-labelledby="studio-title">
     <div class="wrap studio-grid">
-      <div>
+      <img class="studio-logo" src="/images/logo-mark-480.webp" width="480" height="480" alt="Ohana Studios logo: a paper sun rising behind two waves that form a heart" loading="lazy" />
+      <div class="studio-copy">
         <p class="studio-kicker">Ohana means family</p>
         <h2 id="studio-title">Small studio. Games with heart.</h2>
         <p>We make calm, friendly games for every generation.</p>
@@ -127,6 +128,7 @@ const moments = [
       </div>
     </div>
   </section>
+  <WaveEdge seed={13} from="transparent" to="var(--ink)" flip />
 </BaseLayout>
 
 <script>

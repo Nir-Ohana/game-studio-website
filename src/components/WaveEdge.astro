@@ -1,13 +1,16 @@
 ---
 // A soft wave edge between two home page bands, drawn at build time from a seed.
 // `from` paints the band above, `to` the band below (any CSS colour or var()).
+// `flip` turns it upside down so `to` hangs from the band above instead, for a
+// band that ends over the page background (from="transparent").
 interface Props {
   seed: number;
   from: string;
   to: string;
+  flip?: boolean;
 }
 
-const { seed, from, to } = Astro.props;
+const { seed, from, to, flip = false } = Astro.props;
 const W = 1440;
 const H = 80;
 let state = seed * 7919 + 104729;
@@ -31,7 +34,7 @@ const back = wave(0.42, 0.26);
 const front = wave(0.6, 0.22);
 ---
 
-<svg class="wave-edge" style={`--from: ${from}; --to: ${to}`} viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" aria-hidden="true" focusable="false">
+<svg class:list={['wave-edge', { 'wave-edge-flip': flip }]} style={`--from: ${from}; --to: ${to}`} viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" aria-hidden="true" focusable="false">
   <path class="wave-edge-back" d={back} />
   <path d={front} />
 </svg>

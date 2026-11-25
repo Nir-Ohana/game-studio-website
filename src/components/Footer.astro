@@ -7,7 +7,10 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="wrap">
     <div class="card footer-card">
-      <span>&copy; {year} {STUDIO}</span>
+      <a class="footer-brand" href="/">
+        <img src="/images/logo-mark.webp" alt="" width="44" height="44" loading="lazy" />
+        <span>{STUDIO}<small>&copy; {year}</small></span>
+      </a>
       <nav class="footer-links" aria-label="Footer">
         <a href="/shelly-jigsaw/">Shelly Jigsaw</a>
         <a href="/rocket-rabbit/">Rocket Rabbit</a>
