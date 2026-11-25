@@ -6,7 +6,7 @@ The shared layout follows Shelly Jigsaw's in-game style (aqua background, pearl 
 
 ## Pages
 
-The homepage pairs a spacious introduction with two illustrated game showcases, each using its own colors and real game screenshots. The shared header uses the sunrise heart studio mark, and the layout adapts to narrow phone screens. Browser demos load only after the player chooses to play.
+The homepage is one long page that leads with Shelly Jigsaw: a painted lagoon poster (Krea 2, `public/images/backgrounds/lagoon-wide.webp` and `lagoon-tall.webp` for phones) with code-drawn waves that drift along its foot and stand still under reduced motion, then a fan of Shelly's screens and four short reasons to play. Rocket Rabbit and Pili Words follow as full-width bands in their own colors, joined by wave edges drawn at build time (`src/components/WaveEdge.astro`). The shared header uses the sunrise heart studio mark, and the layout adapts to narrow phone screens. Browser demos load only after the player chooses to play.
 
 | URL | Source |
 | --- | --- |
