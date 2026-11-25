@@ -17,7 +17,7 @@ const {
   title,
   description = 'Meet the games from Ohana Studios: Shelly Jigsaw, a calm puzzle journey with a sea turtle; Rocket Rabbit, a cheerful pixel-art endless climber; and Pili Words, a word circles puzzle with a free demo in your browser.',
   image = '/images/ohana-studios.png',
-  imageAlt = 'Ohana Studios rising heart logo',
+  imageAlt = 'Ohana Studios logo: a paper sun rising behind two waves that form a heart',
   structuredData = [],
   mainEntity,
 } = Astro.props;
@@ -66,7 +66,6 @@ const schemaJSON = JSON.stringify(schema).replace(/</g, '\\u003c');
     <link rel="canonical" href={canonical} />
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#BFE6EE" />

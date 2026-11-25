@@ -2,11 +2,11 @@
 
 The studio site at [ohana-studios.me](https://ohana-studios.me): showcases for Shelly Jigsaw, Rocket Rabbit and Pili Words, plus Shelly Jigsaw's privacy policy.
 
-The shared layout follows Shelly Jigsaw's in-game style (aqua background, pearl cards, dark readable text, Nunito). Rocket Rabbit has its own pixel art and sunny accent. The header and site icons use the current Ohana Studios heart-and-waves mark. Tokens are at the top of `src/styles/global.css`.
+The shared layout follows Shelly Jigsaw's in-game style (aqua background, pearl cards, dark readable text, Nunito). Rocket Rabbit has its own pixel art and sunny accent. The header and site icons use the Ohana Studios paper-cut sunrise heart. Tokens are at the top of `src/styles/global.css`.
 
 ## Pages
 
-The homepage pairs a spacious introduction with two illustrated game showcases, each using its own colors and real game screenshots. The shared header uses the heart-and-waves studio mark, and the layout adapts to narrow phone screens. Browser demos load only after the player chooses to play.
+The homepage pairs a spacious introduction with two illustrated game showcases, each using its own colors and real game screenshots. The shared header uses the sunrise heart studio mark, and the layout adapts to narrow phone screens. Browser demos load only after the player chooses to play.
 
 | URL | Source |
 | --- | --- |
@@ -29,7 +29,7 @@ Refreshed September 28, 2026 from the local game projects:
 - **Shelly Jigsaw** — `C:/dev/puzzle-game`, revision `3d232db`. Features checked against the Adventure catalog, Daily puzzle sizes, hint system and current player-experience docs. Screenshots come from `docs/evidence/schell-lenses/2026-09-27/` (`home.png`, `adventure.png`, `daily.png`, `completion-photo.png`); the app icon comes from `design/store-listing/icon-play-512.png`.
 - **Rocket Rabbit** — `C:/Users/Nir/orca/rocket-rabbit`, revision `4e926dc`. Features checked against the README, `Characters.gd`, `Zones.gd` and the cosmetics catalog. Fresh screenshots were captured with `tools/capture_screenshots.tscn` (`00_menu`, `01_start`, `94_friends`, `92_shop_hats`) using a temporary player profile. The older screenshots in `docs/design/screenshots/` predate the pixel art. The app icon and feature art come from `docs/store/`.
 - **Pili Words** — `C:/dev/venn-puzzle`, added October 5, 2026. Features checked against the puzzle catalog (96 levels in eight chapters), star ratings and streak. Screenshots are 540 × 1170 captures from `tools/capture_store_shots.gd` (`play`, `mystery`, `win`, `levels`) using isolated saves; the app icon is rendered from the game's `assets/icon.svg`, drawn by `tools/generate_pili_art.py`.
-- **Studio branding** — Shelly Jigsaw's `design/shelly-style-handoff/brand/ohana-studios/ohana-symbol-full-colour.svg` and `ohana-square-full-colour.svg`.
+- **Studio branding** — the paper-cut sunrise heart, rendered November 25, 2026 with the local Krea 2 workflow (Nir-Ohana/puzzle-game#947). The 1024 × 1024 source is `docs/brand/ohana-sunrise-heart-source.png`; the favicon, app icons, header mark (`public/images/logo-mark.webp`) and default share image (`public/images/ohana-studios.png`) are cut from it with a 3% inset.
 
 Web assets are copied into `public/images/`; the site has no runtime dependency on either game checkout. Screenshots are 540 × 1170 WebP images. Rocket Rabbit uses lossless WebP to preserve its pixel art.
 
