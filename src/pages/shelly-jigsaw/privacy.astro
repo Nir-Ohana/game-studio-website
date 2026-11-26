@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { CONTACT_EMAIL, STUDIO } from '../../site';
 
-const effective = 'November 12, 2026';
+const effective = 'November 26, 2026';
 ---
 
 <BaseLayout
@@ -47,7 +47,7 @@ const effective = 'November 12, 2026';
             device information to show and measure those ads, as described below.
           </li>
           <li>
-            We advertise the game on Facebook and Instagram. In many countries the Android app tells
+            We advertise the game on Facebook and Instagram. In many countries the app tells
             <strong>Meta</strong> when it is installed and opened and when you finish your first
             puzzle, so we can see whether those ads work. It never sends your name, email or photos.
           </li>
@@ -176,8 +176,10 @@ const effective = 'November 12, 2026';
           opened, how long it is used, the app version, the phone model, the Android or iOS version,
           the country, and a random app-instance identifier. On Android, when ads are allowed, it can
           use the advertising ID to measure which ads brought players to the game. On iPhone it never
-          uses Apple's advertising identifier (IDFA). We look at these numbers as totals and cannot
-          tell who you are.
+          uses Apple's advertising identifier (IDFA). On iPhone the app also asks Apple whether an
+          Apple Ads search ad brought the install, without the IDFA, and sends Google Analytics the
+          answer: the campaign, ad group, keyword and ad numbers. We look at these numbers as totals
+          and cannot tell who you are.
         </p>
         <p>
           In the European Economic Area, the UK and Switzerland, your choice in the consent message
@@ -186,20 +188,23 @@ const effective = 'November 12, 2026';
           <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">how Google uses information from apps that use its services</a>.
         </p>
 
-        <h2 id="meta">Measuring our ads with Meta (Android)</h2>
+        <h2 id="meta">Measuring our ads with Meta</h2>
         <p>
-          We advertise Shelly Jigsaw on Facebook and Instagram. The Android app includes the
+          We advertise Shelly Jigsaw on Facebook and Instagram. The app includes the
           <strong>Meta SDK</strong>, a tool from Meta Platforms, so Meta can tell whether its ads led
           to the game being installed and played, and show the ads to people more likely to enjoy
-          the game. The iPhone app does not include it.
+          the game.
         </p>
         <p>When the Meta SDK runs, the app sends Meta:</p>
         <ul>
           <li>that the app was installed or opened, and that you finished your first puzzle;</li>
-          <li>your device's advertising ID and an anonymous identifier the SDK creates;</li>
+          <li>
+            your device's advertising ID (on iPhone, the IDFA, only if you allow tracking) and an
+            anonymous identifier the SDK creates;
+          </li>
           <li>your IP address, which can indicate your approximate location;</li>
           <li>
-            information about your device, such as model, Android version, language, time zone,
+            information about your device, such as model, Android or iOS version, language, time zone,
             screen size and free storage space;
           </li>
           <li>the app's name and version, and crash reports about the Meta SDK itself.</li>
@@ -212,7 +217,8 @@ const effective = 'November 12, 2026';
         <p>
           The Meta SDK does not run if you are in the European Economic Area, the UK, Switzerland, or
           a US state where the app offers Privacy choices. You can delete your advertising ID in your
-          phone's settings, as described below. If you have a Facebook or Instagram account, you can
+          phone's settings, or on iPhone turn off tracking for the app, as described below. If you
+          have a Facebook or Instagram account, you can
           also manage this in its settings, under your activity off Meta technologies.
         </p>
 
@@ -330,8 +336,8 @@ const effective = 'November 12, 2026';
             </thead>
             <tbody>
               <tr><td>Internet and network state</td><td>To load ads, to back up your progress with Google Play Games or iCloud, and to send the game measurements described above. Puzzles are built into the app and do not need a connection.</td></tr>
-              <tr><td>Advertising ID</td><td>Used by Google AdMob, and on Android by Google Analytics and the Meta SDK to measure ads, as described above.</td></tr>
-              <tr><td>Tracking (iPhone)</td><td>Asked with Apple's tracking message. If you allow it, Google AdMob can use the IDFA to show more relevant ads. The game works the same either way.</td></tr>
+              <tr><td>Advertising ID</td><td>Used by Google AdMob and the Meta SDK, and on Android by Google Analytics, to measure ads, as described above.</td></tr>
+              <tr><td>Tracking (iPhone)</td><td>Asked with Apple's tracking message. If you allow it, Google AdMob can use the IDFA to show more relevant ads, and the Meta SDK can use it to measure our ads. The game works the same either way.</td></tr>
               <tr><td>Ad and install measurement (install referrer, Android ad services)</td><td>Used by Google AdMob, Google Analytics and the Meta SDK to measure which ads and store pages bring players to the game and, where you allow it, to show more relevant ads.</td></tr>
               <tr><td>Background work (Android: wake lock, foreground service)</td><td>Used by Google's ads and measurement code to finish sending its data when the app is closed. The game itself only schedules the Daily reminder, if you turn it on.</td></tr>
               <tr><td>Notifications (Android)</td><td>Asked only if you tap Remind me after finishing a Daily. The app then sends at most one quiet note a day, only on days you have not opened the game, and stops after three in a row. You can turn it off any time in Android's notification settings.</td></tr>
